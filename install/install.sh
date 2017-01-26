@@ -9,6 +9,8 @@ sed -ri "s|(.*:datadir:).*|\1 $DIR|" $DIR/hiera.yaml
 # Get hostname in config.yaml
 HOSTNAME=$(sed -nr "s/hostname:[[:space:]]*(.*)/\1/p" $DIR/config.yaml)
 DOMAIN=$(sed -nr "s/domain:[[:space:]]*(.*)/\1/p" $DIR/config.yaml)
+MANAGER_NETWORK_PREFIX=$(sed -nr "s/manager_network:[[:space:]]*(.*)/\1/p" $DIR/config.yaml| awk -F. '{print $1"."$2"."$3}')
+MANAGER_NETWORK_PREFIX_ID=$(sed -nr "s/manager_network:[[:space:]]*(.*)/\1/p" $DIR/config.yaml| awk -F. '{print $3}')
 SERVERNAME=$(sed -nr "s/puppet_server_name:[[:space:]]*(.*)/\1/p" $DIR/config.yaml)
 FOREMANSERVER=$(sed -nr "s#foreman_base_url:[[:space:]]*'http://(.*)'#\1#p" $DIR/config.yaml)
 FQDN="${HOSTNAME}.${DOMAIN}"
@@ -77,3 +79,12 @@ foreman-rake permissions:reset
 
 # Restart puppet
 systemctl restart httpd.service
+
+# Create inventory
+python tools/generate_inventory.py -r ${DOMAIN} -n ${DOMAIN} -i ${MANAGER_NETWORK_PREFIX}
+python tools/create_node_map.py
+
+# Create hiera
+INVENTORY_FILE="${MANAGER_NETWORK_PREFIX_ID}.${DOMAIN}.ustack.in"
+ansible-playbook -vvv -i /root/ctask/inventory/${INVENTORY_FILE} /root/ctask/define/create_cluster/001.create_cluster_info.do.yaml  -k
+ansible-playbook -vvv -i /root/ctask/inventory/${INVENTORY_FILE} /root/ctask/define/create_cluster/002_1.config_foreman_proxy.yaml  -k

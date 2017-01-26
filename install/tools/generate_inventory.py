@@ -20,9 +20,9 @@ def generate_password(length=20):
     return Password
 
 def generate_groups_vars(name,abridge,prefix,sata=None):
-        if not os.path.exists('group_vars_template'):
+        if not os.path.exists('/root/ctask/install/tools/group_vars_template'):
             sys.exit('group_vars_template file is not exist!')
-        input = open("group_vars_template")
+        input = open("/root/ctask/install/tools/group_vars_template")
         lines = input.readlines()
         input.close()
         p = prefix.split('.')
@@ -31,7 +31,7 @@ def generate_groups_vars(name,abridge,prefix,sata=None):
         console_prefix = '%s.%s.%d' % (p[0],p[1],int(p[2])+8)
         cluster_id = '%d' % int(p[2])
         region_domain = '%d.%s.ustack.in' % (int(p[2]),abridge)
-        output  = open('../inventory/group_vars/%s' % abridge,'w');
+        output  = open('/root/ctask/inventory/group_vars/%s' % abridge,'w');
         for line in lines:
             l = line.replace('SDN_PREFIX',sdn_prefix)
             l = l.replace('CEPH_PREFIX',ceph_prefix)
@@ -57,14 +57,14 @@ def generate_groups_vars(name,abridge,prefix,sata=None):
         output.close()
 
 def generate_inventory(abridge,prefix,f_file,sata=None):
-        if not os.path.exists(t_file):
+        if not os.path.exists("/root/ctask/install/tools/" + t_file):
             sys.exit('%s file is not exist!' % t_file)
-        input = open(t_file)
+        input = open("/root/ctask/install/tools/" + t_file)
         lines = input.readlines()
         input.close()
         p = prefix.split('.')
 
-        output  = open('../inventory/%d.%s.ustack.in' % (int(p[2]),abridge),'w');
+        output  = open('/root/ctask/inventory/%d.%s.ustack.in' % (int(p[2]),abridge),'w');
         for line in lines:
             l = line.replace('PREFIX', prefix)
             l = l.replace('REGION_ABRIDGE',abridge)
@@ -77,11 +77,6 @@ def generate_inventory(abridge,prefix,f_file,sata=None):
             output.write(l)
         output.close()
 
-#def generate_new_region(name,abridge):
-#        output  = open('../inventory/group_vars/new_region','w');
-#        l = '%s: %s' % (name,abridge)
-#        output.write(l)
-#        output.close()
 if __name__ == '__main__':
     options = generate_options()
     if options.abridge is None or options.prefix is None or options.name is None:
@@ -98,5 +93,4 @@ if __name__ == '__main__':
     sata = options.enable_sata
     generate_groups_vars(name,abridge,prefix,sata)
     generate_inventory(abridge,prefix,t_file,sata)
-#    generate_new_region(name,prefix)
     print 'Generate SUCCESS! Please modify the IPMI and IP !'
