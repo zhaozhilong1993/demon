@@ -58,7 +58,7 @@ for dir in /etc/puppet/environments/*; do
     cp $DIR/templates/environment.conf $dir/environment.conf
     sed -ri "s|ENV|$env|" $dir/environment.conf
     if [ ! -e $dir/manifests/cluster ]; then
-      mkdir $dir/manifests/cluster
+      mkdir -p $dir/manifests/cluster
     fi
   fi
 done

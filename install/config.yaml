@@ -28,9 +28,9 @@ ceph_monitor_node:
     - 10.0.121.[61:63]
 
 dhcp_proxy: true
-dhcp_interface: 'br0'
-dhcp_gateway: '10.0.215,1'
-foreman_base_url: 'http://10.0.215.1'
+dhcp_interface: br0
+dhcp_gateway: 10.0.215.1
+foreman_base_url: http://10.0.215.1
 
 mac_map:
     - 10.0.121.32:
