@@ -63,5 +63,17 @@ for dir in /etc/puppet/environments/*; do
   fi
 done
 
+# Insert foreman.psql
+systemctl stop httpd.service
+su - postgres << EOF
+psql -c "DROP DATABASE foreman;"
+psql -c "CREATE DATABASE foreman;"
+psql -c "GRANT ALL PRIVILEGES ON DATABASE foreman to foreman;"
+EOF
+PGPASSWORD=ustack psql -h localhost -U foreman -d foreman -f foreman.psql
+
+# Reset foreman admin password
+foreman-rake permissions:reset
+
 # Restart puppet
 systemctl restart httpd.service
