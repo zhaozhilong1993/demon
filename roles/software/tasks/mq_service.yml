@@ -1,0 +1,22 @@
+- name: 0/1 reload service for mq
+  register: mq_service
+  shell: /usr/bin/systemctl status rabbitmq-server
+  ignore_errors: yes
+  tags:
+    - mq
+- name: 0/2 restart service for mq
+  shell: /usr/bin/systemctl restart rabbitmq-server
+  when: "mq_service.rc != 0"
+  tags:
+    - mq
+
+- name: 0/3 check rabbit mq service
+  register: check_rabbit_mq_service
+  shell: /usr/sbin/rabbitmqctl cluster_status  |  awk -F"'"  'BEGIN{OFS="\n"}/run/{ print $2,$4,$6}' | grep 'rabbit@server' | wc -l
+  tags:
+    - mq
+
+- fail: 0/4 rabbitmq number is wrong
+  when: "check_rabbit_mq_service.stdout.strip() < 3"
+  tags:
+    - mq

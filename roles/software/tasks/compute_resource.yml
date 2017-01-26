@@ -1,0 +1,13 @@
+# file: roles/software/tasks/compute_resource.yml
+
+- name: 查看是否已经存在 Compute Resource
+  register: compute_resource_exist
+  delegate_to: 127.0.0.1
+  script: foreman_setting.py --method check_compute_resource --ip {{ inventory_hostname }} --domain {{ domain }} --region {{ domain_region }}
+  tags: compute_resource
+
+- name: 如果不存在就加入一个新的 Compute Resource
+  delegate_to: 127.0.0.1
+  script: foreman_setting.py --method create_compute_resource --ip {{ inventory_hostname }} --domain {{ domain }} --region {{ domain_region }}
+  when: compute_resource_exist.stdout.strip() == "Not Exist"
+  tags: compute_resource

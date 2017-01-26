@@ -1,0 +1,23 @@
+---
+- name: Check mysql init
+  register: check_mysql_init
+  shell: mysql -e 'show databases' | wc -l
+  tags:
+    - mysql
+
+- fail: Databases number is wrong
+  when: "check_mysql_init.stdout.strip() < 5"
+  tags:
+    - mysql
+
+- name: Install mysql in api node
+  yum: name=mysql state=present
+  delegate_to: "{{ groups['region_41'][0] }}"
+  tags:
+    - mysql
+
+- name: Check keystone connect to database
+  shell: mysql -h {{ api_db_host }} -u keystone -p{{ service_db_password }} -e "show databases"
+  delegate_to: "{{ groups['region_41'][0] }}"
+  tags:
+    - mysql

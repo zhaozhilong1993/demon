@@ -1,0 +1,30 @@
+# file: provision.do.yaml
+# Done
+
+- hosts: Hypervisor
+  gather_facts: no
+  vars:
+    - openstack_role: hypervisor
+  roles:
+    - { role: provision, method: physical }
+    - { role: provision, method: check }
+    - { role: system, method: do }
+    - { role: system, method: auth }
+    - { role: system, method: ipmi }
+    - { role: system, method: clear_iptables }
+    - { role: system, system_role: hypervisor, method: partition }
+    - { role: system, method: genrole }
+    - { role: software, method: run_puppet }
+    - { role: provision, method: compute_resource }
+
+- hosts:
+    - LB
+    - Web
+    - CephMon
+    - MQ
+    - Memcached
+    - Mysql
+  serial: 1
+  gather_facts: no
+  roles:
+    - { role: provision, method: virtual }

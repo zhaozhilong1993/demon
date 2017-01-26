@@ -1,0 +1,7 @@
+sunfire::hypervisor::eth1_ip: '{{ hypervisor_33_eth1_ip }}'
+# 例如: 修复ssh的监听地址  ipaddress_br0
+ssh::server::config::listenaddress: "0.0.0.0"
+ssh::server::config::passwordauthentication: 'yes'
+ssh::server::config::pubkeyauthentication: 'yes'
+sunfire::common::publickey::special_pairs:
+  foreman: 'AAAAB3NzaC1yc2EAAAABIwAAAQEAt5u+Hqn5P6+cfQjmt1VhVcCtgNav9N9IpdweFGOy8Xz9SF8n5sKxMa4j2kxDaDcIX6BU42kGWVFa15lAoUvchYaiZpfqV0OFKQzLl4yWe1Qk+MmXMW87wM+C3hv2uqNHltGSmZq8nrrXPRUJoJl+axM6WT2sNcdvZehP6+R4NODkLybZHCcuPBwjg04oefCPWOYDNsK+abgQijKDaWi/49V41LdNWu6WldUDqYQTDy447/E4e9hgEvbL5oAaCaae8v1CFRjmBYCxvMGlgryKsOnjFwLUWHkRZZS5D8ur2P2xPXetNiyFCXaXpx6uLLpCWPhcKk5+I/Vyqoqjj73Crw=='

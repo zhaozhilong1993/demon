@@ -1,0 +1,4 @@
+#本角色是检查l4 l7 mq mc的服务是否正常
+- name: Check Ping L7 L4 MQ MC is OK
+  register: base_check
+  shell: ping -c 1 -W 1 {{ inventory_hostname }}

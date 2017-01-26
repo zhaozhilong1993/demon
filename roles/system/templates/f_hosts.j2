@@ -1,0 +1,10 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+{{ manage_prefix }}{{ host_last_num.stdout }} server-{{ host_last_num.stdout }}.{{ domain }} server-{{ host_last_num.stdout }}
+{{ manage_prefix }}37 {{ api_db_host }}
+{{ puppet_forward_address }} {{ puppet_server_domain }}
+{{ yum_server }} mirrors.ustack.com
+{{ foreman_master }} foreman.ustack.com
+{% for k in  groups['all']  %}
+{{ k }}   server-{{ k.split('.')[3] }}.{{k.split('.')[2]}}.{{ domain_region }}.ustack.in  server-{{ k.split('.')[3] }}
+{% endfor %}

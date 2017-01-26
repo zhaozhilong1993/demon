@@ -1,0 +1,3 @@
+# file: roles/compute/tasks/main.yml
+
+- include: partition.yml

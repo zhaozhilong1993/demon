@@ -1,0 +1,21 @@
+# file: roles/physical/tasks/ipmi.yml
+#
+- name: 获取远程控制卡IP
+  register: remote_control
+  shell: origin={{ inventory_hostname }};origin=`echo $origin | cut -f 4 -d "."`;echo {{ remote_prefix }}$origin
+  when: method == "ipmi" and enable_ipmi_conf == "True"
+
+- name: 重新设置IPMI相关参数
+  command: ipmitool lan set {{ ipmi_lan }} ipsrc static
+  command: ipmitool lan set {{ ipmi_lan }} ipaddress {{ remote_control.stdout }}
+  command: ipmitool lan set {{ ipmi_lan }} netmask 255.255.255.0
+  command: ipmitool lan set {{ ipmi_lan }} defgw ipaddr {{ default_gateway }}
+  when: method == "ipmi" and enable_ipmi_conf == "True"
+
+- name: 定义IPMI Over LAN
+  command: ipmitool lan set {{ ipmi_lan }} access on
+  when: method == "ipmi" and enable_ipmi_conf == "True"
+
+- name: 重新设置IPMI密码
+  command: ipmitool user set password {{ ipmi_user_id }} {{ ipmi_passwd }}
+  when: method == "ipmi" and enable_ipmi_conf == "True"

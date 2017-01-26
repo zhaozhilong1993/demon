@@ -1,0 +1,29 @@
+#!/bin/bash
+
+port=22
+zx=0
+user='root'
+me_name=`whoami`
+
+if [ $# = 1 ]; then
+    IP="$1"
+elif [ $# = 2 ]; then
+    case $1 in
+        "exp")
+            IP="10.0.0.$2"
+            ;;
+        *)
+            echo "invalid params"
+            exit 3
+            ;;
+    esac
+else
+    echo "Current Available Regions:"
+    echo "---------------------------------------------------------------"
+    echo "exp: examples"
+    echo "---------------------------------------------------------------"
+    exit 1
+fi
+
+echo "Connecting to $IP ..."
+ssh -o "StrictHostKeyChecking=no" -p $port $user@$IP

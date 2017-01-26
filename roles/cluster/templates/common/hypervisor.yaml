@@ -1,0 +1,11 @@
+# Hypervisor
+#设置是否管理hypervisor节点的网卡，默认是true
+sunfire::hypervisor::manage_interface: true
+#设置hypervisor节eth0网卡的地址网段
+sunfire::hypervisor::network_eth0_prefix: '{{ manage_prefix }}'
+#设置内部hypervisor节网段的网关
+sunfire::hypervisor::internal_gateway: '{{ internal_gateway }}'
+#设置hypervisor节点的eth1网关
+sunfire::hypervisor::eth1_gateway: '{{ outernal_gateway }}'
+#设置hypervisor节点的eth1的子网掩码
+sunfire::hypervisor::eth1_netmask: '{{ outernal_netmask }}'

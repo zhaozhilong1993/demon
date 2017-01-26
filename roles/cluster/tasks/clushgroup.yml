@@ -1,0 +1,60 @@
+# cluster/tasks/create.yml
+
+- name: get hyper list
+  register: hyper_ip
+  script: clushgroup.py {{ groups.Hypervisor }}
+  delegate_to: 127.0.0.1
+
+- name: get network list
+  register: network_ip
+  script: clushgroup.py {{ groups.Network }}
+  delegate_to: 127.0.0.1
+
+- name: get compute list
+  register: compute_ip
+  script: clushgroup.py {{ groups.Compute }}
+  delegate_to: 127.0.0.1
+
+- name: get sata ip list
+  register: sata_ip
+  script: clushgroup.py {{ groups.Storage }}
+  delegate_to: 127.0.0.1
+  when: groups.Storage is defined
+
+- name: get l4 list
+  register: l4_ip
+  script: clushgroup.py {{ groups.LB }}
+  delegate_to: 127.0.0.1
+
+- name: get web list
+  register: web_ip
+  script: clushgroup.py {{ groups.Web }}
+  delegate_to: 127.0.0.1
+
+- name: get mq list
+  register: mq_ip
+  script: clushgroup.py {{ groups.MQ }}
+  delegate_to: 127.0.0.1
+
+- name: get mc list
+  register: mc_ip
+  script: clushgroup.py {{ groups.Memcached }}
+  delegate_to: 127.0.0.1
+
+- name: get mysql list
+  register: mysql_ip
+  script: clushgroup.py {{ groups.Mysql }}
+  delegate_to: 127.0.0.1
+
+- name: get mon list
+  register: mon_ip
+  script: clushgroup.py {{ groups.CephMon }}
+  delegate_to: 127.0.0.1
+
+- name: create ctask/clushgroup dir
+  file: dest=/tmp/clushgroup state=directory
+  delegate_to: 127.0.0.1
+
+- name: create clustershell configuration
+  template: src=clushgroup.yaml dest=/tmp/clushgroup/{{ domain_region }}.group
+  delegate_to: 127.0.0.1

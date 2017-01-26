@@ -1,0 +1,20 @@
+# group_vars/all 
+
+ansible_connection: ssh
+ansible_user: root
+enable_ipmi_password: True
+gather_facts: False
+enable_puppet_run: false 
+zabbix_user: server-72
+zabbix_passwd: ^ustack$
+environments: products
+kernel_version: 3.10.0-327.el7.x86_64
+#kernel_version: 3.12.21-2.el6.ustack.x86_64
+enable_kernel_fail: false
+enable_kernel_fix: false
+enable_reboot: false
+ipmi_lan: 1
+ipmi_user_id: 2
+vlan_mtu: "9200"
+vxlan_mtu: "9180"
+vxlan_mtu_check: "9152"

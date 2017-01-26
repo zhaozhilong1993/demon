@@ -1,0 +1,88 @@
+# Empty site.pp required (puppet #15106, foreman #1708)
+# Hyper
+node /^server-3[1-3].{{ domain }}$/  {
+ class { '::sunfire::hypervisor':}
+}
+# L4 LB
+node /^server-3[4-6].{{ domain }}$/  {
+ class { '::sunfire::loadbalancer::l4':}
+}
+# Web Server
+node /^server-4[1-3].{{ domain }}$/  {
+ class { 'sunfire::api':}
+}
+# MQ
+node /^server-4[4-6].{{ domain }}$/  {
+ class { 'sunfire::storage::mq':}
+}
+# MC
+node /^server-4[7-8].{{ domain }}$/  {
+ class { '::sunfire::storage::memcached':}
+ class { '::sunfire::storage::nfs::server':}
+}
+# MySQL
+node /^server-5[0-2].{{ domain }}$/  {
+  class {'::sunfire::storage::galera':}
+}
+# Mongodb
+node /^server-5[3-5].{{ domain }}$/  {
+ class { 'sunfire::storage::mongodb':}
+}
+# Ceph Monitor
+node /^server-6[1-3].{{ domain }}$/  {
+ class { 'sunfire::storage::ceph::mon':}
+}
+# Network
+node /^server-6[4-7].{{ domain }}$/  {
+ class { 'sunfire::network':}
+}
+# Compute
+node /^server-6[8-9].{{ domain }}$/  {
+ class { 'sunfire::compute':}
+ class { 'sunfire::storage::ceph::osd':}
+}
+node /^server-(7|8|9)[0-9].{{ domain }}$/  {
+ class { 'sunfire::compute':}
+ class { 'sunfire::storage::ceph::osd':}
+}
+node /^server-1[0-9][0-9].{{ domain }}$/  {
+ class { 'sunfire::compute':}
+ class { 'sunfire::storage::ceph::osd':}
+}
+# Sata OSD
+node /^server-20[1-9].{{ domain }}$/  {
+ class { 'sunfire::storage::ceph::osd':}
+}
+node /^server-2(1|2)[0-9].{{ domain }}$/  {
+ class { 'sunfire::storage::ceph::osd':}
+}
+node /^server-23[0-2].{{ domain }}$/  {
+ class { 'sunfire::compute':}
+}
+
+# Other
+## Image
+#node 'server-241.{{ domain }}' {
+#  class {'sunfire::image':}
+#}
+## Ceph Dashboard
+#node 'server-242.{{ domain }}' {
+# class { 'sunfire::base':}
+# class { 'sunfire::monitor::ceph::server': }
+#}
+#
+## Log server
+#node /^server-24[5-6].{{ domain }}$/  {
+# class { 'sunfire::logserver':}
+#}
+#
+## Zabbix Proxy
+#node 'server-247.{{ domain }}'  {
+# class { 'sunfire::monitor::zabbix::proxy':}
+#}
+#
+## Monitor
+#node 'server-248.{{ domain }}' {
+# class { 'sunfire::monitor':}
+#}
+

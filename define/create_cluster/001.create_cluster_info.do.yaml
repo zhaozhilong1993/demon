@@ -1,0 +1,9 @@
+# file: 001.create_cluster_info.do.yaml
+# TODO(Next): create excel
+#  vars_prompt:
+#    output_dir: "Please write your output dir"
+
+- hosts: channel
+  gather_facts: no
+  roles:
+    - { role: cluster,method: do }

@@ -1,0 +1,7 @@
+---
+:backends:
+  - yaml
+:hierarchy:
+  - "config"
+:yaml:
+  :datadir: /root/puppet-bootstrap

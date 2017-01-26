@@ -1,0 +1,30 @@
+# file: roles/software/tasks/main.yml
+- include: run_puppet.yml
+  when: method == "run_puppet"
+
+- include: lb_service.yml
+  when: method == "lb_service"
+
+- include: mc_service.yml
+  when: method == "mc_service"
+
+- include: mq_service.yml
+  when: method == "mq_service"
+
+- include: check_mysql_init.yml
+  when: method == "check_mysql_init"
+
+- include: vip_check.yml
+  when: method == "vip_check"
+
+- include: create_openrc.yml
+  when: method == "create_openrc"
+
+- include: keystone_check.yml
+  when: method == "keystone_check"
+
+- include: compute.yml
+  when: method == "compute"
+
+- include: compute_resource.yml
+  when: method == "compute_resource"

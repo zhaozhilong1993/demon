@@ -1,0 +1,10 @@
+- name: get_ceph_ip
+  register: get_ceph_ip
+  shell: ip a s | grep {{ ceph_prefix }} |awk -F'[/ ]+' '/global/{print $3}'
+  failed_when: get_ceph_ip.stdout.strip() == ''
+
+- name: config_route
+  template: src=route.j2 dest=/etc/sysconfig/network-scripts/route-{{ ceph_interface }}
+
+- name: config_rule
+  template: src=rule.j2 dest=/etc/sysconfig/network-scripts/rule-{{ ceph_interface }}

@@ -1,0 +1,68 @@
+# file: roles/software/tasks/compute.yml
+# get wwn in compute nodes to puppet master
+
+- name: Download script from puppet master
+  register: wwns
+  copy: src=ceph_osd_init.sh dest=/tmp/ceph_osd_init.sh mode=777
+  tags:
+    - osd_dict
+
+- name: Generate wwn number
+  register: wwns
+  shell: /tmp/ceph_osd_init.sh
+  tags:
+    - osd_dict
+
+- name: Fetch last ip address
+  register: host_last_num
+  shell: echo {{ inventory_hostname }} | cut -d "." -f4
+  tags:
+    - osd_dict
+
+- name: Repair hostname
+  register: hostname
+  shell: echo "server-{{ host_last_num.stdout }}"
+  tags:
+    - osd_dict
+
+- name: Check wwn
+  register: check_wwns
+  command: cat /tmp/{{ hostname.stdout }}.yaml |grep "wwn"
+  tags:
+    - osd_dict
+  failed_when: "'failed' in check_wwns.stderr"
+
+- name: Write wwn to yaml file
+  register: wwns
+  fetch: src=/tmp/{{ hostname.stdout }}.yaml dest=/opt/wwn/{{ hostname.stdout }}.yaml flat=yes
+  when: "'wwn-' in check_wwns.stdout or 'virtio-' in check_wwns.stdout"
+  tags:
+    - osd_dict
+
+- name: Transfer to puppet server
+  register: wwns
+  delegate_to: "{{ real_puppet_server }}"
+  copy: src=/opt/wwn/{{ hostname.stdout }}.yaml dest=/etc/puppet/hieradata/{{ domain  }}/{{ hostname.stdout }}.yaml owner=root group=root mode=644
+  when: "'wwn-' in check_wwns.stdout or 'virtio-' in check_wwns.stdout"
+  tags:
+    - osd_dict_to_server
+
+- name: Delete a script of ceph_osd_init
+  register: wwns
+  command: rm -f /tmp/ceph_osd_init.sh /tmp/{{ hostname.stdout }}.yaml
+  tags:
+    - osd_dict
+
+- name: Delete a file of yaml
+  register: wwns
+  command: rm -f /opt/wwn/{{ hostname.stdout }}.yaml
+  delegate_to: 127.0.0.1
+  tags:
+    - osd_dict
+
+- name: Run puppet in compute node
+  register: run_puppet
+  shell: puppet agent -vt
+  ignore_errors: yes
+  tags:
+    - osd_dict

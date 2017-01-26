@@ -1,0 +1,11 @@
+# define/create_cluster/003.provision_pre.do.yaml
+#
+- hosts:
+    - Hypervisor
+    - Network
+    - Compute
+    - Storage
+  gather_facts: no
+  serial: 1
+  roles:
+    - { role: provision_pre, method: physical }

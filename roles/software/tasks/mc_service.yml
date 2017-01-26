@@ -1,0 +1,15 @@
+- name: 0/1 check service for mc
+  register: mc_service
+  shell: /usr/bin/memcached-tool 127.0.0.1:11211 stats
+  ignore_errors: yes
+  tags:
+    - mc
+- name: 0/2 restart service for mc
+  shell: /usr/bin/systemctl restart memcached
+  when:  "mc_service.rc != 0"
+  tags:
+    - mc
+- name: 0/3 check service for mc
+  shell: /usr/bin/memcached-tool 127.0.0.1:11211 stats
+  tags:
+    - mc

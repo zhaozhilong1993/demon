@@ -1,0 +1,20 @@
+sunfire::api::primary_controller: true
+# Manage endpoints
+sunfire::openstack::keystone::manage_endpoints: true
+sunfire::openstack::neutron_controller::manage_endpoints: true
+sunfire::openstack::nova_controller::manage_endpoints: true
+sunfire::openstack::cinder::manage_endpoints: true
+sunfire::openstack::glance::manage_endpoints: true
+sunfire::openstack::heat::manage_endpoints: true
+sunfire::openstack::ceilometer::manage_endpoints: true
+sunfire::openstack::aodh::manage_endpoints: true
+sunfire::openstack::gnocchi::manage_endpoints: true
+sunfire::openstack::swift_controller::manage_endpoints: true
+sunfire::openstack::trove::manage_endpoints: true
+# Neutron
+neutron::agents::dhcp::manage_service: false
+neutron::agents::vpnaas::enabled: false
+#configure ha_route that only on API nodes
+neutron::server::l3_ha: true
+# enable gringgotts in server41
+sunfire::bill::all::enable_master: true

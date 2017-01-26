@@ -1,0 +1,11 @@
+- name: 0/1 reload service for lb
+  register: lb_service
+  shell: /usr/bin/systemctl status haproxy
+  ignore_errors: yes
+  tags:
+    - lb
+- name: 0/2 restart service for lb
+  register: lb_service
+  shell: /usr/bin/systemctl restart haproxy
+  tags:
+    - lb

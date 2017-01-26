@@ -1,0 +1,16 @@
+# {{ domain_region}} - {{ domain_region }}
+{{ domain_region }}_hyper:	{{ manage_prefix }}{{ hyper_ip.stdout }}
+{{ domain_region }}_net: 	{{ manage_prefix }}{{ network_ip.stdout }}
+{{ domain_region }}_comp: 	{{ manage_prefix }}{{ compute_ip.stdout }}
+{% if sata_ip.changed %}
+{{ domain_region }}_sata:      {{ manage_prefix }}{{ sata_ip.stdout }}
+{% endif %}
+{{ domain_region }}_l7: 	{{ manage_prefix }}{{ l7_ip.stdout }}
+{{ domain_region }}_l4: 	{{ manage_prefix }}{{ l4_ip.stdout }}
+{{ domain_region }}_api: 	{{ manage_prefix }}{{ web_ip.stdout }}
+{{ domain_region }}_mq: 	{{ manage_prefix }}{{ mq_ip.stdout }}
+{{ domain_region }}_mc: 	{{ manage_prefix }}{{ mc_ip.stdout }}
+{{ domain_region }}_db: 	{{ manage_prefix }}{{ mysql_ip.stdout }}
+{{ domain_region }}_ssdb: 	{{ manage_prefix }}{{ ssdb_ip.stdout }}
+{{ domain_region }}_mon: 	{{ manage_prefix }}{{ mon_ip.stdout }}
+{{ domain_region }}_all:  	{{ manage_prefix }}[31-236]

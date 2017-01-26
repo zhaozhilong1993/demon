@@ -1,0 +1,20 @@
+# This is check service for keystone when u run puppet end of on api node
+- name: 0/1 Check Apache server with keystone status
+  register: keystone_check
+  command: /usr/bin/systemctl status httpd
+  failed_when: "'stop' in keystone_check.stdout"
+
+- name: 0/2 Check keystone user
+  register: Check_keystone_user
+  shell: source /root/openrc;openstack  user list
+  failed_when: "'failed' in Check_keystone_user.stdout"
+
+- name: 0/3 Check Keystone role
+  register: Check_keystone_role
+  shell: source /root/openrc;openstack  role list
+  failed_when: "'failed' in Check_keystone_role.stdout"
+
+- name: 0/4 Checkout Keystone endpoint
+  register: Check_keystone_endpoint
+  shell: source /root/openrc;openstack  endpoint list
+  failed_when: "'failed' in Check_keystone_endpoint.stdout"

@@ -1,0 +1,5 @@
+sunfire::compute::enable_osd: true
+sunfire::compute::osd_dict:
+{% for wwn in wwns %}
+  {{ wwn.stdout }}-part2: {{ wwn.stdout }}-part1
+{% endfor %}

@@ -1,0 +1,4 @@
+neutron::agents::dhcp::manage_service: false
+neutron::agents::vpnaas::enabled: false
+#HA_route
+neutron::server::l3_ha: true

@@ -1,0 +1,15 @@
+# MQ
+#rabbit分区表配置
+#abbitmq的问题，需要修改sunfire::stogre::mq:: 提交代码
+#autoheal 在rabbit_mq 检测分区后触发选举，选举出优先级最高的分区，其它分区的节点会自动与该分区同步
+#ignore  检测到分区后，不处理会继续运行
+sunfire::storage::mq::cluster_partition_handling: 'autoheal'
+#设置mq的userid默认值为openstack
+sunfire::storage::mq::userid: 'openstack'
+#设置rabbit_mq密码
+sunfire::storage::mq::password: '{{ rabbit_password }}'
+#设置rabbit_mq集群的个数
+sunfire::storage::mq::cluster_nodes:
+    - server-44
+    - server-45
+    - server-46

@@ -1,0 +1,6 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+{{ manage_prefix }}{{ get_hostname.stdout }} server-{{ get_hostname.stdout }}.{{ domain }} server-{{ get_hostname.stdout }}
+{{ puppet_forward_address }} {{ puppet_server_domain }}
+{{ yum_server }} mirrors.ustack.com
+{{ foreman_master }} foreman.ustack.com

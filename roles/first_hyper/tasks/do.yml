@@ -1,0 +1,90 @@
+# file: roles/first_hyper/tasks/do.yml
+#
+- name: Get hostname
+  register: get_hostname
+  shell: echo {{ groups['Hypervisor'][0] }} | awk -F'.' '{print $4}'
+
+- hostname: name=server-{{ get_hostname.stdout }}
+  register: hostname
+  tags: firsthyper_init
+
+- name: Create DNS File
+  register: config_resolv
+  template: src=resolv.conf.j2 dest=/etc/resolv.conf
+  tags: firsthyper_init
+
+- name: Create host file
+  template: src=f_hosts.j2 dest=/etc/hosts
+  tags: firsthyper_init
+
+- name: 保证机器上的源是正确的
+  yum: name=uos-release state=latest
+  tags: firsthyper_init
+
+- name: Install ntp,puppet
+  register: install_package
+  yum: name={{item}} state=latest
+  with_items:
+     - ntpdate
+     - puppet
+  tags: firsthyper_init
+
+- name: Sync time
+  register: sync_time
+  shell: systemctl stop ntpd && sleep 5 && /usr/sbin/ntpdate {{ ntp_server }} 1 >/dev/null 2>&1 && systemctl start ntpd
+
+- name: Create puppet config file
+  template: src=puppet.conf.j2 dest=/etc/puppet/puppet.conf
+  tags: firsthyper_init
+
+- name: Check VPN Network IS OK
+  command: ping -c 1 -W 1 {{ internal_gateway }}
+  tags: firsthyper_init
+
+- name: Check Puppet Master IS OK
+  command: ping -c 1 -W 1 {{ puppet_server_domain }}
+  tags: firsthyper_init
+
+- name: Make Sure Dir Is Exist
+  shell: mkdir -p /data1/mirrors/media/media/7.1
+  tags: firsthyper_init
+
+- name: Install Rsync
+  yum: name=rsync state=latest
+  tags: firsthyper_init
+
+- name: Sync mirrors To Machine
+  command: rsync -avP --bwlimit={{ bwlimit | default(1000) }} root@10.255.0.196::image/media/* /data1/mirrors/media/media/7.1/
+  async: 2000
+  poll: 60
+  when: connect_vpn
+  tags: firsthyper_init
+
+- name: Create tmp image directory
+  shell: mkdir -p /var/image/
+  tags: firsthyper_init
+
+- name: Install screen
+  yum: name=screen state=latest
+  tags: firsthyper_init
+
+- name: check screen of all image
+  register: rsync_image
+  shell: ls /var/run/screen/S-root | grep image >/dev/null; echo $?
+  tags: firsthyper_init
+
+- name: Sync All images
+  shell: screen -S image -dm rsync -avP --bwlimit={{ bwlimit | default(600) }} --contimeout=10 10.255.0.196::image/uos-images/*.qcow2* /var/image/
+  when: rsync_image.stdout != "0"
+  tags: firsthyper_init
+
+- name: run_puppet
+  register: run_puppet
+  shell: puppet agent -vt
+  ignore_errors: yes
+
+- name: run_puppet_again
+  register: run_puppet_again
+  shell: rm -f /var/lib/puppet/state/agent_catalog_run.lock;puppet agent -vt
+  when: "'Error' in run_puppet.stdout"
+  failed_when: "'Error' in run_puppet_again.stdout"

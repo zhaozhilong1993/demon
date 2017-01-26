@@ -1,0 +1,18 @@
+# file: roles/virutal/tasks/main.yml
+
+- name: check vm is in foreman
+  delegate_to: 127.0.0.1
+  register: forman_exist
+  script: foreman_setting.py --method check_host --ip {{ inventory_hostname }}
+  when: method == "virtual"
+
+- name: create vm in foreman
+  delegate_to: 127.0.0.1
+  script: foreman_setting.py --method create_host --ip {{ inventory_hostname }} --region {{ domain_region }} --domain {{ domain }} --hostgroup {{ group_names[0] }} --enable_public_interface {{ enable_public_interface }}
+  when: method == "virtual" and forman_exist.stdout.strip() != "Exist"
+
+- name: 检查虚拟机创建是否成功
+  register: check_virtual
+  delegate_to: 127.0.0.1
+  script: foreman_setting.py --method check_host --ip {{ inventory_hostname }}
+  failed_when: "'Not Exist' in check_virtual.stdout"

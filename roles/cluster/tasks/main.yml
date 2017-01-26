@@ -1,0 +1,12 @@
+# file: roles/system/tasks/main.yml
+
+- include: hieradata.yml 
+  when: method == "do"
+- include: create.yml 
+  when: method == "do"
+- include: node_definition.yml
+  when: method == "do"
+#- include: clushgroup.yml
+#  when: method == "do"
+- include: check.yml
+  when: method == "check"

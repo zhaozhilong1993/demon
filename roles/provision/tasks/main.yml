@@ -1,0 +1,8 @@
+# file: roles/provision/tasks/main.yml
+
+- include: virtual.yml
+  when: method == "virtual"
+- include: check.yml
+  when: method == "check"
+- include: compute_resource.yml
+  when: method == "compute_resource"

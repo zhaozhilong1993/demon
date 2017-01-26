@@ -1,0 +1,114 @@
+# file: system.do.yaml
+
+- hosts:
+  - Compute
+  gather_facts: no
+  vars:
+    - system_role: compute
+    - openstack_role: compute
+  roles:
+    - { role: system, method: do }
+    - { role: system, method: partition }
+    - { role: system, method: ipmi }
+    - { role: system, method: network }
+    - { role: system, method: config_route }
+    - { role: system, method: iptables }
+    - { role: system, method: auth }
+    - { role: system, method: genrole }
+
+- hosts:
+  - Storage
+  gather_facts: no
+  vars:
+    - system_role: compute
+    - openstack_role: storage
+  roles:
+    - { role: system, method: do }
+    - { role: system, method: partition }
+    - { role: system, method: ipmi }
+    - { role: system, method: network }
+    - { role: system, method: config_route }
+    - { role: system, method: iptables }
+    - { role: system, method: auth }
+    - { role: system, method: genrole }
+
+- hosts:
+  - Network
+  gather_facts: no
+  vars:
+    - system_role: network
+    - openstack_role: network
+  roles:
+    - { role: system, method: do }
+    - { role: system, method: partition }
+    - { role: system, method: ipmi }
+    - { role: system, method: network }
+    - { role: system, method: iptables }
+    - { role: system, method: auth }
+    - { role: system, method: genrole }
+
+- hosts:
+    - LB
+  vars:
+    - system_role: basic
+    - openstack_role: lb
+  gather_facts: no
+  roles:
+    - { role: system, method: do }
+    - { role: system, method: auth }
+    - { role: system, method: genrole }
+
+- hosts:
+    - CephMon
+  vars:
+    - system_role: basic
+    - openstack_role: cephmon
+  gather_facts: no
+  roles:
+    - { role: system, method: do }
+    - { role: system, method: auth }
+    - { role: system, method: genrole }
+
+- hosts:
+    - MQ
+  vars:
+    - system_role: basic
+    - openstack_role: mq
+  gather_facts: no
+  roles:
+    - { role: system, method: do }
+    - { role: system, method: auth }
+    - { role: system, method: genrole }
+
+- hosts:
+    - Memcached
+  vars:
+    - system_role: basic
+    - openstack_role: memcached
+  gather_facts: no
+  roles:
+    - { role: system, method: do }
+    - { role: system, method: auth }
+    - { role: system, method: genrole }
+
+- hosts:
+    - Mysql
+  vars:
+    - system_role: basic
+    - openstack_role: mysql
+  gather_facts: no
+  roles:
+    - { role: system, method: do }
+    - { role: system, method: auth }
+    - { role: system, method: genrole }
+
+- hosts:
+    - Web
+  vars:
+    - system_role: basic
+    - openstack_role: web
+  gather_facts: no
+  roles:
+    - { role: system, method: do }
+    - { role: system, method: auth }
+    - { role: system, method: genrole }

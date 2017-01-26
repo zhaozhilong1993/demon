@@ -1,0 +1,26 @@
+---
+:backends:
+  - yaml
+:hierarchy:
+  - "%{::domain}/%{::hostname}"
+  - "%{::domain}/common/base"
+  - "%{::domain}/common/package"
+  - "%{::domain}/common/l7"
+  - "%{::domain}/common/l4"
+  - "%{::domain}/common/api"
+  - "%{::domain}/common/ceph"
+  - "%{::domain}/common/mq"
+  - "%{::domain}/common/db"
+  - "%{::domain}/common/network"
+  - "%{::domain}/common/compute"
+  - "%{::domain}/common/hypervisor"
+  - "%{::domain}/common/allowed_users"
+  - "%{::domain}/common/monitor"
+  - "%{::domain}/common/puppet"
+  - "global/l7"
+  - "global/db"
+  - "global/api"
+  - "global/non_products_users"
+  - "global/allowed_users"
+:yaml:
+  :datadir: /etc/puppet/hieradata

@@ -1,0 +1,10 @@
+# file: roles/network/tasks/check.yml
+
+- name: Ping
+  action: shell nmap {{ inventory_hostname }} -p 22
+  register: result
+  delegate_to: 127.0.0.1
+  until: result.stdout.find("open") != -1
+  retries: 180
+  delay: 20
+  when: method == "check"

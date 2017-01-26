@@ -1,0 +1,6 @@
+# roles/provision_pre/tasks/main.yml
+
+- include: import_server.yml
+  when: method == "physical" or method == "import_server"
+- include: physical.yml
+  when: method == "physical" and enable_ipmi_conf

@@ -1,0 +1,13 @@
+# file: roles/first_hyper/tasks/check.yml
+
+- name: check node_definition
+  register: check_node_definition
+  shell: if [ ! -f /etc/puppet/environments/{{ puppet_env }}/manifests/cluster/{{ domain_region }}.pp ];then echo "Failed";fi
+  delegate_to: "{{ real_puppet_server }}"
+  failed_when: "'Failed' in check_node_definition.stdout"
+
+- name: 检测foreman hosts
+  register: check_foreman_hosts
+  shell: curl {{ foreman_master }}:8080/check_hosts -X POST -d 'cluster_name={{ domain_region }}' -d 'hosts={{ groups["Hypervisor"] }}'
+  delegate_to: 127.0.0.1
+  failed_when: "'not found' in check_foreman_hosts.stdout"

@@ -1,0 +1,29 @@
+sunfire::hypervisor::eth1_ip: '{{ hypervisor_31_eth1_ip }}'
+# SSH的监听地址，默认是获得eth0的IP地址，可以使用命令facter ipaddress来验证
+# 特别注意，对管理网段定制或者使用BOND的集群，这个参数需要调整为管理网段的接口
+# 例如: 修复ssh的监听地址  ipaddress_br0
+ssh::server::config::listenaddress: "0.0.0.0"
+# 设置成yes，表示服务器允许密码登陆；设置成no，表示不允许密码登陆
+ssh::server::config::passwordauthentication: 'yes'
+# 设置成yes，表示服务器允许keypair无密钥登陆，设置成no，表示不允许
+ssh::server::config::pubkeyauthentication: 'yes'
+sunfire::common::publickey::special_pairs:
+  foreman: 'AAAAB3NzaC1yc2EAAAABIwAAAQEAt5u+Hqn5P6+cfQjmt1VhVcCtgNav9N9IpdweFGOy8Xz9SF8n5sKxMa4j2kxDaDcIX6BU42kGWVFa15lAoUvchYaiZpfqV0OFKQzLl4yWe1Qk+MmXMW87wM+C3hv2uqNHltGSmZq8nrrXPRUJoJl+axM6WT2sNcdvZehP6+R4NODkLybZHCcuPBwjg04oefCPWOYDNsK+abgQijKDaWi/49V41LdNWu6WldUDqYQTDy447/E4e9hgEvbL5oAaCaae8v1CFRjmBYCxvMGlgryKsOnjFwLUWHkRZZS5D8ur2P2xPXetNiyFCXaXpx6uLLpCWPhcKk5+I/Vyqoqjj73Crw=='
+{% if enable_foreman_proxy == True %}
+sunfire::provision::foreman_proxy::tftp_servername: '{{ manage_prefix }}31'
+sunfire::provision::foreman_proxy::dhcp_interface: 'br0'
+sunfire::provision::foreman_proxy::dhcp_gateway: '{{ internal_gateway }}'
+sunfire::provision::foreman_proxy::network: '{{ manage_prefix }}0'
+sunfire::provision::foreman_proxy::mask: '255.255.255.0'
+sunfire::provision::foreman_proxy::dhcp_range: '{{ manage_prefix }}10 {{ manage_prefix }}254'
+sunfire::provision::foreman_proxy::apache_port: '8080'
+sunfire::provision::foreman_proxy::dhcp_nameservers: '{{ manage_prefix }}249'
+foreman_proxy::ssl: false
+foreman_proxy::http: true
+foreman_proxy::http_port: '8443'
+foreman_proxy::tftp_listen_on: 'http'
+foreman_proxy::dhcp_listen_on: 'http'
+foreman_proxy::trusted_hosts: []
+foreman::bmc: true
+sunfire::hypervisor::enable_provision_foreman_proxy: true
+{% endif %}

@@ -1,0 +1,19 @@
+# file: roles/system/tasks/kernel.yml
+
+- name: 获取内核版本
+  register: kernel_name
+  shell: uname -r
+  when: method == "kernel"
+
+- name: 更新内核
+  shell: yum -y install kernel-{{ kernel_version }} kernel-devel-{{ kernel_version }}
+  #when: method == "kernel" and kernel_name.stdout != kernel_version and enable_kernel_fix
+  when: method == "kernel" and kernel_name.stdout != kernel_version
+
+- fail: msg="内核版本应该是{{ kernel_version }}，当前内核版本不正确"
+  #when: method == "kernel" and kernel_name.stdout != kernel_version  and enable_kernel_fail
+  when: method == "kernel" and kernel_name.stdout != kernel_version
+
+- name: 重启机器........
+  shell: reboot
+  when: method == "kernel" and enable_reboot

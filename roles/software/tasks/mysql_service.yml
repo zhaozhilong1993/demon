@@ -1,0 +1,19 @@
+- name: 0/1 reload service for mysql
+  register: mysql_service
+  shell: /sbin/service mysqld status
+  ignore_errors: yes
+  tags:
+    - mysql
+
+- name: 0/2 restart service for mysql
+  register: mysql_service
+  shell: /sbin/service mysqld restart
+  when: "mysql_service.rc != 0"
+  tags:
+    - mysql
+
+- name: 0/3 check service for mysql again
+  register: check_mysql_service
+  shell: /sbin/service mysqld status
+  tags:
+    - mysql

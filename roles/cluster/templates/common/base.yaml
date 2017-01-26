@@ -1,0 +1,107 @@
+# base.yaml 用于管理通用的集群参数设置
+#
+# Interface设置
+# 用于管理网卡，路由的设置，L7,network,compute,hypervisor,storage节点均受此参数管理
+sunfire::base::manage_interface: true
+# eth0的网段前缀，例如10.0.0.
+sunfire::base::network_eth0_prefix: '{{ manage_prefix }}'
+# 设置route-eth0,设置eth0的路由
+sunfire::base::internal_network:
+  - '10.0.0.0/8'
+# 设置eth0 的网关
+sunfire::base::internal_gateway: '{{ internal_gateway }}'
+# 设置管理网络的网关，例如一般是eth0的网关
+sunfire::base::gateway: '{{ internal_gateway }}'
+#设置yum源的具体仓库，托管云基本为xx.mirrors.ustack.com
+sunfire::base::repo_host: 'mirrors.ustack.com'
+# 使用最新的仓库命名路径(需要ctask 0.3.0)
+uosbase::yum::use_new_repo: true
+# 以下方式已经废弃
+#sunfire::base::repo_host: '{{ domain_region }}.mirrors.ustack.com'
+# 设置集群的dns server的ip，托管云一般采用本地dns server，例如：10.xx.xx.249;10.xx.xx.250
+sunfire::base::nameservers:
+  - 127.0.0.1
+  - 114.114.114.114
+#  - {{ manage_prefix }}249
+#  - {{ manage_prefix }}250
+# 设置zabbix server的ip
+sunfire::base::zabbix_server: '10.255.0.183,10.255.0.184'
+zabbix::agent::serveractive: '10.255.0.183,10.255.0.184'
+# 这个参数必须设置成集群的domain，主要用来收集/etc/hosts里的集群域名解析
+sunfire::base::collect_domain: '{{ domain }}'
+# SSH的监听地址，默认是获得eth0的IP地址，可以使用命令facter ipaddress来验证
+# 特别注意，对管理网段定制或者使用BOND的集群，这个参数需要调整为管理网段的接口
+# 例如: ipaddress_br0
+ssh::server::config::listenaddress: "%{ipaddress}"
+# zabbix agent的监听地址
+zabbix::agent::listenip: "%{ipaddress}"
+# 使用本地hosts解析域名
+uosbase::enable_local_resolve: true
+# Set puppet environment，例如新region都使用uc 209的nova_ihouse
+puppet::config::environment: '{{ puppet_env }}'
+################################################################################################
+# 全局参数，默认不需要设置，如需要设置定制化值，去除注释即可
+################################################################################################
+# Mcollective MQ 服务器，默认不需要调整该值
+#sunfire::base::middleware_hosts: ['mco.0.uc.ustack.in']
+# 设置集群的ntp服务器的域名，默认就是使用uc的
+#sunfire::base::ntp_server: 'ntp.0.uc.ustack.in'
+# 设置puppet master的域名，所有机器puppet master都通过nginx。所以默认都是puppet.0.uc.ustack.in
+sunfire::base::puppet_server: '{{ puppet_server_domain }}'
+# 设置puppet agent请求server的时间间隔，例如设置为600，表示agent会间隔10分钟内执行一次puppet agent -vt
+#sunfire::base::puppet_runinterval: 9600
+# 设置yum.conf的metadata_expire 的值
+#sunfire::base::expire_time: '10m'
+# 设置为true，表示install and configures DELL srvadmin
+#sunfire::base::enable_rac: true
+# 设置named.zone 和named.conf的引用路径，默认是/var/named/data/bind9/zones.config
+#dns::custom_zones:
+#  - /var/named/data/bind9/zones.config
+################################################################################################
+uosbase::host::manage_prefix: '{{ manage_prefix }}'
+uosbase::host::custom_hosts:
+  {{ puppet_server_domain }}:
+    ip: {{ puppet_forward_address }}
+  mc.0.uc.ustack.in:
+    ip: 10.255.0.205
+  forman.ustack.com:
+    ip: {{ foreman_master }}
+  ntp.0.uc.ustack.in:
+    ip: {{ ntp_server }}
+
+# SSH keys for corosync
+sunfire::corosync::ssh_public_key:
+  type: 'ssh-rsa'
+  key: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQC/S+d2Jb+7yDMtOVhxmzv1NsAdy1mrnoNv3+r1/nhpdY6Tg4iCpcMpSvQemG1ycfde6WuWjg9jeectUtSf+vXxUnW+uBDNohUNek4Gqdu4i6UNV4kF30FKi+3T2Wg/8F/meMo7dXzwpy8gjAfyyK5qt0nSTQ83xF5Txjzl3hExOXALUe6oYmfrmtGIeHpT4bFlsrvCMdtdkU09J1+l/eZ/oxqm3RCuKFX/IuLDzfmYA47EAladao5WmFhz9d9RlN7WufThgpgsDDY0tf2yudKEIKi4da6jlZpIDNyN591VVbBrDYNT+f7KPir1UT8C8UrKVo3tz+BnIAMHdgx2qDhR'
+sunfire::corosync::ssh_private_key:
+  type: 'ssh-rsa'
+  key: |
+    -----BEGIN RSA PRIVATE KEY-----
+    MIIEowIBAAKCAQEAv0vndiW/u8gzLTlYcZs79TbAHctZq56Db9/q9f54aXWOk4OI
+    gqXDKUr0HphtcnH3Xulrlo4PY3nnLVLUn/r18VJ1vrgQzaIVDXpOBqnbuIulDVeJ
+    Bd9BSovt09loP/Bf5njKO3V88KcvIIwH8siuardJ0k0PN8ReU8Y85d4RMTlwC1Hu
+    qGJn65rRiHh6U+GxZbK7wjHbXZFNPSdfpf3mf6Mapt0QrihV/yLiw835mAOOxAJW
+    nWqOVphYc/XfUZTe1rn04YKYLAw2NLX9srnShCCouHWuo5WaSAzcjefdVVWwaw2D
+    U/n+yj4q9VE/AvFKylaN7c/gZyADB3YMdqg4UQIDAQABAoIBAFK1D6LuWUJoIXBJ
+    HesocbjobhGzrNZdl3hUOLMYzZjTAczXjrrlzkZZKMjdoFxd19UKWMDkNNUOjJv0
+    9wcgKxumSlAmJuWxUSbdnUSWRfA5OChXk1+dkg4YB8CTe9ZBKEVuLgmdF2K49dA9
+    muYmS/rJujoZpR24YgwYZpX/+DDuY4JfdI+Pd6p4vhGa2K9JPJcSJPeLcuIBVgJP
+    T98nd4Q2xHxffmkaTkst/iNFmymLNNBtmDcMY4UrB9T/LmM0IsQYeirlZGWvQ8OV
+    x6kIv2kJLiYyoAaQa0fqm6M5Y6Gwo8TBgQC0gcr4LD8z11NG/48yNw+VbwpPhePn
+    /Od6xJECgYEA761fh7OQ6jGtYq3ld33D7DL+FZpTZ0gOUxx6051S5/54pAFF5tjR
+    rUMoNM4z/atSz3VE7keRG0TBTRppp13umNVEJjTF3E6CnGe8HDlMReWDoIcwUgY0
+    mqy5unLGHiMlSDoeJYoOUR5VnoYCX8GfZJp3peFY8W5C9j6zF7hz8P0CgYEAzFMK
+    0JBC23Zl4S0yq7jV2H5Y2wMMbXB7Da6bc5vStsV782Em/7CYwPz9o9srCISGeryu
+    IgxRrdFV+5V5pg4P+v88RYYQOwB6XTcFbxrdzV1ZmEjTnLJV5Wl0L7kPKeVYkkfR
+    T1TMYvMhNnBD1fwC5pLgLZKwiJMN/5uPzYvEHuUCgYA8kcHcl2J97MP2dh/RTLUg
+    kdpoNzHwneMQ2deods+m1UZDnBbAOfbzJE+a2KmG567rwqUC2o8vJvb6tzwQEcrk
+    ULECPr/p5uVXBVgigdBmsZPME54AfJT6qb/eAHdU0mjvkdBgiD0J/vKANzmOXW4c
+    jHTENOi3SrgdZsb3raOPOQKBgQCZ0u7yY5kh1foPU1Kxe17rNPu6Lopdne/WNhzs
+    JWS2muidKwgMOSxXJl/hyy+TowoHPyMtmO6pGE9OL5M805tuUFdU1ABGGy8EHFcn
+    9ScE5AF+p11Au/X017ZT81OaLALJZe4LdoDFAduAO3amk6qvYeYKCUSEHYnNZJUX
+    nuCQjQKBgFPFk3AFaNq4k2lZxV4gh95VQhq1of1SZMkF2sE2gfA3YY1g0tmM7qKt
+    TZTXipKcQNoyWxZR/opdodJOY2I68uAN+28BE5//2mOCPrVRAKLhnoPyA7Nkcyaz
+    HQJgHP5Ac4txGLKKkKom/tLTIE0VeGD06f9IR9rvcje1oTn79t4S
+    -----END RSA PRIVATE KEY-----
+ssh::server::config::passwordauthentication: 'yes'
+sunfire::base::enable_mcollective: true

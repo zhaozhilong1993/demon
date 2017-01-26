@@ -1,0 +1,6 @@
+# file: roles/first_hyper/tasks/main.yml
+
+- include: do.yml
+  when: method == "do"
+- include: config_foreman_proxy.yml
+  when: method == "do" or method == "config_foreman_proxy"

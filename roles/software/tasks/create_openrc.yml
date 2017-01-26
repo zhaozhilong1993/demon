@@ -1,0 +1,4 @@
+---
+- name: Create a file of file and move to remote server
+  template: src=openrc dest=/root/openrc mode=755 owner=root
+  when: method == 'create_openrc'

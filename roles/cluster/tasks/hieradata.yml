@@ -1,0 +1,47 @@
+# file:  roles/cluster/tasks/main.yml
+
+- name: 创建目录
+  file: dest=/etc/puppet/hieradata/{{ domain }}/common mode=755 state=directory
+  delegate_to: "{{ real_puppet_server }}"
+
+- name: 生成 Common Hieradata
+  template: src={{ item }} dest=/etc/puppet/hieradata/{{ domain }}/{{ item }}
+  delegate_to: "{{ real_puppet_server }}"
+  with_items:
+      - common/base.yaml
+      - common/api.yaml
+      - common/ceph.yaml
+      - common/compute.yaml
+      - common/db.yaml
+      - common/hypervisor.yaml
+      - common/l4.yaml
+      - common/mq.yaml
+      - common/network.yaml
+      - common/package.yaml
+
+- name: 生成 Hypervisor Hieradata
+  template: src={{ item }} dest=/etc/puppet/hieradata/{{ domain }}/{{ item }}
+  delegate_to: "{{ real_puppet_server }}"
+  with_items:
+       - server-31.yaml
+       - server-32.yaml
+       - server-33.yaml
+
+- name: 生成 VM Hieradata
+  template: src={{ item }} dest=/etc/puppet/hieradata/{{ domain }}/{{ item }}
+  delegate_to: "{{ real_puppet_server }}"
+  with_items:
+       - server-34.yaml
+       - server-41.yaml
+       - server-42.yaml
+       - server-43.yaml
+       - server-47.yaml
+       - server-48.yaml
+       - server-50.yaml
+- name: 生成Network Hieradata
+  template: src={{ item }} dest=/etc/puppet/hieradata/{{ domain }}/{{ item }}
+  delegate_to: "{{ real_puppet_server }}"
+  with_items:
+      - server-64.yaml
+      - server-65.yaml
+      - server-66.yaml

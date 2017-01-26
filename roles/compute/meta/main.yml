@@ -1,0 +1,6 @@
+dependencies:
+- { role: common }
+- { role: physical, system_role: "Compute" }
+- { role: scanning, manage_device: eth0, system_role: "Compute" }
+- { role: scanning_ceph }
+- { role: scanning_network }

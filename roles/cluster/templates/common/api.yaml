@@ -1,0 +1,600 @@
+# Api Role
+# Ceph
+sunfire::api::cluster_members:
+  - '{{ manage_prefix }}41'
+  - '{{ manage_prefix }}42'
+  - '{{ manage_prefix }}43'
+sunfire::api::mon_members: 'server-61.{{ domain }},server-62.{{ domain }},server-63.{{ domain }}'
+sunfire::api::mon_hosts: '{{ manage_prefix }}61,{{ manage_prefix }}62,{{ manage_prefix }}63'
+# RabbitMQ
+neutron::rabbit_heartbeat_timeout_threshold: '30'
+keystone::rabbit_heartbeat_timeout_threshold: '30'
+glance::notify::rabbitmq::rabbit_heartbeat_timeout_threshold: '30'
+cinder::rabbit_heartbeat_timeout_threshold: '30'
+nova::rabbit_heartbeat_timeout_threshold: '30'
+heat::rabbit_heartbeat_timeout_threshold: '30'
+ceilometer::rabbit_heartbeat_timeout_threshold: '30'
+# Enable VPN agent on API node
+sunfire::openstack::neutron_controller::enable_vpn_agent: true
+sunfire::openstack::neutron_network::enable_lbaas_agent: true
+# Keystone
+keystone::config::keystone_config:
+  "auth/methods":
+    value: "password,token"
+  "auth/password":
+    value: "keystone.auth.plugins.password.Password"
+  "auth/token":
+    value: "keystone.auth.plugins.token.Token"
+  "os_inherit/enabled":
+    value: true
+  'oslo_messaging_rabbit/amqp_durable_queues':
+    value: true
+keystone::notification_driver: 'messagingv2'
+keystone::admin_token: '{{keystone_admin_token}}'
+keystone::public_endpoint: 'http://lb.{{ domain }}:5000'
+keystone::admin_endpoint: 'http://lb.{{ domain }}:35357'
+keystone::control_exchange: 'keystone'
+keystone::catalog_driver: 'sql'
+keystone::db::database_min_pool_size: 1
+keystone::db::database_max_pool_size: 10
+keystone::db::database_max_retries: 10
+keystone::db:database_retry_interval: 10
+keystone::db::database_max_overflow: 20
+keystone::public_bind_host: '0.0.0.0'
+keystone::public_port: '5000'
+kyestone::admin_bind_host: '0.0.0.0'
+keystone::admin_port: '35357'
+keystone::memcache_servers:
+  - 'lb.{{ domain }}:11211'
+keystone::rabbit_hosts:
+  - '{{ manage_prefix }}44:5672'
+  - '{{ manage_prefix }}45:5672'
+  - '{{ manage_prefix }}46:5672'
+keystone::rabbit_userid: 'openstack'
+keystone::rabbit_password: '{{ rabbit_password }}'
+keystone::token_expiration: '86400'
+keystone::debug: false
+keystone::verbose: true
+keystone::service_name: 'httpd'
+keystone::roles::admin::email: 'admin@unitedstack.com'
+keystone::roles::admin::password: '{{ keystone_admin_password }}'
+#keystone::roles::admin::service_project_domain: 'admin'
+keystone::endpoint::public_url: 'http://lb.{{ domain }}:5000'
+keystone::endpoint::admin_url: 'http://lb.{{ domain }}:35357'
+keystone::endpoint::region: '{{ default_region }}'
+#keystone::endpoint::default_domain: 'admin'
+keystone::endpoint::version: 'v3'
+keystone::database_connection: 'mysql+pymysql://keystone:{{ service_db_password }}@lb.{{ domain }}/keystone'
+keystone::wsgi::apache::ssl: false
+# Glance
+# glance-api
+glance::api::debug: false
+glance::api::auth_uri: 'http://lb.{{ domain }}:5000'
+glance::api::verbose: true
+glance::api::show_image_direct_url: true
+glance::api::database_connection: 'mysql://glance:{{ service_db_password }}@lb.{{ domain }}/glance?charset=utf8'
+glance::api::keystone_password: '{{ keystone_admin_password }}'
+glance::api::identity_uri: 'http://lb.{{ domain }}:35357/'
+glance::api::known_stores:
+    - 'rbd'
+# glance-reg
+glance::registry::debug: false
+glance::registry::verbose: true
+glance::registry::database_connection: 'mysql://glance:{{ service_db_password }}@lb.{{ domain }}/glance?charset=utf8'
+glance::registry::keystone_password: '{{ keystone_admin_password }}'
+glance::registry::auth_uri: 'http://lb.{{ domain }}:5000'
+glance::registry::identity_uri: 'http://lb.{{ domain }}:35357/'
+glance::keystone::auth::region: '{{ default_region }}'
+glance::keystone::auth::password: '{{ keystone_admin_password }}'
+glance::keystone::auth::public_url: 'http://lb.{{ domain }}:9292'
+glance::keystone::auth::admin_url: 'http://lb.{{ domain }}:9292'
+glance::keystone::auth::internal_url: 'http://lb.{{ domain }}:9292'
+glance::notify::rabbitmq::notification_driver: 'messagingv2'
+glance::notify::rabbitmq::amqp_durable_queues: true
+glance::notify::rabbitmq::rabbit_userid: 'openstack'
+glance::notify::rabbitmq::rabbit_password: '{{ rabbit_password }}'
+glance::notify::rabbitmq::rabbit_hosts:
+  - '{{ manage_prefix }}44:5672'
+  - '{{ manage_prefix }}45:5672'
+  - '{{ manage_prefix }}46:5672'
+# RBD backend
+sunfire::openstack::glance::backend: 'rbd'
+glance::backend::rbd::rbd_store_user: 'admin'
+glance::backend::rbd::rbd_store_ceph_conf: '/etc/ceph/ceph.conf'
+glance::backend::rbd::rbd_store_pool: 'openstack-00'
+glance::backend::rbd::rbd_store_chunk_size: '4'
+# Custom config
+glance::config::api_config:
+  'DEFAULT/control_exchange':
+    value: 'glance'
+# Cinder
+cinder::database_connection: 'mysql://cinder:{{ service_db_password }}@lb.{{ domain }}/cinder?charset=utf8'
+cinder::api::auth_uri: 'http://lb.{{ domain }}:5000'
+cinder::database_idle_timeout: 3600
+cinder::database_min_pool_size: 5000
+cinder::database_max_overflow: -1
+cinder::amqp_durable_queues: true
+cinder::rabbit_userid: 'openstack'
+cinder::rabbit_password: '{{ rabbit_password }}'
+cinder::rabbit_hosts:
+  - '{{ manage_prefix }}44:5672'
+  - '{{ manage_prefix }}45:5672'
+  - '{{ manage_prefix }}46:5672'
+cinder::verbose: true
+cinder::debug: false
+cinder::use_syslog: false
+cinder::control_exchange: 'cinder'
+cinder::api::keystone_password: '{{ keystone_admin_password }}'
+cinder::api::identity_uri: 'http://lb.{{ domain }}:35357/'
+cinder::api::default_volume_type: 'ssd'
+cinder::api::os_region_name: '{{ default_region }}'
+cinder::glance::glance_api_servers: 'lb.{{ domain }}:9292'
+cinder::keystone::auth::region: '{{ default_region }}'
+cinder::keystone::auth::password: '{{ keystone_admin_password }}'
+cinder::keystone::auth::public_url: 'http://lb.{{ domain }}:8776/v1/%(tenant_id)s'
+cinder::keystone::auth::internal_url: 'http://lb.{{ domain }}:8776/v1/%(tenant_id)s'
+cinder::keystone::auth::admin_url: 'http://lb.{{ domain }}:8776/v1/%(tenant_id)s'
+cinder::keystone::auth::public_url_v2: 'http://lb.{{ domain }}:8776/v2/%(tenant_id)s'
+cinder::keystone::auth::internal_url_v2: 'http://lb.{{ domain }}:8776/v2/%(tenant_id)s'
+cinder::keystone::auth::admin_url_v2: 'http://lb.{{ domain }}:8776/v2/%(tenant_id)s'
+cinder::backends::enabled_backends:
+ - 'ssd-ceph'
+cinder::quota::quota_volumes: 10
+cinder::quota::quota_snapshots: 10
+cinder::quota::quota_gigabytes: 1000
+cinder::quota::quota_driver: 'cinder.quota.DbQuotaDriver'
+cinder::host: 'cinder'
+cinder::config::cinder_config:
+#  'DEFAULT/host':
+#    value: 'cinder'
+  'DEFAULT/glance_host':
+    value: 'lb.{{ domain }}'
+  'DEFAULT/no_snapshot_gb_quota':
+    value: true
+  'DEFAULT/notification_driver':
+    value: 'messagingv2'
+  'DEFAULT/rbd_store_chunk_size':
+    value: 4
+  'oslo_concurrency/lock_path':
+    value: '/var/lib/cinder/tmp'
+  'keystone_authtoken/auth_version':
+    value: 'v3.0'
+  'ssd-ceph/rbd_store_chunk_size':
+    value: 4
+sunfire::openstack::cinder::rbd_backend:
+  'ssd-ceph':
+    rbd_pool: 'openstack-00'
+    rbd_user: 'admin'
+    volume_backend_name: 'ssd'
+    rbd_secret_uuid: 'bdf77f5d-bf0b-1053-5f56-cd76b32520dc'
+    backend_host: 'cinder'
+# Nova
+# Base config
+nova::os_region_name: '{{ default_region }}'
+nova::verbose: true
+nova::debug: false
+nova::database_connection: 'mysql://nova:{{ service_db_password }}@lb.{{ domain }}/nova?charset=utf8'
+nova::memcached_servers:
+  - 'lb.{{ domain }}:11211'
+nova::rabbit_hosts:
+  - '{{ manage_prefix }}44:5672'
+  - '{{ manage_prefix }}45:5672'
+  - '{{ manage_prefix }}46:5672'
+nova::rabbit_userid: 'openstack'
+nova::rabbit_password: '{{ rabbit_password }}'
+nova::amqp_durable_queues: true
+nova::os_region_name: '{{ default_region }}'
+nova::glance_api_servers: 'http://lb.{{ domain }}:9292'
+nova::notification_driver: 'messagingv2'
+nova::notify_on_state_change: 'vm_and_task_state'
+nova::keystone::auth::region: '{{ default_region }}'
+nova::keystone::auth::password: '{{ keystone_admin_password }}'
+nova::keystone::auth::public_url: 'http://lb.{{ domain }}:8774/v2/%(tenant_id)s'
+nova::keystone::auth::internal_url: 'http://lb.{{ domain }}:8774/v2/%(tenant_id)s'
+nova::keystone::auth::admin_url: 'http://lb.{{ domain }}:8774/v2/%(tenant_id)s'
+nova::keystone::auth::configure_endpoint_v3: false
+nova::keystone::auth::configure_ec2_endpoint: false
+# nova api settings
+nova::api::admin_password: '{{ keystone_admin_password }}'
+nova::api::auth_uri: 'http://lb.{{ domain }}:5000'
+nova::api::auth_version: 'v3.0'
+nova::api::identity_uri: 'http://lb.{{ domain }}:35357/'
+nova::api::osapi_v3: true
+nova::api::enabled_apis: 'osapi_compute,metadata'
+nova::api::metadata_wrkers: 4
+nova::api::neutron_metadata_proxy_shared_secret: '{{ keystone_admin_password }}'
+nova::api::default_floating_pool: 'public'
+nova::vncproxy::common::vncporxy_host: 'lb.{{ domain }}'
+# Nova
+nova::config::nova_config:
+  DEFAULT/linuxnet_interface_driver:
+    value: nova.network.linux_net.NeutronLinuxBridgeInterfaceDriver
+  DEFAULT/resize_confirm_window:
+    value: 2
+  neutron/auth_plugin:
+    value: password
+  neutron/auth_url:
+    value: 'http://lb.{{ domain }}:35357'
+  neutron/auth_uri:
+    value: 'http://lb.{{ domain }}:5000'
+  neutron/project_name:
+    value: services
+  neutron/project_domain_id:
+    value: default
+  neutron/user_domain_id:
+    value: default
+  neutron/username:
+    value: neutron
+  neutron/password:
+    value: '{{ keystone_admin_password }}'
+  cinder/endpoint_template:
+    value: 'http://lb.{{ domain }}:8776/v1/%(project_id)s'
+  libvirt/live_migration_bandwidth:
+    value: 1000
+  oslo_concurrency/lock_path:
+    value: /var/lib/nova/tmp
+# nova compute setting
+nova::compute::vncserver_proxyclient_address: "%{::ipaddress}"
+nova::compute::vncproxy_host: 'lb.{{ domain }}'
+nova::scheduler::filter::scheduler_host_manager: 'nova.scheduler.ironic_host_manager.IronicHostManager'
+nova::scheduler::filter::baremetal_scheduler_default_filters:
+  - 'RetryFilter'
+  - 'AvailabilityZoneFilter'
+  - 'RamFilter'
+  - 'DiskFilter'
+  - 'ComputeFilter'
+  - 'ImagePropertiesFilter'
+  - 'ServerGroupAntiAffinityFilter'
+  - 'ServerGroupAffinityFilter'
+  - 'ComputeCapabilitiesFilter'
+  - 'AggregateInstanceExtraSpecsFilter'
+nova::compute::instance_usage_audit: true
+nova::compute::instance_usage_audit_period: 'hour'
+nova::compute::libvirt::vncserver_listen: '0.0.0.0'
+nova::compute::libvirt::libvirt_inject_password: true
+nova::compute::libvirt::libvirt_disk_cachemodes:
+  - network=writeback
+nova::compute::libvirt::migration_support: true
+nova::migration::libvirt::auth: 'none'
+nova::compute::rbd::libvirt_images_rbd_pool: 'openstack-00'
+nova::compute::rbd::libvirt_rbd_user: 'admin'
+nova::compute::rbd::libvirt_rbd_secret_uuid: 'bdf77f5d-bf0b-1053-5f56-cd76b32520dc'
+nova::compute::rbd::rbd_keyring: 'client.admin'
+nova::network::neutron::neutron_region_name: '{{ default_region }}'
+nova::network::neutron::neutron_admin_password: '{{ keystone_admin_password }}'
+nova::network::neutron::neutron_url: 'http://lb.{{ domain }}:9696'
+nova::network::neutron::dhcp_domain: ''
+sunfire::compute::neutron_metadata_proxy_shared_secret: '{{ keystone_admin_password }}'
+nova::scheduler::filter::cpu_allocation_ratio:  '16.0'
+nova::scheduler::filter::ram_allocation_ratio:  '1'
+# Neutron
+neutron::rabbit_hosts:
+  - '{{ manage_prefix }}44:5672'
+  - '{{ manage_prefix }}45:5672'
+  - '{{ manage_prefix }}46:5672'
+neutron::config::server_config:
+  'DEFAULT/api_paste_config':
+    value: '/usr/share/neutron/api-paste.ini'
+  'DEFAULT/notification_driver':
+    value: 'messagingv2'
+  'DEFAULT/l2_population':
+    value: false
+  'keystone_authtoken/auth_plugin':
+    value: 'password'
+  'keystone_authtoken/auth_url':
+    value: 'http://lb.{{ domain }}:35357/'
+  'oslo_messaging_rabbit/amqp_durable_queues':
+    value: true
+  'keystone_authtoken/project_domain_id':
+    value: 'default'
+  'keystone_authtoken/user_domain_id':
+    value: 'default'
+  'keystone_authtoken/project_name':
+    value: 'services'
+  'keystone_authtoken/username':
+    value: 'neutron'
+  'keystone_authtoken/password':
+    value: '{{ keystone_admin_password }}'
+  'oslo_concurrency/lock_path':
+    value: '/var/lib/neutron/tmp'
+neutron::config::plugin_ml2_config:
+  'securitygroup/firewall_driver':
+      value: 'neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver'
+neutron::config::vpnaas_agent_config:
+  'strongswan/default_config_area':
+      value: '/usr/share/strongswan/templates/config/strongswan.d'
+neutron::config::vpnaas_config:
+  'service_providers/service_provider':
+      value: 'VPN:strongswan:neutron_vpnaas.services.vpn.service_drivers.ipsec.IPsecVPNDriver:default'
+neutron::server::auth_uri: 'http://lb.{{ domain }}:5000/'
+neutron::rabbit_user: 'openstack'
+neutron::rabbit_password: '{{ rabbit_password }}'
+neutron::allow_overlapping_ips: true
+neutron::allow_pagination: true
+neutron::allow_sorting: true
+neutron::core_plugin: 'ml2'
+neutron::service_plugins:
+  - 'router'
+  - 'vpnaas'
+  - 'neutron_lbaas.services.loadbalancer.plugin.LoadBalancerPluginv2'
+  - 'qos'
+neutron::agents::lbaas::device_driver: 'neutron_lbaas.drivers.haproxy.namespace_driver.HaproxyNSDriver'
+neutron::config::lbaas_config:
+  'service_providers/service_provider':
+    value: 'LOADBALANCERV2:Haproxy:neutron_lbaas.drivers.haproxy.plugin_driver.HaproxyOnHostPluginDriver:default'
+neutron::debug: false
+neutron::verbose: true
+neutron::dhcp_agents_per_network: 3
+neutron::keystone::auth::region: '{{ default_region }}'
+neutron::keystone::auth::password: '{{ keystone_admin_password }}'
+neutron::keystone::auth::public_url: 'http://lb.{{ domain }}:9696'
+neutron::keystone::auth::admin_url: 'http://lb.{{ domain }}:9696'
+neutron::keystone::auth::internal_url: 'http://lb.{{ domain }}:9696'
+neutron::server::database_connection: 'mysql://neutron:{{ service_db_password }}@lb.{{ domain }}/neutron?charset=utf8'
+neutron::server::auth_password: '{{ keystone_admin_password }}'
+neutron::server::identity_uri: 'http://lb.{{ domain }}:35357/'
+neutron::server::sync_db: true
+neutron::plugins::ml2::network_vlan_ranges: 'physnet3:1:2015'
+neutron::plugins::ml2::extension_drivers: 'port_security'
+neutron::plugins::ml2::type_drivers:
+  - 'vlan'
+  - 'vxlan'
+  - 'local'
+  - 'flat'
+neutron::plugins::ml2::mechanism_drivers:
+  - 'openvswitch'
+  - 'linuxbridge'
+neutron::plugins::ml2::tenant_network_types:
+  - 'vxlan'
+neutron::agents::ml2::ovs::firewall_driver: 'neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver'
+# 以下为网络节点的配置
+neutron::agents::ml2::ovs::enable_tunneling: true
+#neutron::agents::ml2::ovs::local_ip: '127.0.0.1'
+neutron::agents::ml2::ovs::tunnel_types:
+  - 'vxlan'
+neutron::agents::metadata::debug: true
+neutron::agents::metadata::auth_password: '{{ keystone_admin_password }}'
+neutron::agents::metadata::shared_secret: '{{ keystone_admin_password }}'
+neutron::agents::l3::use_namespaces: true
+neutron::agents::dhcp::enable_isolated_metadata: false
+neutron::agents::vpnaas::vpn_device_driver: 'neutron_vpnaas.services.vpn.device_drivers.fedora_strongswan_ipsec.FedoraStrongSwanDriver'
+neutron::server::notifications::nova_url: 'http://lb.{{ domain }}:8774/v2'
+neutron::server::notifications::username: 'nova'
+neutron::server::notifications::password: '{{ keystone_admin_password }}'
+neutron::server::notifications::nova_admin_password: '{{ keystone_admin_password }}'
+neutron::server::notifications::region_name: '{{ default_region }}'
+neutron::server::notifications::auth_url: 'http://lb.{{ domain }}:35357'
+neutron::server::notifications::auth_plugin: 'password'
+neutron::server::notifications::project_name: 'services'
+neutron::server::notifications::region_name: '{{ default_region }}'
+neutron::agents::ml2::ovs::bridge_mappings:
+  - 'physnet3:ovsbr3'
+
+# Horizon
+horizon::servername: '{{ region_url }}'
+horizon::timezone: 'Asia/Shanghai'
+horizon::cache_server_ip: 'lb.{{ domain }}'
+horizon::cache_server_port: '11211'
+horizon::secret_key: '{{ keystone_admin_password }}'
+horizon::django_debug: false
+horizon::api_versions:
+  'identity': 3
+horizon::allowed_hosts:
+  - '*'
+horizon::cache_backend: 'django.core.cache.backends.memcached.MemcachedCache'
+horizon::keystone_url: 'http://lb.{{ domain }}:5000/v3'
+horizon::keystone_default_role: 'user'
+horizon::hypervisor_options:
+  'can_set_mount_point': false
+  'can_set_password': true
+  'requires_keypair': false
+horizon::neutron_options:
+  'enable_router': true
+  'enable_quotas': true
+  'enable_ipv6': true
+  'enable_distributed_router': false
+  'enable_ha_router': false
+  'enable_lb': true
+  'enable_firewall': true
+  'enable_vpn': true
+  'enable_fip_topology_check': true
+  'supported_provider_types':
+    - '*'
+  'supported_vnic_types':
+    - '*'
+  'default_ipv4_subnet_pool_label': 'None'
+apache::default_vhost: false
+# halo
+kunkka::enable_init: True
+kunkka::regions:
+  "{{ default_region }}":
+     url: "lb.{{ domain }}"
+     en: "{{ default_region }}"
+     zh_CN: "{{ default_region_CN }}"
+kunkka::memcache_hosts:
+  - 'lb.{{ domain }}'
+kunkka::keystone_url: "lb.{{ domain }}"
+kunkka::db_host: 'lb.{{ domain }}'
+kunkka::db_password: '{{ service_db_password }}'
+kunkka::websocket:
+  "{{ default_region }}": ":5679"
+mirana::rabbit_hosts:
+  - "{{ manage_prefix }}44"
+  - "{{ manage_prefix }}45"
+  - "{{ manage_prefix }}46"
+mirana::sourceExchanges:
+  - "nova"
+  - "neutron"
+  - "glance"
+  - "cinder"
+mirana::password: "{{ rabbit_password }}"
+
+# config nfs client
+sunfire::storage::nfs::client::server: "server-47.{{ domain }}"
+sunfire::storage::nfs::client::mounpoint: "/opt/attachment"
+sunfire::storage::nfs::server::guest: "{{ manage_prefix }}0/8"
+
+#heat
+heat::identity_uri: 'http://lb.{{ domain }}:35357/'
+heat::auth_uri: 'http://lb.{{ domain }}:5000/v2.0'
+heat::keystone_host: 'http://lb.{{ domain }}:5000/v2.0'
+heat::keystone_protocol: false
+heat::api::bind_host: '0.0.0.0'
+heat::api::bind_port: '8004'
+heat::keystone_user: 'heat'
+heat::keystone_tenant: 'services'
+heat::keystone_password: '{{ keystone_admin_password }}'
+heat::keystone_ec2_uri: 'http://lb.{{ domain }}:5000/v2.0/ec2tokens'
+heat::rabbit_hosts:
+  - '{{ manage_prefix }}44:5672'
+  - '{{ manage_prefix }}45:5672'
+  - '{{ manage_prefix }}46:5672'
+heat::rabbit_userid: 'openstack'
+heat::rabbit_password: '{{ rabbit_password }}'
+heat::engine::trusts_delegated_roles: ''
+heat::engine::heat_metadata_server_url: 'http://lb.{{ domain }}:8000'
+heat::engine::heat_waitcondition_server_url: 'http://lb.{{ domain }}:8000/v1/waitcondition'
+heat::engine::heat_watch_server_url: 'http://lb.{{ domain }}:8003'
+heat::keystone::auth::public_url: 'http://lb.{{ domain }}:8004/v1/%(tenant_id)s'
+heat::keystone::auth::admin_url: 'http://lb.{{ domain }}:8004/v1/%(tenant_id)s'
+heat::keystone::auth::internal_url: 'http://lb.{{ domain }}:8004/v1/%(tenant_id)s'
+heat::keystone::auth_cfn::public_url: 'http://lb.{{ domain }}:8000/v1'
+heat::keystone::auth_cfn::admin_url: 'http://lb.{{ domain }}:8000/v1'
+heat::keystone::auth_cfn::internal_url: 'http://lb.{{ domain }}:8000/v1'
+heat::keystone::auth::password: '{{ keystone_admin_password }}'
+heat::keystone::auth::service_name: 'heat'
+heat::keystone::auth_cfn::password: '{{ keystone_admin_password }}'
+heat::keystone::auth_cfn::service_name: 'heat-cfn'
+heat::keystone::domain::domain_password: '{{ keystone_admin_password }}'
+heat::engine::auth_encryption_key: 'ba1f2511fc30423bdbb183fe33f3dd0f'
+heat::db::database_connection: 'mysql://heat:{{ service_db_password }}@lb.{{ domain }}/heat?charset=utf8'
+
+#ceilometer
+ceilometer::metering_secret: '0272208f4d6b4861'
+ceilometer::keystone::auth::password: '{{ keystone_admin_password }}'
+ceilometer::debug : 'true'
+ceilometer::rpc_backend : 'rabbit'
+ceilometer::rabbit_hosts :
+  - '{{ manage_prefix }}44:5672'
+  - '{{ manage_prefix }}45:5672'
+  - '{{ manage_prefix }}46:5672'
+ceilometer::rabbit_userid : 'openstack'
+ceilometer::rabbit_password : '{{ rabbit_password }}'
+ceilometer::api::host : '0.0.0.0'
+ceilometer::api::port : '8777'
+ceilometer::api::keystone_password : '{{ keystone_admin_password }}'
+ceilometer::db::database_connection : 'mysql://ceilometer:{{ service_db_password }}@lb.{{ domain }}/ceilometer?charset=utf8'
+ceilometer::dispatcher::gnocchi::filter_service_activity : false
+ceilometer::dispatcher::gnocchi::filter_project : "services"
+ceilometer::dispatcher::gnocchi::url : "http://lb.{{ domain }}:8041"
+ceilometer::dispatcher::gnocchi::archive_policy : "high"
+ceilometer::dispatcher::gnocchi::resources_definition_file : "gnocchi_resources.yaml"
+ceilometer::collector::dispatcher : 'gnocchi'
+ceilometer::collector::udp_address : '0.0.0.0'
+ceilometer::collector::udp_port : '4952'
+ceilometer::agent::auth::auth_user : 'admin'
+ceilometer::agent::auth::auth_password : '{{ service_db_password }}'
+ceilometer::agent::auth::auth_tenant_name : 'services'
+ceilometer::agent::auth::auth_url : 'http://lb.{{ domain }}:5000/v2.0'
+ceilometer::agent::auth::auth_region : 'RegionOne'
+
+#aodh
+aodh::debug : 'true'
+aodh::api::host : '0.0.0.0'
+aodh::api::port : '8042'
+aodh::rpc_backend : 'rabbit'
+aodh::rabbit_hosts :
+  - '{{ manage_prefix }}44:5672'
+  - '{{ manage_prefix }}45:5672'
+  - '{{ manage_prefix }}46:5672'
+aodh::rabbit_userid : 'openstack'
+aodh::rabbit_password : '{{ rabbit_password }}'
+aodh::rabbit_port : '5672'
+aodh::rabbit_userid : 'openstack'
+aodh::database_connection : 'mysql://aodh:{{ service_db_password }}@lb.{{ domain }}/aodh?charset=utf8'
+aodh::auth_password : '{{ keystone_admin_password }}'
+aodh::auth_url : 'http://lb.{{ domain }}:5000/v2.0'
+aodh::api::package_ensure : 'present'
+aodh::api::auth_protocol : 'http'
+aodh::api::keystone_user : 'aodh'
+aodh::api::keystone_tenant : 'services'
+aodh::api::keystone_password : '{{ keystone_admin_password }}'
+aodh::api::keystone_auth_uri : 'http://lb.{{ domain }}:5000/v2.0'
+aodh::api::keystone_identity_uri : 'http://lb.{{ domain }}:35357'
+aodh::api::host : '0.0.0.0'
+aodh::api::port : '8042'
+aodh::auth::auth_password : '{{ keystone_admin_password }}'
+aodh::auth::auth_url : 'http://lb.{{ domain }}:5000/v2.0'
+aodh::auth::auth_region : '{{ default_region }}'
+aodh::auth::auth_user : 'aodh'
+aodh::auth::auth_tenant_name : 'services'
+aodh::keystone::auth::password : '{{ keystone_admin_password }}'
+aodh::keystone::auth::tenant : 'services'
+aodh::keystone::auth::public_url : 'http://lb.{{ domain }}:8042'
+aodh::keystone::auth::internal_url : 'http://lb.{{ domain }}:8042'
+aodh::keystone::auth::admin_url : 'http://lb.{{ domain }}:8042'
+aodh::keystone::auth::region: '{{ default_region }}'
+aodh::keystone::auth::service_name: 'aodh'
+
+#gnocchi
+gnocchi::api::host : '0.0.0.0'
+gnocchi::api::port : '8041'
+gnocchi::api::keystone_auth_uri : 'http://lb.{{ domain }}:5000/v2.0'
+gnocchi::api::keystone_identity_uri : 'http://lb.{{ domain }}:35357'
+gnocchi::api::keystone_password : '{{ service_db_password }}'
+gnocchi::api::keystone_tenant : 'services'
+gnocchi::keystone::auth::password : '{{ service_db_password }}'
+gnocchi::keystone::auth::tenant : 'services'
+gnocchi::keystone::auth::public_url : 'http://lb.{{ domain }}:8041'
+gnocchi::keystone::auth::internal_url : 'http://lb.{{ domain }}:8041'
+gnocchi::keystone::auth::admin_url : 'http://lb.{{ domain }}:8041'
+gnocchi::db::database_connection : 'mysql://gnocchi:{{ service_db_password }}@lb.{{ domain }}/gnocchi?charset=utf8'
+gnocchi::storage::ceph::ceph_username : 'admin'
+gnocchi::storage::ceph::ceph_keyring :  '/etc/ceph/ceph.client.admin.keyring'
+gnocchi::storage::ceph::ceph_pool : 'openstack-00'
+gnocchi::storage::ceph::ceph_conffile : '/etc/ceph/ceph.conf'
+
+#kiki
+kiki::amqp_durable_queues: true
+kiki::rabbit_hosts :
+  - '{{ manage_prefix }}44:5672'
+  - '{{ manage_prefix }}45:5672'
+  - '{{ manage_prefix }}46:5672'
+kiki::rabbit_userid : 'openstack'
+kiki::rabbit_password : '{{ rabbit_password }}'
+kiki::connection : 'mysql://kiki:{{ service_db_password }}@lb.{{ domain }}/kiki?charset=utf8'
+kiki::kiki_db_password : '{{ service_db_password }}'
+kiki::db::mysql::host : 'lb.{{ domain }}'
+kiki::db::mysql::password : '{{ service_db_password }}'
+kiki::email_host : 'smtpcloud.sohu.com'
+kiki::email_port : '465'
+kiki::email_username : 'postmaster@unitedstack-trigger.sendcloud.org'
+kiki::email_password : 'MKolFUIYmV82IIKB'
+kiki::email_backend : 'sendcloud'
+kiki::from_email : 'kiki4us@163.com'
+kiki::from_name : 'UnitedStack'
+kiki::auth_host : 'lb.{{ domain }}'
+kiki::admin_username : 'admin'
+kiki::admin_password : '{{ keystone_admin_password }}'
+kiki::admin_project_name :  'admin'
+kiki::memcached_servers :
+  - 'lb.{{ domain }}:11211'
+kiki::auth_uri : 'http://lb.{{ domain }}:35357/v3'
+kiki::project_domain_name : 'default'
+kiki::user_domain_name : 'default'
+kiki::project_name : 'admin'
+kiki::username : 'admin'
+kiki::password : '{{ keystone_admin_password }}'
+kiki::auth_url : 'http://lb.{{ domain }}:35357'
+kiki::project_domain_name : 'default'
+kiki::user_domain_name : 'default'
+kiki::project_name : 'services'
+kiki::password : '{{ keystone_admin_password }}'
+kiki::username : 'admin'
+kiki::auth_url : 'http://lb.{{ domain }}:35357/v3'
+kiki::auth_plugin : 'password'
+kiki::keystone::auth::public_url : 'http://lb.{{ domain }}:8200'
+kiki::keystone::auth::internal_url : 'http://lb.{{ domain }}:8200'
+kiki::keystone::auth::admin_url : 'http://lb.{{ domain }}:8200'
+kiki::keystone::auth::region: 'RegionOne'
+kiki::keystone::auth::service_name: 'kiki'

@@ -1,0 +1,6 @@
+# file: roles/system/tasks/genrole.yml
+#
+- name: Generate Openstack_role
+  template: src=genrole.j2 dest=/etc/ustack.conf
+- name: Lock /etc/ustack.conf
+  command: /usr/bin/chattr +i /etc/ustack.conf

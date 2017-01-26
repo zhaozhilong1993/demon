@@ -1,0 +1,15 @@
+#MySQL
+#设置MYSQL root密码
+sunfire::storage::galera::mysql_root_password: '{{ mysql_root_password }}'
+sunfire::storage::galera::galera_database_password: '{{ mysql_root_password }}'
+#设置UOS服务和Openstack服务的库密码
+sunfire::storage::mysql::db::service_db_password: '{{ service_db_password }}'
+#设置数据库允许访问的地址段
+sunfire::storage::mysql::db::allowed_hosts:
+    - 'localhost'
+    - '127.0.0.1'
+    - '{{ manage_prefix }}%'
+sunfire::storage::galera::cluster_members:
+  - '{{ manage_prefix }}50'
+  - '{{ manage_prefix }}51'
+  - '{{ manage_prefix }}52'

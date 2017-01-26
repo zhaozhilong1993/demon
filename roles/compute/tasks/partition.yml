@@ -1,0 +1,15 @@
+# file: roles/compute/tasks/partition.yml
+
+- name: Find disks to partition
+  shell: ls /sys/block/ | grep sd
+  register: disks
+  tags: system_init
+
+- name: Install Parted
+  yum: name=parted state=latest  
+  tags: system_init
+
+- name: Partition according disks type 
+  script: partition.sh {{ item }}
+  with_items: disks.stdout_lines
+  tags: system_init

@@ -1,0 +1,25 @@
+# file: roles/system/tasks/check.yml
+
+- name: 检测CEPH网卡
+  command: ping -c 1 -W 1 -I {{ ceph_interface }} {{ ceph_gateway }}
+  when: system_role == "compute" or system_role == 'sata'
+
+- name: 检测vxlan MTU
+  register: vxlan_mtu_value
+  shell: ifconfig {{ sdn_interface }}.{{ network_vlan }} | egrep -io "mtu [0-9]*" | cut -d' ' -f2
+  when: system_role == "compute" or system_role == "network"
+
+- fail: msg="SDN网卡MTU错误"
+  when: (system_role == "compute" or system_role == 'network') and vxlan_mtu_value.stdout != vxlan_mtu
+
+- name: 检测SDN网卡连通性
+  command: ping -M do -s {{ vxlan_mtu_check }} -c 1 -W 1 -I {{ sdn_interface }}.{{ network_vlan }} {{ sdn_gateway }}
+  when: system_role == "compute" or system_role == "network"
+
+- name: 检测VT
+  register: vt_enable
+  shell: egrep -i 'vmx|svm' /proc/cpuinfo  | wc -l
+  when: system_role == "compute"
+
+- fail: msg="CPU需要开启VT"
+  when: system_role == "compute" and  vt_enable.stdout == "0"

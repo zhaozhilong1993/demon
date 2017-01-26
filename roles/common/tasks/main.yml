@@ -1,0 +1,65 @@
+# file: roles/common/tasks/main.yml
+
+
+- name: Get Last Host Num
+  register: host_last_num
+  shell: echo {{ inventory_hostname }} | cut -d "." -f4
+  tags: system_ensure
+
+- hostname: name=server-{{ host_last_num.stdout }}
+  tags: system_ensure
+
+- name: Verify UStack Repo Is Correct 
+  register: ustack_repo_correct
+  shell: cat /etc/yum.repos.d/ustack.repo | grep mirrors.ustack.com/repo/ustack/{{ environment }} | wc -l 
+  tags: system_ensure
+
+- name: Create DNS File
+  template: src=resolve.conf.j2  dest=/etc/resolve.conf
+  tags: system_ensure
+
+- name: Create host file
+  template: src=f_hosts.j2 dest=/etc/hosts
+  tags: system_ensure
+
+- nmae: Mkdir puppet directory
+  file: path=/etc/puppet state=directory mode=0755
+  tags: system_ensure
+
+- name: Create puppet config file
+  template: src=puppet.conf.j2 dest=/etc/puppet/puppet.conf
+  tags: system_ensure
+
+- name: Install Puppet
+  yum: name=puppet state=latest
+  tags: system_ensure
+
+- name: Check Kernel Version
+  register: kernel_name
+  shell: uname -r
+  tags: 
+    - system_ensure
+    - kernel_check
+
+- fail: msg="kernel must be {{ kernel_version }}"
+  when: kernel_name.stdout != kernel_version  and enable_kernel_fail
+  tags: 
+    - system_ensure
+    - kernel_check
+
+- name: Update Kernel To New One
+  shell: yum -y install kernel*
+  when: kernel_name.stdout != kernel_version and enable_kernel_fix
+  tags: system_ensure
+
+- name: Running Puppet
+  register: puppet_result 
+  shell: puppet agent -vt
+  when: enable_puppet_run 
+  failed_when: "'Error' in puppet_result.stderr"
+  tags: system_ensure
+
+- name: Reboot
+  shell: reboot 
+  when: enable_reboot
+  tags: system_ensure

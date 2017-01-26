@@ -1,0 +1,279 @@
+sunfire::loadbalancer::l4::service_manage: true
+sunfire::loadbalancer::l4::cluster_members:
+  - '{{ manage_prefix }}34'
+  - '{{ manage_prefix }}35'
+  - '{{ manage_prefix }}36'
+sunfire::loadbalancer::l4::vip_address: '{{ manage_prefix }}37/24'
+sunfire::loadbalancer::l4::l4_instance_list:
+  mysql:
+    port: '3306'
+    mode: tcp
+    balance: source
+    options:
+      - tcplog
+      - clitcpka
+      - srvtcpka
+      - httpchk
+    timeout:
+      - client 48h
+      - server 48h
+    server_list:
+      - mysql-1
+    server_ips:
+      - {{ manage_prefix }}50
+    backup_list:
+      - mysql-2
+      - mysql-3
+    backup_ips:
+      - {{ manage_prefix }}51
+      - {{ manage_prefix }}52
+    member_options: 'check port 49000 inter 10s fastinter 2s downinter 3s rise 3 fall 2'
+    backup_options: 'check port 49000 inter 5000 rise 2 fall 3 backup'
+  horizon:
+    port: '80'
+    server_list:
+      - horizon-1
+      - horizon-2
+      - horizon-3
+    server_ips:
+      - {{ manage_prefix }}41
+      - {{ manage_prefix }}42
+      - {{ manage_prefix }}43
+  cinder:
+    port: '8776'
+    server_list:
+      - cinder-1
+      - cinder-2
+      - cinder-3
+    server_ips:
+      - {{ manage_prefix }}41
+      - {{ manage_prefix }}42
+      - {{ manage_prefix }}43
+  glance-api:
+    port: '9292'
+    timeout: 'server 11m'
+    server_list:
+      - glance-api-1
+      - glance-api-2
+      - glance-api-3
+    server_ips:
+      - {{ manage_prefix }}41
+      - {{ manage_prefix }}42
+      - {{ manage_prefix }}43
+  glance-registry:
+    port: '9191'
+    options: ''
+    timeout: 'server 11m'
+    member_options: 'check'
+    server_list:
+      - glance-registry-1
+      - glance-registry-2
+      - glance-registry-3
+    server_ips:
+      - {{ manage_prefix }}41
+      - {{ manage_prefix }}42
+      - {{ manage_prefix }}43
+  ironic-1:
+    port: '6385'
+    server_list:
+      - ironic-1
+    server_ips:
+      - {{ manage_prefix }}41
+  keystone-1:
+    port: '5000'
+    server_list:
+      - keystone-1
+      - keystone-2
+      - keystone-3
+    server_ips:
+      - {{ manage_prefix }}41
+      - {{ manage_prefix }}42
+      - {{ manage_prefix }}43
+  keystone-2:
+    port: '35357'
+    server_list:
+      - keystone-1
+      - keystone-2
+      - keystone-3
+    server_ips:
+      - {{ manage_prefix }}41
+      - {{ manage_prefix }}42
+      - {{ manage_prefix }}43
+  neutron:
+    port: '9696'
+    server_list:
+      - neutron-1
+      - neutron-2
+      - neutron-3
+    server_ips:
+      - {{ manage_prefix }}41
+      - {{ manage_prefix }}42
+      - {{ manage_prefix }}43
+  kunkka:
+    port: '5678'
+    server_list:
+      - kunkka-1
+      - kunkka-2
+      - kunkka-3
+    server_ips:
+      - {{ manage_prefix }}41
+      - {{ manage_prefix }}42
+      - {{ manage_prefix }}43
+  mirana:
+    port: '5679'
+    mode: tcp
+    options:
+      - tcplog
+      - clitcpka
+      - srvtcpka
+    server_list:
+      - mirana-1
+      - mirana-2
+      - mirana-3
+    server_ips:
+      - {{ manage_prefix }}41
+      - {{ manage_prefix }}42
+      - {{ manage_prefix }}43
+  nova-api-1:
+    port: '8773'
+    timeout: 'server 600s'
+    options: ''
+    member_options: 'check'
+    server_list:
+      - nova-api-1
+      - nova-api-2
+      - nova-api-3
+    server_ips:
+      - {{ manage_prefix }}41
+      - {{ manage_prefix }}42
+      - {{ manage_prefix }}43
+  nova-api-2:
+    port: '8774'
+    timeout: 'server 600s'
+    server_list:
+      - nova-api-1
+      - nova-api-2
+      - nova-api-3
+    server_ips:
+      - {{ manage_prefix }}41
+      - {{ manage_prefix }}42
+      - {{ manage_prefix }}43
+  nova-api-3:
+    port: '8775'
+    timeout: 'server 600s'
+    server_list:
+      - nova-api-1
+      - nova-api-2
+      - nova-api-3
+    server_ips:
+      - {{ manage_prefix }}41
+      - {{ manage_prefix }}42
+      - {{ manage_prefix }}43
+  nova-novncproxy:
+    port: '6080'
+    balance: 'roundrobin'
+    options: ''
+    member_options: 'check'
+    server_list:
+      - nova-novncproxy-1
+      - nova-novncproxy-2
+      - nova-novncproxy-3
+    server_ips:
+      - {{ manage_prefix }}41
+      - {{ manage_prefix }}42
+      - {{ manage_prefix }}43
+  nova-metadata:
+    port: '8775'
+    options: ''
+    member_options: 'check'
+    server_list:
+      - nova-metadata-1
+      - nova-metadata-2
+      - nova-metadata-3
+    server_ips:
+      - {{ manage_prefix }}41
+      - {{ manage_prefix }}42
+      - {{ manage_prefix }}43
+  memcache:
+    port: '11211'
+    mode: 'tcp'
+    balance: source
+    options:
+      - tcplog
+      - tcpka
+    server_list:
+      - memcache-1
+    backup_list:
+      - memcache-2
+    server_ips:
+      - {{ manage_prefix }}47
+    backup_ips:
+      - {{ manage_prefix }}48
+    member_options: 'check inter 5000 rise 2 fall 3'
+    backup_options: 'check inter 5000 rise 2 fall 3 backup'
+  aodh:
+    port: '8042'
+    options:
+      - httplog
+      - httpclose
+    server_list:
+      - aodh-1
+      - aodh-2
+      - aodh-3
+    server_ips:
+      - {{ manage_prefix }}41
+      - {{ manage_prefix }}42
+      - {{ manage_prefix }}43
+  kiki:
+    port: '8200'
+    options:
+      - httplog
+      - httpclose
+    server_list:
+      - kiki-1
+      - kiki-2
+      - kiki-3
+    server_ips:
+      - {{ manage_prefix }}41
+      - {{ manage_prefix }}42
+      - {{ manage_prefix }}43
+  ceilometer:
+    port: '8777'
+    options:
+      - httplog
+      - httpclose
+    server_list:
+      - ceilometer-1
+      - ceilometer-2
+      - ceilometer-3
+    server_ips:
+      - {{ manage_prefix }}41
+      - {{ manage_prefix }}42
+      - {{ manage_prefix }}43
+  gnocchi:
+    port: '8041'
+    options:
+      - httplog
+      - httpclose
+    server_list:
+      - gnocchi-1
+      - gnocchi-2
+      - gnocchi-3
+    server_ips:
+      - {{ manage_prefix }}41
+      - {{ manage_prefix }}42
+      - {{ manage_prefix }}43
+  heat:
+    port: '8004'
+    options:
+      - httplog
+      - httpclose
+    server_list:
+      - heat-1
+      - heat-2
+      - heat-3
+    server_ips:
+      - {{ manage_prefix }}41
+      - {{ manage_prefix }}42
+      - {{ manage_prefix }}43
+

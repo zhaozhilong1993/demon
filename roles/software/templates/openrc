@@ -1,0 +1,14 @@
+#!/bin/bash
+export OS_PROJECT_DOMAIN_ID=default
+export OS_USER_DOMAIN_ID=default
+export OS_PROJECT_NAME=openstack
+export OS_TENANT_NAME=openstack
+export OS_USERNAME=admin
+export OS_PASSWORD="{{ keystone_admin_password }}"
+export OS_AUTH_URL=http://lb.{{ domain }}:35357/v3
+export OS_IDENTITY_API_VERSION=3
+export OS_IMAGE_API_VERSION=2
+export OS_REGION_NAME="{{ default_region }}"
+#Rescue model
+#export OS_SERVICE_TOKEN="{{ keystone_admin_token }}"
+#export OS_SERVICE_ENDPOINT=http://lb.{{ domain }}:35357/v2

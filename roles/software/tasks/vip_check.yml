@@ -1,0 +1,5 @@
+#本角色是检查l4 l7 的vip是否ok
+- name: Check vip address is OK
+  register: vip_check
+  shell: ping -c 1 -W 1 {{ inventory_hostname }}
+  delegate_to: 127.0.0.1

@@ -1,0 +1,6 @@
+# file: roles/physical/tasks/iptables.yml
+#
+- name: 清楚iptables规则
+  register: clear_iptables
+  script: clear_iptables.sh
+  when: method == "clear_iptables"

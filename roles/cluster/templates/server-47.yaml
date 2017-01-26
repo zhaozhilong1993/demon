@@ -1,0 +1,6 @@
+#设置从哪个IP上进行同步
+memcached::ha_memcached_ip: '{{ manage_prefix }}48'
+##指定数据同步的端口
+memcached::ha_memcached_port: '11212'
+##关闭UDP端口配置
+memcached::udp_port: false

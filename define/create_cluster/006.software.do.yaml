@@ -1,0 +1,78 @@
+### file: software.do.yaml
+### Base 节点初始化
+#1)所有角色跑puppet部署，除了api network compute mon mysql
+- hosts:
+  - base
+  - Mysql
+  roles:
+    - { role: software, method: run_puppet }
+
+#3)|检测|恢复|重启|失败报错| lb mq mc mysql 的所有服务
+- hosts:
+  - LB
+  gather_facts: no
+  roles:
+    - {role: software, method: lb_service ,tags: ["lb"]}
+
+- hosts:
+  - Memcached
+  gather_facts: no
+  roles:
+    - {role: software, method: mc_service ,tags: ["mc"]}
+
+- hosts:
+  - MQ
+  gather_facts: no
+  roles:
+    - {role: software, method: mq_service ,tags: ["mq"]}
+
+- hosts:
+  - Mysql
+  gather_facts: no
+  roles:
+    - {role: software, method: check_mysql_init ,tags: ["mysql"]}
+
+#4)检查l4 l7 vip地址
+- hosts:
+  - vip_address
+  gather_facts: no
+  roles:
+    - { role: software, method: vip_check }
+#5)API节点和Mon节点运行Puppet
+- hosts:
+  - Web
+  - CephMon
+  gather_facts: no
+  roles:
+    - { role: software, method: run_puppet }
+
+#5-1)API节点生成openrc文件
+- hosts:
+  - Web
+  - Network
+  - Compute
+  gather_facts: no
+  roles:
+    - { role: software, method: create_openrc }
+
+#6)检查API节点keystone是否正常
+- hosts:
+  - Web
+  gather_facts: no
+  roles:
+    - { role: software, method: keystone_check }
+
+#7)Network和节点运行Puppet
+- hosts:
+  - Network
+  gather_facts: no
+  roles:
+    - { role: software, method: run_puppet }
+
+#8)Compute 节点获取 wwn 发送到puppet master端
+- hosts:
+  - Compute
+  gather_facts: no
+  roles:
+    - { role: software, method: compute}
+    - { role: software, method: run_puppet }

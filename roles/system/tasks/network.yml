@@ -1,0 +1,17 @@
+# file: roles/system/tasks/network.yml
+
+- name: 获取最后一个字母
+  register: host_last_num
+  shell: echo {{ inventory_hostname }} | cut -d "." -f4
+
+- name: 配置网卡eth2
+  template: src=ifcfg.eth2.conf.j2 dest=/etc/sysconfig/network-scripts/ifcfg-eth2
+
+- name: 配置网卡eth3
+  template: src=ifcfg.eth3.conf.j2 dest=/etc/sysconfig/network-scripts/ifcfg-eth3
+
+- name: 配置网卡eth3.{{ network_vlan }}
+  template: src=ifcfg.eth3.1124.conf.j2 dest=/etc/sysconfig/network-scripts/ifcfg-eth3.{{ network_vlan }}
+
+- name: 重启网络
+  shell: service network restart

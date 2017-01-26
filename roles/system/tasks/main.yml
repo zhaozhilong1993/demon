@@ -1,0 +1,20 @@
+# file: roles/system/tasks/main.yml
+
+- include: hosts.yml
+- include: repo.yml
+- include: kernel.yml
+- include: package.yml
+- include: ipmi.yml
+- include: authkey.yml
+  when: method == "auth"
+- include: partition.yml
+- include: network.yml
+  when: method == "network" and (system_role == "network" or system_role == "compute") and config_network
+- include: config_route.yml
+  when: method == "config_route" and (system_role == "storage" or system_role == "compute")
+- include: check.yml
+  when: method == "check"
+- include: clear_iptables.yml
+  when: method == "clear_iptables"
+- include: genrole.yml
+  when: method == "genrole"

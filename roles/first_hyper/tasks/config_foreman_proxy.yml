@@ -1,0 +1,66 @@
+# file: roles/first_hyper/tasks/config_foreman_proxy.yml
+#
+- name: Check Domain Is Created
+  delegate_to: 127.0.0.1
+  register: domain_exist
+  script: foreman_setting.py --method check_domain --domain {{ domain }}
+
+- name: Create Domain
+  delegate_to: 127.0.0.1
+  script: foreman_setting.py --method create_domain --domain {{ domain }} --region {{ domain_region }}
+  when: "'Not Exist' in domain_exist.stdout.strip()"
+
+- name: Check Domain Is Created
+  delegate_to: 127.0.0.1
+  register: domain_exist_again
+  script: foreman_setting.py --method check_domain --domain {{ domain }}
+  failed_when: "'Not Exist' in domain_exist_again.stdout"
+
+- name: Check SmartProxy
+  delegate_to: 127.0.0.1
+  register: smartproxy_exist
+  script: foreman_setting.py --method check_smart_proxy --domain {{ domain }} --prefix {{ manage_prefix }}
+
+- name: Create SmartProxy
+  delegate_to: 127.0.0.1
+  script: foreman_setting.py --method create_smart_proxy --domain {{ domain }} --prefix {{ manage_prefix }} --is-online {{ on_line }}
+  when: "'Not Exist' in smartproxy_exist.stdout.strip()"
+
+- name: Check SmartProxy
+  delegate_to: 127.0.0.1
+  register: smartproxy_exist_again
+  script: foreman_setting.py --method check_smart_proxy --domain {{ domain }} --prefix {{ manage_prefix }}
+  failed_when: "'Not Exist' in smartproxy_exist_again.stdout"
+
+
+- name: Check Subnet
+  delegate_to: 127.0.0.1
+  register: subnet_exist
+  script: foreman_setting.py --method check_subnet --domain {{ domain }} --prefix {{ manage_prefix }}
+
+- name: Create Subnet
+  delegate_to: 127.0.0.1
+  script: foreman_setting.py --method create_subnet --domain {{ domain }} --prefix {{ manage_prefix }}
+  when: "'Not Exist' in subnet_exist.stdout.strip()"
+
+- name: Check Subnet Create
+  delegate_to: 127.0.0.1
+  register: subnet_exist_again
+  script: foreman_setting.py --method check_subnet --domain {{ domain }} --prefix {{ manage_prefix }}
+  failed_when: "'Not Exist' in subnet_exist_again.stdout"
+
+- name: Check Media
+  delegate_to: 127.0.0.1
+  register: media_exist
+  script: foreman_setting.py --method check_media --domain {{ domain }}
+
+- name: Create Media
+  delegate_to: 127.0.0.1
+  script: foreman_setting.py --method create_media --domain {{ domain }} --prefix {{ manage_prefix }} --is-online {{ on_line }}
+  when: "'Not Exist' in media_exist.stdout.strip()"
+
+- name: Check Media Create
+  delegate_to: 127.0.0.1
+  register: media_exist_again
+  script: foreman_setting.py --method check_media --domain {{ domain }}
+  failed_when: "'Not Exist' in media_exist_again.stdout"

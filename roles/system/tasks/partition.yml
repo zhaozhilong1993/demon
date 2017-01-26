@@ -1,0 +1,23 @@
+# file: roles/system/tasks/partition.yml
+
+#- name: copy 分区脚本
+#  template: src=partition.sh dest=/tmp/partition.sh
+#  when: method == "partition" and system_role == "hypervisor"
+
+- name: 根据磁盘的类型分区 
+  script: partition.sh
+  when: method == "partition" and system_role == "hypervisor" 
+
+- name: 找到RAID10磁盘 
+  register: raid10_device
+  script: find_raid10_disk.sh
+  when: method == "partition" and system_role == "hypervisor"
+
+- name: 找到RAID10磁盘的WWN
+  register: raid10_wwn
+  shell: ls -al /dev/disk/by-id/ | grep {{ raid10_device.stdout.strip() }} | awk {'print $9'} | egrep '^wwn*' | grep part
+  when: method == "partition" and system_role == "hypervisor"
+
+- name: 将磁盘信息添加到FSTab 
+  mount: name=/var/lib/libvirt/images src='/dev/disk/by-id/{{ raid10_wwn.stdout }}' fstype=ext4 state=mounted
+  when: method == "partition" and system_role == "hypervisor"

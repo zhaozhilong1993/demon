@@ -1,0 +1,199 @@
+# Ceph
+#设置ceph的monitor的主机个数
+sunfire::storage::ceph::mon::mon_members: '{{ ceph_mon_members }}'
+#设置ceph的monitor成员ip个数
+sunfire::storage::ceph::mon::mon_hosts: '{{ ceph_mon_hosts }}'
+# Ceph监控客户端
+sunfire::storage::ceph::mon::is_monitor_ceph_client: false
+#默认开启ceph的monitor
+sunfire::storage::ceph::enable_monitor: true
+# OSD network
+#设置osd节点公共网段
+#sunfire::compute::public_network: '{{ ceph_prefix }}0/24'
+#设置osd节点集群网段
+#sunfire::compute::cluster_network: '{{ ceph_prefix }}0/24'
+
+sunfire::storage::ceph::osd::is_monitor_ceph_client: false
+
+# New Add OSd
+#默认管理存储网络的网卡
+sunfire::storage::ceph::osd::manage_interface: false
+#设置存储网络eth2的地址段
+sunfire::storage::ceph::osd::network_eth2_prefix: '{{ ceph_prefix }}'
+#设置存储网络的eth2的网关
+sunfire::storage::ceph::osd::eth2_gateway: '{{ ceph_prefix }}1'
+#设置osd的monitor的主机数量
+sunfire::storage::ceph::osd::mon_members: '{{ ceph_mon_members }}'
+#设置osd的montior的ip数量
+sunfire::storage::ceph::osd::mon_hosts: '{{ ceph_mon_hosts }}'
+#设置存储网络eth2的地址段
+#sunfire::storage::ceph::osd::network_eth2_prefix: '{{ ceph_prefix }}'
+#设置存储网络的eth2的网关
+#sunfire::storage::ceph::osd::eth2_gateway: '{{ ceph_prefix }}1'
+#设置osd节点公共网段
+sunfire::storage::ceph::osd::public_network: '{{ ceph_prefix }}0/24'
+#设置osd节点集群网段
+sunfire::storage::ceph::osd::cluster_network: '{{ ceph_prefix }}0/24'
+
+# Ceph Debug Options，建议开启，消耗少量性能，以便于在出现异常时能够追踪错误信息
+ceph::debug_enable: true
+# Ceph Debug Options, 建议关闭一下Debug Option以提高快速设备性能
+ceph::debug_osd: '0/0'
+ceph::debug_ms:  '0/0'
+ceph::debug_optracker: '0/0'
+
+#OSD 请求追踪器，能够追踪OSD中请求的处理时间，并且能够用于对处理延时过程的请求进行日志告警。但目前对于高性能的环境下，开启追踪器后，将大大影响并发性能指标，如有需要可以考虑关闭，建议对性能可接受时开启
+ceph::osd_enable_op_tracker: true
+
+# Monitor 参数设置
+#心跳探测周期参数
+ceph::mon_osd_adjust_heartbeat_grace: false
+ceph::mon_osd_adjust_down_out_interval: false
+#OSD down多久以后被自动out出集群
+ceph::mon_osd_down_out_interval: '43200'
+#MON租约相关
+ceph::mon_lease: '5'
+ceph::mon_lease_renew_interval: '3'
+ceph::mon_lease_ack_timeout: '10.0'
+#MON之间时间差异允许范围设置
+ceph::mon_clock_drift_allowed: '0.050'
+ceph::mon_clock_drift_warn_backoff: '5'
+#当每个OSD上pg数量小于mon_pg_warn_min_per_osd，或者大于mon_pg_warn_max_per_osd，提示告警。PG应当控制在适合的范围内，否则将造成系统资源不可控，以及OSD运行效率低下
+ceph::mon_pg_warn_min_per_osd: '30'
+ceph::mon_pg_warn_max_per_osd: '600'
+#当使用old crush tunables时，进行警告
+ceph::mon_warn_on_legacy_crush_tunables: true
+
+#CGROUP资源隔离控制，对于融合部署场景
+#对于融合场景，通常不需要做资源隔离
+#对于非融合场景，有必要对Ceph OSD资源与虚拟化计算资源进行隔离，从而减少资源竞争，保证服务质量。设置show_cgroups_ceph 为true，开启ceph节点资源限制功能
+# sunfire::storage::ceph::show_cgroups_ceph: true
+# sunfire::compute::enable_kvm_cgroup: true 
+#通常对于有超线程的CPU，将超线程CPU核划分在一起，避免干扰。
+# sunfire::storage::ceph::osd::osd_cpuset: '1-8,21-28'
+# sunfire::compute::kvm_cpuset: '9-19,29-39'
+#默认值为物理机上所有内存，如果物理主机为numa架构，且希望做资源隔离，则应该将内存节点与CPU核尽量在同一节点，这样能够提供内存的访问速度
+# sunfire::storage::ceph::osd::osd_memnode: '0'
+#默认设置osd使用内存限制为64GB，建议使用96GB或更高
+# sunfire::storage::ceph::osd::osd_memory_limit: '64G'
+
+#OSD 数据盘是否使用nobarrier 进行挂载，默认情况下设置为false被关闭，如果确认磁盘或者raid卡确实提供掉电保护功能，则可以开启nobarreir，略微减小cpu使用率及IO延时。如果在不清楚的情况下，请勿轻易设置为true，可能引起数据丢失或损坏
+# ceph::params::use_barrier: true
+
+#OSD Cache配置，Cache 有助于提升OSD访问性能，尤其对于HDD磁盘而言，
+# filestore fd 缓存池大小，设置务必小于204800，否则可能导致触发系统阈值限制，shards 分片通常设置为 filestore_fd_cache_size／64
+# ceph::filestore_fd_cache_size: '102400'
+# ceph::filestore_fd_cache_shards: '1600'
+# 在块存储场景下，该缓存效果甚微，在对象存储场景下，该缓存效果较好，存储缓存object map的头信息
+# ceph::filestore_omap_header_cache_size: '10240'
+# osd objectContext 缓存，每个PG 都有一个这么大的缓存，调大该值有助于显著提升系统延时，默认值：64
+# ceph::osd_pg_object_context_cache_count: '64'
+
+#OSD 线程池资源配置
+#配置建议，osd_op_threads为peering 线程于osd_recovery_threads，可以单独考虑，由于peering不是频发操作，通常按两个虚拟核心算
+#osd_op_tp : filestore_op_threads 比例通常为5:2 时效率较好
+#例如OSD 可用虚拟核心为20线程，则去掉 20-2(peering)-2(journal)-2(Finisher)-2(Messanger)，理论上10/4 的默认分配已经达到最佳，如果为40虚拟核心独享的，可按比例适当增加osd_op_num_shards 与 filestore_op_threads
+#OSD osd_tp 目前负责 peering 工作，PG peering 可以并发的执行，根据OSD可使用的CPU核数量，合理设置 peering 线程池数目，以加快peering的过程
+# ceph::osd_op_threads: '4'
+#OSD osd_op_tp 目前负责所有osd请求的处理，默认情况下使用5个分片，并且每个分片两个处理线程，如果CPU核心数量多时，可以根据需要适当增加
+# ceph::osd_op_num_shards: '5'
+# ceph::osd_op_num_threads_per_shard: '2'
+#FileStore 处理核心数量
+# ceph::filestore_op_threads: '4'
+#Recovery 处理核心数量
+# ceph::osd_recovery_threads: '2'
+
+#处理线程超时设置
+# ceph::osd_op_thread_timeout: '15'
+# ceph::osd_recovery_thread_timeout: '30'
+# ceph::osd_scrub_thread_timeout: '60'
+# ceph::osd_scrub_finalize_thread_timeout: '600'
+
+#OSD 请求抱怨时间，请求处理多久没有给客户端应答，则进行日志告警，slow request，需要开启osd_enable_op_tracker，才能生效。通常情况下根据最坏容忍度进行配置，默认值ssd/sata/mix: 10/30/10
+# ceph::osd_op_complaint_time: '1'
+
+#OSD 每个PG的PG_LOG数量保留多少。该选项会极大的影响每个OSD的内存消耗，尤其是PG处于非clean状态的时候，减小该值有助于控制OSD消耗更少的内存，但可能在OSD Down变为UP后，更大几率的触发Backfill，让数据恢复变的缓慢
+# ceph::osd_min_pg_log_entries: '1000'
+# ceph::osd_max_pg_log_entries: '3000'
+
+#队列，及Throttle限制，控制inflight IO 数量，保证有足够并发的情况下，OSD端资源可控。建议使用默认值，如果使用了高性能PCI－E SSD，可以通过调整来提供效率
+# ceph::filestore_queue_max_ops
+# ceph::filestore_queue_max_bytes
+# ceph::osd_client_message_cap
+# ceph::osd_client_message_size_cap
+# ceph::ms_dispatch_throttle_bytes
+#WriteBack Throttle，建议使用默认配置，对于异步写入效率比同步写入高很多的磁盘上，可以考虑将该值设置的更大，以获取更大的带宽，但是在回刷数据时，将影响IO延时
+# ceph::filestore_wbthrottle_xfs_ios_hard_limit
+# ceph::filestore_wbthrottle_xfs_bytes_hard_limit
+# ceph::filestore_wbthrottle_xfs_inodes_hard_limit
+# ceph::filestore_wbthrottle_xfs_ios_start_flusher
+# ceph::filestore_wbthrottle_xfs_bytes_start_flusher
+# ceph::filestore_wbthrottle_xfs_inodes_start_flusher
+# ceph::filestore_wbthrottle_enable
+
+#FileStore 设置，建议使用默认设置
+# ceph::filestore_queue_committing_max_ops
+# ceph::filestore_max_inline_xattr_size
+# ceph::filestore_max_inline_xattrs
+# ceph::filestore_xattr_use_omap
+# ceph::filestore_max_sync_interval
+# ceph::filestore_min_sync_interval
+
+#开启一下两项，可以减少文件碎片的产生，并且提升恢复以及数据平衡时的效率。在16M object设置下，可能触发XFS FIEMAP BUG，考虑关闭filestore_fiemap 以加强系统稳定性
+ceph::filestore_xfs_extsize: true
+ceph::filestore_fiemap: true
+
+
+#建议采用默认配置，在cpu 压力较大情况下，可以关闭leveldb_compression，以寻求性能的提升，建议在对象存储情况下开启，能够节约空间
+# ceph::leveldb_write_buffer_size
+# ceph::leveldb_cache_size
+# ceph::leveldb_block_size
+# ceph::leveldb_bloom_size
+# ceph::leveldb_max_open_files
+# ceph::leveldb_compression
+# ceph::leveldb_paranoid
+
+# Ceph OSD recovery/backfill options
+#可通过减小其数值，来控制恢复过程中的流量与磁盘压力，如果网络流量和磁盘有较大压力情况下，能够显著改善IO延时，否则将延缓数据恢复速度，延长集群IO影响的总时间
+#恢复osd是最大的数量，默认设置为 ssd/sata/mix 4/2/2
+# ceph::osd_recovery_max_active: '1'
+#单个osd能同时启动的恢复op数量，默认设置为 ssd/sata/mix 2/5/5
+# ceph::osd_recovery_max_single_start: '1'
+#每次恢复传输的数据带宽，通常情况下，不需要被特别设置，如果使用大对象，建议在网络带宽足够的情况下将其设置为尽量大的值（如：使用16M对象，可以设置为 20M ＝ 20971520），如果设置过小，则单个对象的恢复将会走多次网络大大增加恢复延时，并且会占据一个spos的xattr位置。如果在网络带宽不足的情况下设置过大，将极大的影响客户端IO延时。默认值为：8M
+# ceph::osd_recovery_max_chunk: '8388608'
+#恢复IO优先级设置
+# ceph::osd_recovery_op_priority: '3'
+# ceph::osd_client_op_priority: '63'
+#Backfill配置
+# ceph::osd_max_backfills: '1'
+# ceph::osd_backfill_scan_min: '2'
+# ceph::osd_backfill_scan_max: '10'
+
+#Scrub 相关设置
+#允许单个OSD同时进行Scrub的PG数量，通常设置为：1
+# ceph::osd_max_scrubs: '1'
+#允许出发Scrub的负载界限，通常不需要改动，默认值为：0.5
+# ceph::osd_scrub_load_threshold: '0.5'
+#希望触发Scrub的平凡度，min为至少过那么久以后才可以被Scrub，max为超过该时间以后会被强制进行Scrub
+# ceph::osd_scrub_min_interval: '86400'
+# ceph::osd_scrub_max_interval: '604800'
+#进行Scrub时，每次扫描的Objects数量，设置的更小，从而使得在Scrub时的阻塞更小
+# ceph::osd_scrub_chunk_min: '5'
+# ceph::osd_scrub_chunk_max: '10'
+#进行Scrub的时间限制，通常我们希望能够在凌晨进行Scrub，注意系统使用时间UTC or CTS，并进行对应的设置
+# ceph::osd_scrub_begin_hour: '17'
+# ceph::osd_scrub_end_hour: '21'
+#Deep Scrub 间隔时间，当超过该时间没有触发过deep scrub时，下次Scrub会100%自动升级成为Deep Scrub
+# ceph::osd_deep_scrub_interval: '604800'
+#Deep Scrub 以多大的单位对磁盘进行读取，并且计算SHA值
+# ceph::osd_deep_scrub_stride: '524288'
+
+#Cache Tier 相关设置，建议暂时采用默认值
+# ceph::osd_hit_set_min_size
+# ceph::osd_hit_set_max_size
+# ceph::osd_hit_set_namespace
+# ceph::osd_tier_default_cache_mode
+# ceph::osd_tier_default_cache_hit_set_count
+# ceph::osd_tier_default_cache_hit_set_period
+# ceph::osd_tier_default_cache_hit_set_type
+# ceph::osd_tier_default_cache_min_read_recency_for_promote

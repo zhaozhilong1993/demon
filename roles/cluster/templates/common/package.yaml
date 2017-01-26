@@ -1,0 +1,25 @@
+# 在切换到正式线上环境后，不允许使用latest值来标记包的版本
+###################################################
+# Openstack Services
+###################################################
+# Nova
+nova::ensure_package: latest
+# Keystone
+keystone::package_ensure: latest
+# Cinder
+cinder::package_ensure: latest
+# Glance
+glance::package_ensure: latest
+# Neutron
+neutron::package_ensure: latest
+####################################
+# Openstack Clients
+####################################
+nova::client::ensure: latest
+keystone::client::ensure: latest
+# glance命令行客户端使用这个版本以支持多region上传镜像
+glance::client::ensure: '1.1.0-1.el7'
+cinder::client::package_ensure: latest
+ceilometer::client::ensure: latest
+neutron::client::package_ensure: latest
+memcached::package_ensure: '1.4.13-2.el7.centos.ustack'

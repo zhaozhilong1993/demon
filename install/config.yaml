@@ -1,0 +1,73 @@
+---
+
+hostname: puppet
+domain: example.com
+local_ip: 10.0.121.31
+
+puppet_server_name: foreman.example.com
+puppet_server_ip: 10.0.121.31
+
+hypervisor_node:
+    - 10.0.121.[31:33]
+controller_node:
+    - 10.0.121.[41:43]
+network_node:
+    - 10.0.121.[64:65]
+compute_node:
+    - 10.0.121.[68:70]
+
+loaderbalance_node:
+    - 10.0.121.[34:36]
+rabbitmq_node:
+    - 10.0.121.[44:46]
+cache_node:
+    - 10.0.121.[47:48]
+mysql_node:
+    - 10.0.121.[50:52]
+ceph_monitor_node:
+    - 10.0.121.[61:63]
+
+dhcp_proxy: true
+dhcp_interface: 'eth0'
+dhcp_gateway: '10.10.2.12'
+foreman_base_url: 'http://10.10.2.12'
+
+mac_map:
+    - 10.0.121.32:
+      mac: 00:00:00:00
+    - 10.0.121.33:
+      mac: 00:00:00:00
+    - 10.0.121.64:
+      mac: 00:00:00:00
+    - 10.0.121.65:
+      mac: 00:00:00:00
+    - 10.0.121.68:
+      mac: 00:00:00:00
+    - 10.0.121.69:
+      mac: 00:00:00:00
+    - 10.0.121.70:
+      mac: 00:00:00:00
+
+#####################################################
+####### You don't have to change this parts##########
+#####################################################
+server_environments:
+    - newton
+
+db_password: 'ustack'
+admin_password: 'ustack'
+logging_level: 'debug'
+
+enable_foreman: true
+enable_foreman_proxy: true
+enable_yumrepo: true
+enable_ntpserver: true
+enable_install_deploy_tools: true
+
+scriptdir: /vagrant/puppet-bootstrap
+puppetdb::globals::version: 2.3.8-1.el7
+postgresql::globals::version: '9.4'
+apache::default_vhost: false
+apache::purge_configs: false
+foreman_proxy::dhcp: true
+foreman_proxy::register_in_foreman: false

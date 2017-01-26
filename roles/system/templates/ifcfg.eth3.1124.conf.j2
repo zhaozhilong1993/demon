@@ -1,0 +1,11 @@
+DEVICE=eth3.{{ network_vlan }}
+BOOTPROTO=none
+ONBOOT=yes
+HOTPLUG=yes
+TYPE=Ethernet
+IPADDR={{ network_prefix }}{{ host_last_num.stdout }}
+NETMASK=255.255.255.0
+MTU={{ vxlan_mtu }}
+PEERDNS=no
+VLAN=yes
+NM_CONTROLLED=no

@@ -1,0 +1,13 @@
+# file: roles/software/tasks/puppet.yml
+# run puppet three time
+
+- name: run_puppet
+  register: run_puppet
+  shell: puppet agent -vt
+  ignore_errors: yes
+
+- name: run_puppet_again
+  register: run_puppet_again
+  shell: rm -f /var/lib/puppet/state/agent_catalog_run.lock;puppet agent -vt
+  when: "'Error' in run_puppet.stdout"
+  failed_when: "'Error' in run_puppet_again.stdout"

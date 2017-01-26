@@ -1,0 +1,167 @@
+# file: group_var/REGION_ABRIDGE
+
+## Ansible Data
+
+# 向233同步文件时的限速
+bwlimit: 500
+# 是否多region
+multiregion: False
+# 如果是离线环境,没有公网的话，请将on_line设为False
+on_line: True
+# 在第一台控制节点上装foreman_proxy
+enable_foreman_proxy: False
+# 是否配置网络
+config_network: True
+
+# Domain
+# 域名
+domain: REGION_DOMAIN
+# 集群简写
+domain_region: REGION_ABRIDGE
+region_url: console.REGION_DOMAIN
+# l7
+# 1)多UC环境时请填写默认Region名字,列如:example251
+# 2)非UC环境默认RegionOne,请不要改动
+# 3)_CN变量为默认reigon的中文名
+default_region: RegionOne
+default_region_CN: 一区
+# l7的完整域名
+l7_domain: .REGION_DOMAIN
+# 集群ID，
+cluster_id: CLUSTER_ID
+# Default
+# 重启服务器
+enable_provision: False
+# 开启配置ipmi
+enable_ipmi_conf: True
+# IPMI用户名
+ipmi_user: IPMI_USER
+# IPMI密码
+ipmi_passwd: IPMI_PASSWORD
+# 服务器来源
+region_channel: Borrow
+# IPMI lan的ID
+ipmi_lan: 1
+# IPMI user的ID
+ipmi_user_id: 1
+# 开启公网
+enable_public_interface: True
+# 有sata节点
+enable_sata: ENABLE_SATA
+# 时间服务器地址
+ntp_server: 10.255.0.217
+# yum源服务器的地址
+yum_server: 10.255.0.61
+# 镜像服务器的地址
+image_server: 10.255.0.196
+# foreman master服务器地址
+foreman_master: 10.255.0.201
+# puppet 环境
+puppet_env: liberty
+# pupper master的地址
+puppet_server_domain: puppet.0.uc.ustack.in
+# puppet 转发服务器的地址，如果是离线环境，则与下一个参数real_puppet_server相同
+puppet_forward_address: 10.255.0.43
+# # 真实的puppet server地址
+real_puppet_server: 10.255.0.210
+
+## Hiera Data
+# Network
+
+# 远程卡配置
+# 远程管理卡网络前缀：如：10.110.8.
+remote_prefix: CONSOLE_PREFIX.
+# 远程卡网关
+default_gateway: CONSOLE_PREFIX.1
+
+# 管理网配置
+# 管理网络前缀，如：10.110.0.
+manage_prefix: PREFIX.
+# 内网网关
+internal_gateway: PREFIX.1
+
+# ceph网络配置
+# ceph网络前缀，如：10.110.16
+ceph_prefix: CEPH_PREFIX.
+# ceph网络的网卡，默认为eth2
+ceph_interface: eth2
+# ceph网络网关，用于连通性检测
+ceph_gateway: CEPH_PREFIX.1
+
+# SDN网络配置
+# SDN网络前缀，如：10.110.24.
+network_prefix: SDN_PREFIX.
+# sdn网络的网卡，默认为eth3
+# 此参数用于配置网卡和检测网络连通性，
+# 如果不使用eth3请把改配置并把config_network设为False
+sdn_interface: eth3
+# SDN网络的vlan
+network_vlan: 1124
+# sdn网络网关，用于连通性检测
+sdn_gateway: SDN_PREFIX.1
+
+#外网配置
+# 外网网关
+outernal_gateway: OUTERNAL_GATEWAY
+# 外网掩码：如255.255.255.0
+outernal_netmask: OUTERNAL_NETMASK
+
+
+## neutron init ##
+#外网名称
+extelnal_network: 'CHINAUNICOM'
+# Floating IP地址
+# cidr  : floating ip网段；
+# start : floating ip可用网段的开始ip；
+# end   : floating ip 可用网段的最后一个ip)
+public_subnets: '{"EXTERNAL_SUBNET0": {"cidr": "IP/NETMASK", "start": "START_IP", "end":"END_IP"}},'
+
+#ceph
+# ceph monitor host的FQDN
+ceph_mon_members: server-61.REGION_DOMAIN,server-62.REGION_DOMAIN,server-63.REGION_DOMAIN
+# ceph monitor地址
+ceph_mon_hosts: PREFIX.61,PREFIX.62,PREFIX.63
+## ceph init ##
+# osd的数量
+osd_nums: NUMBER_OF_OSD
+# 单块盘的G数除以1024得出weight
+osd_weight: OSD_WEIGHT
+# 机架位置
+rack_01:
+- 'PREFIX.68'
+- 'PREFIX.71'
+rack_02:
+- 'PREFIX.69'
+- 'PREFIX.72'
+rack_03:
+- 'PREFIX.70'
+- 'PREFIX.73'
+
+#----------------下面的参数基本不用管-------------------
+#mq
+# rabbitmq的密码
+rabbit_password: RABBIT_PASSWORD
+
+#keystone
+keystone_admin_password: KEYSTONE_ADMIN_PASSWORD
+
+#db
+# MySQL的root密码
+mysql_root_password: MYSQL_ROOT_PASSWORD
+# MySQL 同步用户使用的密码
+mysql_rep_password: MYSQL_REP_PASSOWRD
+
+#api
+# api节点连接db的URL
+api_db_host: mysql.REGION_DOMAIN
+# 各服务admin的密码
+service_user_password: USER_PASSWORD
+# 各服务连接DB的密码
+service_db_password:  DB_PASSWORD
+# keystone.conf里的admin_token
+keystone_admin_token: KEYSTONE_TOKEN
+
+# 以下三个参数不用管
+hypervisor_31_eth1_ip: 111.111.111.111
+hypervisor_32_eth1_ip: 111.111.111.112
+hypervisor_33_eth1_ip: 111.111.111.113

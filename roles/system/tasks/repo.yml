@@ -1,0 +1,7 @@
+# file: roles/provision/tasks/repo.yml
+
+- name: 保证机器上的源是正确的 
+  register: ustack_repo_correct
+  shell: cat /etc/yum.repos.d/ustack.repo | grep mirrors.ustack.com/repo/ustack/{{ environments }} | wc -l
+  when: method == "do"
+
