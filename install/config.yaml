@@ -28,9 +28,9 @@ ceph_monitor_node:
     - 10.0.121.[61:63]
 
 dhcp_proxy: true
-dhcp_interface: 'eth0'
-dhcp_gateway: '10.10.2.12'
-foreman_base_url: 'http://10.10.2.12'
+dhcp_interface: 'br0'
+dhcp_gateway: '10.0.215,1'
+foreman_base_url: 'http://10.0.215.1'
 
 mac_map:
     - 10.0.121.32:
@@ -64,7 +64,7 @@ enable_yumrepo: true
 enable_ntpserver: true
 enable_install_deploy_tools: true
 
-scriptdir: /vagrant/puppet-bootstrap
+scriptdir: /root/ctask/install
 puppetdb::globals::version: 2.3.8-1.el7
 postgresql::globals::version: '9.4'
 apache::default_vhost: false

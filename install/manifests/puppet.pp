@@ -6,7 +6,7 @@ $enable_install_deploy_tools = hiera('enable_install_deploy_tools')
 $command_threads = inline_template("<%= [${::processorcount}/2, ${::processorcount}-2].max %>")
 $max_threads = inline_template("<%= [(${::processorcount}*1.5).floor, 15].max %>")
 $server_environments = hiera('server_environments')
-$servername = hiera('servername')
+$puppet_server_name = hiera('puppet_server_name')
 $db_password = hiera('db_password')
 $admin_password = hiera('admin_password')
 $logging_level = hiera('logging_level')
@@ -51,7 +51,7 @@ class { '::puppet':
 
 if $enable_foreman {
   class { 'foreman':
-    servername             => $servername,
+    servername             => $puppet_server_name,
     db_password            => $db_password,
     admin_password         => $admin_password,
     logging_level          => $logging_level,
