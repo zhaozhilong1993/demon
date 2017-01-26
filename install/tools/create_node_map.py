@@ -14,6 +14,25 @@ def create_host_var(mac_map):
             host_file.write(content)
             host_file.close()
 
+def create_inventory(node_map, domain):
+    inventory_file = open('/root/ctask/inventory/%s' % domain, 'w')
+    inventory_file.truncate()
+    inventory_file.close()
+    inventory_file = open('/root/ctask/inventory/%s' % domain, 'a')
+    common = "[%s:children]\n" % domain
+    for node_role in node_map:
+        for role, ips in node_role.items():
+            content = "[%s]\n" % role
+            common = common + role + "\n"
+            for ip in ips:
+                content =  content + ip + "\n" 
+            content =  content + "\n" 
+            inventory_file.write(content)
+    inventory_file.write(common)
+    inventory_file.close()
+
+
 if __name__ == '__main__':
    config = get_config('/root/ctask/install/config.yaml')
    create_host_var(config['mac_map'])
+   create_inventory(config['node_map'], config['domain'])

@@ -56,27 +56,6 @@ def generate_groups_vars(name,abridge,prefix,sata=None):
             output.write(l)
         output.close()
 
-def generate_inventory(abridge,prefix,f_file,sata=None):
-        if not os.path.exists("/root/ctask/install/tools/" + t_file):
-            sys.exit('%s file is not exist!' % t_file)
-        input = open("/root/ctask/install/tools/" + t_file)
-        lines = input.readlines()
-        input.close()
-        p = prefix.split('.')
-
-        output  = open('/root/ctask/inventory/%d.%s.ustack.in' % (int(p[2]),abridge),'w');
-        for line in lines:
-            l = line.replace('PREFIX', prefix)
-            l = l.replace('REGION_ABRIDGE',abridge)
-            if sata:
-                l = l.replace('STORAGE','\n[Storage]\n%s.[201:206]\n' % prefix)
-            else:
-                l = l.replace('STORAGE','')
-                l = l.replace('Storage','')
-
-            output.write(l)
-        output.close()
-
 if __name__ == '__main__':
     options = generate_options()
     if options.abridge is None or options.prefix is None or options.name is None:
@@ -92,5 +71,4 @@ if __name__ == '__main__':
     name = options.name
     sata = options.enable_sata
     generate_groups_vars(name,abridge,prefix,sata)
-    generate_inventory(abridge,prefix,t_file,sata)
     print 'Generate SUCCESS! Please modify the IPMI and IP !'

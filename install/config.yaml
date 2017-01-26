@@ -2,31 +2,48 @@
 
 hostname: puppet
 domain: example.com
-manager_network: 10.0.121.0/24
-local_ip: 10.0.121.31
+manager_network: 10.0.215.0/24
+
+tenant_network: 10.0.215.0/24
+tenant_vlan_id: 1124
+tenant_nic: eth2 
+
+storage_network: 10.0.215.0/24
+storage_vlan_id: 1116
+storage_nic: eth3
+
+local_ip: 10.0.215.31
 
 puppet_server_name: foreman.example.com
-puppet_server_ip: 10.0.121.31
+puppet_server_ip: 10.0.215.31
 
-hypervisor_node:
-    - 10.0.121.[31:33]
-controller_node:
-    - 10.0.121.[41:43]
-network_node:
-    - 10.0.121.[64:65]
-compute_node:
-    - 10.0.121.[68:70]
+node_map:
+  - hypervisor_node:
+      - 10.0.215.[31:33]
+  - controller_node:
+      - 10.0.215.[41:43]
+  - network_node:
+      - 10.0.215.[64:65]
+  - compute_node:
+      - 10.0.215.[68:70]
+   
+  - loaderbalance_node:
+      - 10.0.215.[34:36]
+  - rabbitmq_node:
+      - 10.0.215.[44:46]
+  - cache_node:
+      - 10.0.215.[47:48]
+  - mysql_node:
+      - 10.0.215.[50:52]
+  - ceph_monitor_node:
+      - 10.0.215.[61:63]
 
-loaderbalance_node:
-    - 10.0.121.[34:36]
-rabbitmq_node:
-    - 10.0.121.[44:46]
-cache_node:
-    - 10.0.121.[47:48]
-mysql_node:
-    - 10.0.121.[50:52]
-ceph_monitor_node:
-    - 10.0.121.[61:63]
+  - localhost:
+      - 10.0.215.31
+  - vip_address:
+      - 10.0.215.37
+  - puppet_server_ip:
+      - 10.0.215.31
 
 dhcp_proxy: true
 dhcp_interface: br0
@@ -34,13 +51,13 @@ dhcp_gateway: 10.0.215.1
 foreman_base_url: http://10.0.215.1
 
 mac_map:
-    - 10.0.121.32: 00:00:00:00
-    - 10.0.121.33: 00:00:00:00
-    - 10.0.121.64: 00:00:00:00
-    - 10.0.121.65: 00:00:00:00
-    - 10.0.121.68: 00:00:00:00
-    - 10.0.121.69: 00:00:00:00
-    - 10.0.121.70: 00:00:00:00
+  - 10.0.215.32: 00:00:00:00
+  - 10.0.215.33: 00:00:00:00
+  - 10.0.215.64: 00:00:00:00
+  - 10.0.215.65: 00:00:00:00
+  - 10.0.215.68: 00:00:00:00
+  - 10.0.215.69: 00:00:00:00
+  - 10.0.215.70: 00:00:00:00
 
 #####################################################
 ####### You don't have to change this parts##########
