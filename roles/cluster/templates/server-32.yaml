@@ -1,4 +1,4 @@
-sunfire::hypervisor::eth1_ip: '{{ hypervisor_32_eth1_ip }}'
+sunfire::hypervisor::eth1_ip: 111.111.111.112
 # 例如: 修复ssh的监听地址  ipaddress_br0
 ssh::server::config::listenaddress: "0.0.0.0"
 ssh::server::config::passwordauthentication: 'yes'

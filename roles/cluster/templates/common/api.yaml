@@ -371,7 +371,7 @@ neutron::agents::ml2::ovs::bridge_mappings:
   - 'physnet3:ovsbr3'
 
 # Horizon
-horizon::servername: '{{ region_url }}'
+horizon::servername: console.{{ region_id }}.{{ domain }}.ustack.in
 horizon::timezone: 'Asia/Shanghai'
 horizon::cache_server_ip: 'lb.{{ domain }}'
 horizon::cache_server_port: '11211'

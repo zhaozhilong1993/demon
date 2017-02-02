@@ -13,9 +13,9 @@ sunfire::compute::neutron: true
 sunfire::compute::neutron_user_password: '{{ service_db_password }}'
 # VNC 代理的地址，一般为 l7 的地址或域名
 sunfire::compute::vncproxy_host: 'lb.{{ domain }}'
-nova::vncproxy::common::vncproxy_host: '{{ region_url }}'
+nova::vncproxy::common::vncproxy_host: "console.{{ region_id }}.{{ domain }}.ustack.in"
 # 管理网的 IP 地址
-sunfire::compute::internal_address: "%{::ipaddress_eth0}"
+sunfire::compute::internal_address: "%{::ipaddress_{{ manager_nic }}}"
 # 加载到 neutron.ml2.mechanism_drivers 名称空间的驱动
 # 此选项的值必须是数组（列表），且按先后顺序排序，可以包含下面这些值：
 # logger, test, linuxbridge, openvswitch, hyperv, ncs, arista, cisco_nexus, l2population
@@ -23,14 +23,14 @@ sunfire::compute::internal_address: "%{::ipaddress_eth0}"
 sunfire::compute::mechanism_drivers:
    - 'openvswitch'
 # ceph monitor 的成员（域名）
-sunfire::compute::mon_members: 'server-61.{{ domain }},server-62.{{ domain }},server-63.{{ domain }}'
+sunfire::compute::mon_members: '{{ ceph_mon_hosts }}'
 # ceph monitor 的成员（IP 地址 ）
-sunfire::compute::mon_hosts: '{{ manage_prefix }}61,{{ manage_prefix }}62,{{ manage_prefix }}63'
+sunfire::compute::mon_hosts: '{{ ceph_mon_hosts }}'
 # Ceph 集群网络（osd 内部通信 ）
-sunfire::compute::cluster_network: '{{ceph_prefix}}0/24'
+sunfire::compute::cluster_network: '{{ storage_network }}'
 # Ceph 集群网络（客户端与 Ceph Cluster 通信）
-sunfire::compute::public_network: '{{ceph_prefix}}0/24'
-sunfire::compute::eth2_gateway: '{{ ceph_gateway }}'
+sunfire::compute::public_network: '{{ storage_network }}'
+sunfire::compute::eth2_gateway: '{{ stroage_gateway }}'
 # 是否开启防火墙
 sunfire::compute::enable_firewall: false
 # 连接数据库的地址
@@ -47,8 +47,8 @@ sunfire::compute::libvirt_images_rbd_pool: 'openstack-00'
 sunfire::compute::auth_password: '{{ service_db_password }}'
 # 是否使用持久化消息队列
 sunfire::compute::rpc_msg_persistence: true
-sunfire::compute::network_eth2_prefix: '{{ ceph_prefix }}'
-sunfire::compute::network_eth3_prefix: '{{ network_prefix }}'
+sunfire::compute::network_eth2_prefix: '{{ stroage_prefix }}'
+sunfire::compute::network_eth3_prefix: '{{ tenant_prefix }}'
 sunfire::monitor::ceph::client: '{{ manage_prefix }}247'
 nova::compute::config_drive_format:  'iso9660'
 nova::compute::force_config_drive: true
@@ -101,7 +101,7 @@ nova::nova_private_key:
 # Network
 neutron::agents::ml2::ovs::enable_tunneling: true
 # 这个参数是openvswitch的local_ip，如果SDN网卡不是eth3，请把下面的eth3改为正确的网卡
-neutron::agents::ml2::ovs::local_ip: "%{::ipaddress_eth3_{{ network_vlan }}}"
+neutron::agents::ml2::ovs::local_ip: "%{::ipaddress_{{ tenant_nic }}_{{ tenant_vlan_id }}}"
 neutron::agents::ml2::ovs::bridge_mappings:
   - 'physnet3:ovsbr3'
 neutron::agents::ml2::ovs::tunnel_types:

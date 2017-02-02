@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo `ipmitool -I open lan print | grep -v "IP Address Source" | grep "IP Address" | awk -F\: '{print $2}'`

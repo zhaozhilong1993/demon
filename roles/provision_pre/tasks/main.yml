@@ -1,6 +1,27 @@
-# roles/provision_pre/tasks/main.yml
+# file: roles/first_hyper/tasks/import_server.yaml
+#
+- name: clean dhcpd release
+  delegate_to: 127.0.0.1
+  command: echo > /var/lib/dhcpd/dhcpd.leases
+  when: method == 'clean_dhcp'
 
-- include: import_server.yml
-  when: method == "physical" or method == "import_server"
-- include: physical.yml
-  when: method == "physical" and enable_ipmi_conf
+- name: restart dhcpd
+  delegate_to: 127.0.0.1
+  command: systemctl restart dhcpd
+  when: method == 'clean_dhcp'
+
+- name: check server is in foreman
+  delegate_to: 127.0.0.1
+  register: forman_exist_server
+  script: foreman_setting.py --method check_host --ip {{ inventory_hostname }}
+
+- name: create server in foreman
+  delegate_to: 127.0.0.1
+  script: foreman_setting.py --method create_server --ip {{ inventory_hostname }} --region {{ domain }} --domain {{ domain }} --mac {{ node_mac }} --hostgroup {{ group_names[0] }}
+  when: forman_exist_server.stdout.strip() != "Exist"
+
+- name: check create server
+  delegate_to: 127.0.0.1
+  register: check_create_server
+  script: foreman_setting.py --method check_host --ip {{ inventory_hostname }}
+  failed_when: check_create_server.stdout.strip() == 'Not Exist'

@@ -3,7 +3,7 @@
 #  vars_prompt:
 #    output_dir: "Please write your output dir"
 
-- hosts: channel
+- hosts: localhost
   gather_facts: no
   roles:
     - { role: cluster,method: do }

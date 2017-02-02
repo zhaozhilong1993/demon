@@ -1,69 +1,120 @@
 ---
 
-hostname: puppet
-domain: example.com
-manager_network: 10.0.215.0/24
+rabbit_password: RABBIT_PASSWORD
+keystone_admin_password: KEYSTONE_ADMIN_PASSWORD
+mysql_root_password: MYSQL_ROOT_PASSWORD
+mysql_rep_password: MYSQL_REP_PASSOWRD
+api_db_host: mysql.REGION_DOMAIN
+service_user_password: USER_PASSWORD
+service_db_password:  DB_PASSWORD
+keystone_admin_token: KEYSTONE_TOKEN
 
-tenant_network: 10.0.215.0/24
+region_id: 215
+manage_prefix: 10.0.215.
+manager_gateway: 10.0.215.1
+manager_network: 10.0.215.0/24
+manager_nic: eth0
+
+tenant_network: 10.0.216.0/24
+tenant_prefix: 10.0.216.
 tenant_vlan_id: 1124
 tenant_nic: eth2 
 
-storage_network: 10.0.215.0/24
+storage_network: 10.0.217.0/24
+stroage_prefix: 10.0.217.
+stroage_gateway: 10.0.217.1
 storage_vlan_id: 1116
 storage_nic: eth3
 
-local_ip: 10.0.215.31
+public_gateway: 10.0.215.1
+public_netmask: 255.255.255.0
 
-puppet_server_name: foreman.example.com
-puppet_server_ip: 10.0.215.31
+hostname: puppet
+domain: example.com
+local_ip: 10.0.215.32
+
+global_parameter:
+    foreman_server: 
+        ip: 10.0.215.32
+        hostname: foreman.example.com
+        hostdomain: example.com
+    ntp_server:
+        ip: 10.0.215.32
+        hostname: foreman.example.com
+        hostdomain: example.com
+    yum_server:
+        ip: 10.0.215.32
+        hostname: foreman.example.com
+        hostdomain: example.com
+    puppet_server:
+        ip: 10.0.215.32
+        hostname: foreman.example.com
+        hostdomain: example.com
 
 node_map:
-  - hypervisor_node:
-      - 10.0.215.[31:33]
-  - controller_node:
-      - 10.0.215.[41:43]
-  - network_node:
-      - 10.0.215.[64:65]
-  - compute_node:
-      - 10.0.215.[68:70]
-   
-  - loaderbalance_node:
-      - 10.0.215.[34:36]
-  - rabbitmq_node:
-      - 10.0.215.[44:46]
-  - cache_node:
-      - 10.0.215.[47:48]
-  - mysql_node:
-      - 10.0.215.[50:52]
-  - ceph_monitor_node:
-      - 10.0.215.[61:63]
+  Hypervisor:
+    - 10.0.215.[31:32]
+  Controll:
+    - 10.0.215.[41:42]
+  Network:
+    - 10.0.215.[65:65]
+  Compute:
+    - 10.0.215.[68:68]
+  
+  Loaderbalance:
+    - 10.0.215.[34:35]
+  MQ:
+    - 10.0.215.[44:46]
+  Cache:
+    - 10.0.215.[47:47]
+  Mysql:
+    - 10.0.215.[50:52]
+  CephMonitor:
+    - 10.0.215.61
+    - 10.0.215.62
+    - 10.0.215.63
 
-  - localhost:
-      - 10.0.215.31
-  - vip_address:
-      - 10.0.215.37
-  - puppet_server_ip:
-      - 10.0.215.31
+  localhost:
+    - 10.0.215.32
+  vip_address:
+    - 10.0.215.37
+  puppet_server_ip:
+    - 10.0.215.32
 
 dhcp_proxy: true
 dhcp_interface: br0
 dhcp_gateway: 10.0.215.1
-foreman_base_url: http://10.0.215.1
+foreman_base_url: http://10.0.215.32
 
-mac_map:
-  - 10.0.215.32: 00:00:00:00
-  - 10.0.215.33: 00:00:00:00
-  - 10.0.215.64: 00:00:00:00
-  - 10.0.215.65: 00:00:00:00
-  - 10.0.215.68: 00:00:00:00
-  - 10.0.215.69: 00:00:00:00
-  - 10.0.215.70: 00:00:00:00
+ip_info_map:
+  10.0.215.31: 
+    node_mac: 00:25:90:c7:93:d2
+    ipmi_ip: 10.0.108.130
+    ipmi_admin: root
+    ipmi_password: PQ79ISF7ha7G
+
+  10.0.215.32: 
+    node_mac: 00:26:9E:B5:9e:5c
+    ipmi_ip: 10.0.108.128
+    ipmi_admin: root
+    ipmi_password: PQ79ISF7ha7G
+
+  10.0.215.65: 
+    node_mac: 00:26:9e:9c:38:a6
+    ipmi_ip: 10.0.108.127
+    ipmi_admin: root
+    ipmi_password: PQ79ISF7ha7G
+
+  10.0.215.68: 
+    node_mac: 00:26:6c:f0:38:b8
+    ipmi_ip: 10.0.108.142
+    ipmi_admin: root
+
 
 #####################################################
 ####### You don't have to change this parts##########
 #####################################################
-server_environments:
-    - newton
+server_environments: newton
 
 db_password: 'ustack'
 admin_password: 'ustack'
@@ -82,3 +133,9 @@ apache::default_vhost: false
 apache::purge_configs: false
 foreman_proxy::dhcp: true
 foreman_proxy::register_in_foreman: false
+
+puppet_env: newton
+default_region: RegionOne
+default_region_CN: 一区
+
+ceph_mon_hosts: 10.0.215.61,10.0.215.62,10.0.215.63

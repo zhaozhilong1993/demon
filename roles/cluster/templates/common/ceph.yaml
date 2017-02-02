@@ -1,6 +1,6 @@
 # Ceph
 #设置ceph的monitor的主机个数
-sunfire::storage::ceph::mon::mon_members: '{{ ceph_mon_members }}'
+sunfire::storage::ceph::mon::mon_members: '{{ ceph_mon_hosts }}'
 #设置ceph的monitor成员ip个数
 sunfire::storage::ceph::mon::mon_hosts: '{{ ceph_mon_hosts }}'
 # Ceph监控客户端
@@ -8,10 +8,6 @@ sunfire::storage::ceph::mon::is_monitor_ceph_client: false
 #默认开启ceph的monitor
 sunfire::storage::ceph::enable_monitor: true
 # OSD network
-#设置osd节点公共网段
-#sunfire::compute::public_network: '{{ ceph_prefix }}0/24'
-#设置osd节点集群网段
-#sunfire::compute::cluster_network: '{{ ceph_prefix }}0/24'
 
 sunfire::storage::ceph::osd::is_monitor_ceph_client: false
 
@@ -19,21 +15,17 @@ sunfire::storage::ceph::osd::is_monitor_ceph_client: false
 #默认管理存储网络的网卡
 sunfire::storage::ceph::osd::manage_interface: false
 #设置存储网络eth2的地址段
-sunfire::storage::ceph::osd::network_eth2_prefix: '{{ ceph_prefix }}'
+sunfire::storage::ceph::osd::network_eth2_prefix: '{{ stroage_prefix }}'
 #设置存储网络的eth2的网关
-sunfire::storage::ceph::osd::eth2_gateway: '{{ ceph_prefix }}1'
+sunfire::storage::ceph::osd::eth2_gateway: '{{ stroage_gateway }}'
 #设置osd的monitor的主机数量
-sunfire::storage::ceph::osd::mon_members: '{{ ceph_mon_members }}'
+sunfire::storage::ceph::osd::mon_members: '{{ ceph_mon_hosts }}'
 #设置osd的montior的ip数量
 sunfire::storage::ceph::osd::mon_hosts: '{{ ceph_mon_hosts }}'
-#设置存储网络eth2的地址段
-#sunfire::storage::ceph::osd::network_eth2_prefix: '{{ ceph_prefix }}'
-#设置存储网络的eth2的网关
-#sunfire::storage::ceph::osd::eth2_gateway: '{{ ceph_prefix }}1'
 #设置osd节点公共网段
-sunfire::storage::ceph::osd::public_network: '{{ ceph_prefix }}0/24'
+sunfire::storage::ceph::osd::public_network: '{{ storage_network }}'
 #设置osd节点集群网段
-sunfire::storage::ceph::osd::cluster_network: '{{ ceph_prefix }}0/24'
+sunfire::storage::ceph::osd::cluster_network: '{{ storage_network }}'
 
 # Ceph Debug Options，建议开启，消耗少量性能，以便于在出现异常时能够追踪错误信息
 ceph::debug_enable: true

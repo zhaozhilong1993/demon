@@ -3,7 +3,7 @@
 
 
 ## 配置first_hyper
-- hosts: first_hyper
+- hosts: localhost
   gather_facts: no
   roles:
     - { role: first_hyper, method: config_foreman_proxy }

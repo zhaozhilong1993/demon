@@ -56,5 +56,5 @@
   delegate_to: 127.0.0.1
 
 - name: create clustershell configuration
-  template: src=clushgroup.yaml dest=/tmp/clushgroup/{{ domain_region }}.group
+  template: src=clushgroup.yaml dest=/tmp/clushgroup/{{ domain }}.group
   delegate_to: 127.0.0.1

@@ -1,12 +1,12 @@
 # file:  roles/cluster/tasks/main.yml
 
-- name: 创建目录
+- name: Create hieradata directory
   file: dest=/etc/puppet/hieradata/{{ domain }}/common mode=755 state=directory
-  delegate_to: "{{ real_puppet_server }}"
+  delegate_to: "{{ global_parameter.puppet_server.ip }}"
 
-- name: 生成 Common Hieradata
+- name: Create common hieradata
   template: src={{ item }} dest=/etc/puppet/hieradata/{{ domain }}/{{ item }}
-  delegate_to: "{{ real_puppet_server }}"
+  delegate_to: "{{ global_parameter.puppet_server.ip }}"
   with_items:
       - common/base.yaml
       - common/api.yaml
@@ -19,17 +19,17 @@
       - common/network.yaml
       - common/package.yaml
 
-- name: 生成 Hypervisor Hieradata
+- name: Create hypervisor hieradata
   template: src={{ item }} dest=/etc/puppet/hieradata/{{ domain }}/{{ item }}
-  delegate_to: "{{ real_puppet_server }}"
+  delegate_to: "{{ global_parameter.puppet_server.ip }}"
   with_items:
        - server-31.yaml
        - server-32.yaml
        - server-33.yaml
 
-- name: 生成 VM Hieradata
+- name: Create VM hieradata
   template: src={{ item }} dest=/etc/puppet/hieradata/{{ domain }}/{{ item }}
-  delegate_to: "{{ real_puppet_server }}"
+  delegate_to: "{{ global_parameter.puppet_server.ip }}"
   with_items:
        - server-34.yaml
        - server-41.yaml
@@ -38,9 +38,10 @@
        - server-47.yaml
        - server-48.yaml
        - server-50.yaml
-- name: 生成Network Hieradata
+
+- name: Create Network node hieradata
   template: src={{ item }} dest=/etc/puppet/hieradata/{{ domain }}/{{ item }}
-  delegate_to: "{{ real_puppet_server }}"
+  delegate_to: "{{ global_parameter.puppet_server.ip }}"
   with_items:
       - server-64.yaml
       - server-65.yaml

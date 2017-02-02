@@ -1,5 +1,5 @@
 # file:  roles/cluster/tasks/create.yml
 
-- name: 添加foreman hosts
-  shell: curl {{ foreman_master }}:8080/add_hosts -X POST -d 'cluster_name={{ domain_region }}' -d 'hosts={{ groups["Hypervisor"] }}'
+- name: add foreman hosts
+  shell: curl {{ global_parameter.foreman_server.ip }}:8080/add_hosts -X POST -d 'cluster_name={{ domain }}' -d 'hosts={{ groups["Hypervisor"] }}'
   delegate_to: 127.0.0.1

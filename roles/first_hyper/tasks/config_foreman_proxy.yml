@@ -1,5 +1,19 @@
 # file: roles/first_hyper/tasks/config_foreman_proxy.yml
 #
+- name: Delete Global Parameters
+  delegate_to: 127.0.0.1
+  script: foreman_setting.py --method delete_parameters --parameter_key {{ item }}
+  with_items:
+    - foreman_server
+    - ntp_server
+    - yum_server
+    - puppet_server
+
+- name: Create Global Parameters
+  delegate_to: 127.0.0.1
+  script: foreman_setting.py --method create_parameters --parameter_key {{ item.key }} --parameter_value {{ item.value.ip }}
+  with_dict: "{{ global_parameter}}"
+
 - name: Check Domain Is Created
   delegate_to: 127.0.0.1
   register: domain_exist
@@ -7,7 +21,7 @@
 
 - name: Create Domain
   delegate_to: 127.0.0.1
-  script: foreman_setting.py --method create_domain --domain {{ domain }} --region {{ domain_region }}
+  script: foreman_setting.py --method create_domain --domain {{ domain }} --region {{ domain }}
   when: "'Not Exist' in domain_exist.stdout.strip()"
 
 - name: Check Domain Is Created
@@ -23,7 +37,7 @@
 
 - name: Create SmartProxy
   delegate_to: 127.0.0.1
-  script: foreman_setting.py --method create_smart_proxy --domain {{ domain }} --prefix {{ manage_prefix }} --is-online {{ on_line }}
+  script: foreman_setting.py --method create_smart_proxy --domain {{ domain }} --prefix {{ manage_prefix }} --is-online False
   when: "'Not Exist' in smartproxy_exist.stdout.strip()"
 
 - name: Check SmartProxy
@@ -56,7 +70,7 @@
 
 - name: Create Media
   delegate_to: 127.0.0.1
-  script: foreman_setting.py --method create_media --domain {{ domain }} --prefix {{ manage_prefix }} --is-online {{ on_line }}
+  script: foreman_setting.py --method create_media --domain {{ domain }} --prefix {{ manage_prefix }} --is-online False
   when: "'Not Exist' in media_exist.stdout.strip()"
 
 - name: Check Media Create

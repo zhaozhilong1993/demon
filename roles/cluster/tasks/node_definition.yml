@@ -1,6 +1,6 @@
 # file: roles/software/tasks/node_definition.yml
 
-- name: 生成Node Definition
-  delegate_to: "{{ real_puppet_server }}"
+- name: Create node Definition
+  delegate_to: "{{ global_parameter.puppet_server.ip }}"
   register: node_definition
-  template: src=node_definition.j2 dest=/etc/puppet/environments/{{ puppet_env }}/manifests/cluster/{{ domain_region }}.pp
+  template: src=node_definition.j2 dest=/etc/puppet/environments/{{ puppet_env }}/manifests/cluster/{{ domain }}.pp

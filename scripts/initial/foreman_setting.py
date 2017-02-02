@@ -4,9 +4,11 @@ import argparse
 import sys
 import json
 import requests
+import yaml
 from requests.auth import HTTPBasicAuth
 
 headers = {'content-type': 'application/json'}
+config = yaml.safe_load(file('/root/ctask/install/config.yaml'))
 
 def define_data():
     defined_data = {
@@ -49,6 +51,8 @@ def generate_options():
     parser.add_argument("-c", "--mac", help="first ethernet mac of the server")
     parser.add_argument("-n", "--name", help="enter the name you want to find")
     parser.add_argument("-d", "--domain", help="set vm domain")
+    parser.add_argument("-k", "--parameter_key", help="set global parameters")
+    parser.add_argument("-v", "--parameter_value", help="set global value")
     parser.add_argument("-p", "--prefix", help="prefix of this cluster")
     parser.add_argument("-r", "--region", help="cluster region name")
     parser.add_argument("-g", "--hostgroup", help="host group of in foreman")
@@ -67,7 +71,7 @@ def get_client(resource, method="GET", data=None):
     :returns: return data
 
     """
-    url = "http://foreman.ustack.com:3000/api/v2/"
+    url = "http://%s:3000/api/v2/" % config['global_parameter']['puppet_server']['ip']
     basic_auth = HTTPBasicAuth("api_post_user", "n5Ba7Xu2FB")
     finalurl = url + resource
     if method == "GET":
@@ -80,6 +84,9 @@ def get_client(resource, method="GET", data=None):
         else:
           print r.json()
           sys.exit(1)
+    elif method == "DELETE":
+        r = requests.delete(finalurl, headers=headers, auth=basic_auth)
+        print r.json()
 
 def search_id_by_name(option, name):
     data = get_client(option, data={"search": name})
@@ -121,13 +128,10 @@ def check_media(domain):
     region = domain.split(".")[1]
     return search_id_by_name("media", region + "-" + cluster_id)
 
-def create_media(domain, prefix, is_online):
+def create_media(domain, prefix):
     cluster_id = domain.split(".")[0]
     region = domain.split(".")[1]
-    if is_online == 'True':
-        IP = '%s31' % prefix
-    else:
-        IP = '%s30' % prefix
+    IP = config['local_ip']
     data = {
         "medium": {
             "name": region + "-" + cluster_id,
@@ -137,6 +141,19 @@ def create_media(domain, prefix, is_online):
         }
     }
     return get_client("media", "POST", data=data)
+
+def delete_parameters(key):
+    return get_client("common_parameters/%s" % key, "DELETE")
+
+
+def create_parameters(key, value):
+    data = {
+        "common_parameter": {
+            "name": key,
+            "value": value
+        }
+    }
+    return get_client("common_parameters", "POST", data=data)
 
 def create_domain(domain, region):
     data =  {
@@ -164,13 +181,10 @@ def check_smart_proxy(domain):
         if name == smart_proxy['name']:
             return smart_proxy['id']
 
-def create_smart_proxy(domain, prefix, is_online):
+def create_smart_proxy(domain, prefix):
     cluster_id = domain.split(".")[0]
     region = domain.split(".")[1]
-    if is_online == 'True':
-        IP = '%s31' % prefix
-    else:
-        IP = '%s30' % prefix
+    IP = config['local_ip']
     data = {
             "name": region + "-" + cluster_id,
             "url": "http://%s:8443" % IP
@@ -214,7 +228,7 @@ class VM:
         if self.region == "dev":
             self.env_id = search_id_by_name("environments", "devel")
         else:
-            self.env_id = search_id_by_name("environments", "liberty")
+            self.env_id = search_id_by_name("environments", config['server_environments'])
 
         self.ip = ip
         self.cluster_id = domain.split(".")[0]
@@ -355,7 +369,7 @@ def main():
         except Exception, e:
             print "Not Exist"
     elif options.method == "create_media":
-        print create_media(options.domain, options.prefix, options.is_online)
+        print create_media(options.domain, options.prefix)
     elif options.method == "check_smart_proxy":
         try:
             is_smart_proxy = check_smart_proxy(options.domain)
@@ -366,7 +380,7 @@ def main():
         except Exception, e:
             print "Not Exist"
     elif options.method == "create_smart_proxy":
-        print create_smart_proxy(options.domain, options.prefix, options.is_online)
+        print create_smart_proxy(options.domain, options.prefix)
     elif options.method == "create_domain":
         print create_domain(options.domain, options.region)
     elif options.method == "check_compute_resource":
@@ -377,6 +391,11 @@ def main():
             print "Exist"
     elif options.method == "create_compute_resource":
         print create_compute_resource(options.region, options.ip)
+    elif options.method == "create_parameters":
+        print create_parameters(options.parameter_key, options.parameter_value)
+    elif options.method == "delete_parameters":
+        print delete_parameters(options.parameter_key)
+
 
 if __name__ == '__main__':
     main()

@@ -1,2 +1,2 @@
 ssh::server::config::listenaddress: "0.0.0.0"
-neutron::agents::ml2::ovs::local_ip: '{{ network_prefix }}64'
+neutron::agents::ml2::ovs::local_ip: '{{ tenant_prefix }}64'

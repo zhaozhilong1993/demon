@@ -9,15 +9,14 @@ sunfire::base::network_eth0_prefix: '{{ manage_prefix }}'
 sunfire::base::internal_network:
   - '10.0.0.0/8'
 # 设置eth0 的网关
-sunfire::base::internal_gateway: '{{ internal_gateway }}'
+sunfire::base::internal_gateway: '{{ manager_gateway }}'
 # 设置管理网络的网关，例如一般是eth0的网关
-sunfire::base::gateway: '{{ internal_gateway }}'
+sunfire::base::gateway: '{{ manager_gateway }}'
 #设置yum源的具体仓库，托管云基本为xx.mirrors.ustack.com
 sunfire::base::repo_host: 'mirrors.ustack.com'
 # 使用最新的仓库命名路径(需要ctask 0.3.0)
 uosbase::yum::use_new_repo: true
 # 以下方式已经废弃
-#sunfire::base::repo_host: '{{ domain_region }}.mirrors.ustack.com'
 # 设置集群的dns server的ip，托管云一般采用本地dns server，例如：10.xx.xx.249;10.xx.xx.250
 sunfire::base::nameservers:
   - 127.0.0.1
@@ -42,12 +41,8 @@ puppet::config::environment: '{{ puppet_env }}'
 ################################################################################################
 # 全局参数，默认不需要设置，如需要设置定制化值，去除注释即可
 ################################################################################################
-# Mcollective MQ 服务器，默认不需要调整该值
-#sunfire::base::middleware_hosts: ['mco.0.uc.ustack.in']
-# 设置集群的ntp服务器的域名，默认就是使用uc的
-#sunfire::base::ntp_server: 'ntp.0.uc.ustack.in'
 # 设置puppet master的域名，所有机器puppet master都通过nginx。所以默认都是puppet.0.uc.ustack.in
-sunfire::base::puppet_server: '{{ puppet_server_domain }}'
+sunfire::base::puppet_server: '{{ global_parameter.puppet_server.hostdomain }}'
 # 设置puppet agent请求server的时间间隔，例如设置为600，表示agent会间隔10分钟内执行一次puppet agent -vt
 #sunfire::base::puppet_runinterval: 9600
 # 设置yum.conf的metadata_expire 的值
@@ -60,14 +55,12 @@ sunfire::base::puppet_server: '{{ puppet_server_domain }}'
 ################################################################################################
 uosbase::host::manage_prefix: '{{ manage_prefix }}'
 uosbase::host::custom_hosts:
-  {{ puppet_server_domain }}:
-    ip: {{ puppet_forward_address }}
-  mc.0.uc.ustack.in:
-    ip: 10.255.0.205
-  forman.ustack.com:
-    ip: {{ foreman_master }}
-  ntp.0.uc.ustack.in:
-    ip: {{ ntp_server }}
+  {{ global_parameter.puppet_server.hostname }}:
+    ip: {{ global_parameter.puppet_server.ip }}
+  {{ global_parameter.foreman_server.hostname }}:
+    ip: {{ global_parameter.foreman_server.ip }}
+  {{ global_parameter.ntp_server.hostname }}:
+    ip: {{ global_parameter.ntp_server.ip }}
 
 # SSH keys for corosync
 sunfire::corosync::ssh_public_key:

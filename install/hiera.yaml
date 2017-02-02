@@ -4,4 +4,4 @@
 :hierarchy:
   - "config"
 :yaml:
-  :datadir: /root/puppet-bootstrap
+  :datadir: /root/ctask/install

@@ -4,20 +4,20 @@
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
-SET client_encoding = 'SQL_ASCII';
+SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 --
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
 --
 
 CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
 --
 
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
@@ -30,7 +30,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: architectures; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: architectures; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE architectures (
@@ -43,10 +43,8 @@ CREATE TABLE architectures (
 );
 
 
-ALTER TABLE architectures OWNER TO foreman;
-
 --
--- Name: architectures_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: architectures_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE architectures_id_seq
@@ -57,17 +55,15 @@ CREATE SEQUENCE architectures_id_seq
     CACHE 1;
 
 
-ALTER TABLE architectures_id_seq OWNER TO foreman;
-
 --
--- Name: architectures_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: architectures_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE architectures_id_seq OWNED BY architectures.id;
 
 
 --
--- Name: architectures_operatingsystems; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: architectures_operatingsystems; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE architectures_operatingsystems (
@@ -76,10 +72,8 @@ CREATE TABLE architectures_operatingsystems (
 );
 
 
-ALTER TABLE architectures_operatingsystems OWNER TO foreman;
-
 --
--- Name: audits; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: audits; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE audits (
@@ -102,10 +96,8 @@ CREATE TABLE audits (
 );
 
 
-ALTER TABLE audits OWNER TO foreman;
-
 --
--- Name: audits_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: audits_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE audits_id_seq
@@ -116,17 +108,15 @@ CREATE SEQUENCE audits_id_seq
     CACHE 1;
 
 
-ALTER TABLE audits_id_seq OWNER TO foreman;
-
 --
--- Name: audits_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: audits_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE audits_id_seq OWNED BY audits.id;
 
 
 --
--- Name: auth_sources; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: auth_sources; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE auth_sources (
@@ -154,10 +144,8 @@ CREATE TABLE auth_sources (
 );
 
 
-ALTER TABLE auth_sources OWNER TO foreman;
-
 --
--- Name: auth_sources_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: auth_sources_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE auth_sources_id_seq
@@ -168,17 +156,15 @@ CREATE SEQUENCE auth_sources_id_seq
     CACHE 1;
 
 
-ALTER TABLE auth_sources_id_seq OWNER TO foreman;
-
 --
--- Name: auth_sources_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: auth_sources_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE auth_sources_id_seq OWNED BY auth_sources.id;
 
 
 --
--- Name: bookmarks; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: bookmarks; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE bookmarks (
@@ -192,10 +178,8 @@ CREATE TABLE bookmarks (
 );
 
 
-ALTER TABLE bookmarks OWNER TO foreman;
-
 --
--- Name: bookmarks_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: bookmarks_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE bookmarks_id_seq
@@ -206,17 +190,15 @@ CREATE SEQUENCE bookmarks_id_seq
     CACHE 1;
 
 
-ALTER TABLE bookmarks_id_seq OWNER TO foreman;
-
 --
--- Name: bookmarks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: bookmarks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE bookmarks_id_seq OWNED BY bookmarks.id;
 
 
 --
--- Name: cached_user_roles; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: cached_user_roles; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE cached_user_roles (
@@ -229,10 +211,8 @@ CREATE TABLE cached_user_roles (
 );
 
 
-ALTER TABLE cached_user_roles OWNER TO foreman;
-
 --
--- Name: cached_user_roles_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: cached_user_roles_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE cached_user_roles_id_seq
@@ -243,17 +223,15 @@ CREATE SEQUENCE cached_user_roles_id_seq
     CACHE 1;
 
 
-ALTER TABLE cached_user_roles_id_seq OWNER TO foreman;
-
 --
--- Name: cached_user_roles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: cached_user_roles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE cached_user_roles_id_seq OWNED BY cached_user_roles.id;
 
 
 --
--- Name: cached_usergroup_members; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: cached_usergroup_members; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE cached_usergroup_members (
@@ -265,10 +243,8 @@ CREATE TABLE cached_usergroup_members (
 );
 
 
-ALTER TABLE cached_usergroup_members OWNER TO foreman;
-
 --
--- Name: cached_usergroup_members_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: cached_usergroup_members_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE cached_usergroup_members_id_seq
@@ -279,17 +255,15 @@ CREATE SEQUENCE cached_usergroup_members_id_seq
     CACHE 1;
 
 
-ALTER TABLE cached_usergroup_members_id_seq OWNER TO foreman;
-
 --
--- Name: cached_usergroup_members_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: cached_usergroup_members_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE cached_usergroup_members_id_seq OWNED BY cached_usergroup_members.id;
 
 
 --
--- Name: compute_attributes; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: compute_attributes; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE compute_attributes (
@@ -303,10 +277,8 @@ CREATE TABLE compute_attributes (
 );
 
 
-ALTER TABLE compute_attributes OWNER TO foreman;
-
 --
--- Name: compute_attributes_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: compute_attributes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE compute_attributes_id_seq
@@ -317,17 +289,15 @@ CREATE SEQUENCE compute_attributes_id_seq
     CACHE 1;
 
 
-ALTER TABLE compute_attributes_id_seq OWNER TO foreman;
-
 --
--- Name: compute_attributes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: compute_attributes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE compute_attributes_id_seq OWNED BY compute_attributes.id;
 
 
 --
--- Name: compute_profiles; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: compute_profiles; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE compute_profiles (
@@ -338,10 +308,8 @@ CREATE TABLE compute_profiles (
 );
 
 
-ALTER TABLE compute_profiles OWNER TO foreman;
-
 --
--- Name: compute_profiles_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: compute_profiles_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE compute_profiles_id_seq
@@ -352,17 +320,15 @@ CREATE SEQUENCE compute_profiles_id_seq
     CACHE 1;
 
 
-ALTER TABLE compute_profiles_id_seq OWNER TO foreman;
-
 --
--- Name: compute_profiles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: compute_profiles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE compute_profiles_id_seq OWNED BY compute_profiles.id;
 
 
 --
--- Name: compute_resources; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: compute_resources; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE compute_resources (
@@ -380,10 +346,8 @@ CREATE TABLE compute_resources (
 );
 
 
-ALTER TABLE compute_resources OWNER TO foreman;
-
 --
--- Name: compute_resources_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: compute_resources_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE compute_resources_id_seq
@@ -394,17 +358,15 @@ CREATE SEQUENCE compute_resources_id_seq
     CACHE 1;
 
 
-ALTER TABLE compute_resources_id_seq OWNER TO foreman;
-
 --
--- Name: compute_resources_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: compute_resources_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE compute_resources_id_seq OWNED BY compute_resources.id;
 
 
 --
--- Name: config_group_classes; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: config_group_classes; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE config_group_classes (
@@ -416,10 +378,8 @@ CREATE TABLE config_group_classes (
 );
 
 
-ALTER TABLE config_group_classes OWNER TO foreman;
-
 --
--- Name: config_group_classes_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: config_group_classes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE config_group_classes_id_seq
@@ -430,17 +390,15 @@ CREATE SEQUENCE config_group_classes_id_seq
     CACHE 1;
 
 
-ALTER TABLE config_group_classes_id_seq OWNER TO foreman;
-
 --
--- Name: config_group_classes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: config_group_classes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE config_group_classes_id_seq OWNED BY config_group_classes.id;
 
 
 --
--- Name: config_groups; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: config_groups; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE config_groups (
@@ -454,10 +412,8 @@ CREATE TABLE config_groups (
 );
 
 
-ALTER TABLE config_groups OWNER TO foreman;
-
 --
--- Name: config_groups_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: config_groups_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE config_groups_id_seq
@@ -468,17 +424,15 @@ CREATE SEQUENCE config_groups_id_seq
     CACHE 1;
 
 
-ALTER TABLE config_groups_id_seq OWNER TO foreman;
-
 --
--- Name: config_groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: config_groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE config_groups_id_seq OWNED BY config_groups.id;
 
 
 --
--- Name: config_templates; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: config_templates; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE config_templates (
@@ -495,10 +449,8 @@ CREATE TABLE config_templates (
 );
 
 
-ALTER TABLE config_templates OWNER TO foreman;
-
 --
--- Name: config_templates_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: config_templates_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE config_templates_id_seq
@@ -509,17 +461,15 @@ CREATE SEQUENCE config_templates_id_seq
     CACHE 1;
 
 
-ALTER TABLE config_templates_id_seq OWNER TO foreman;
-
 --
--- Name: config_templates_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: config_templates_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE config_templates_id_seq OWNED BY config_templates.id;
 
 
 --
--- Name: config_templates_operatingsystems; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: config_templates_operatingsystems; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE config_templates_operatingsystems (
@@ -528,10 +478,8 @@ CREATE TABLE config_templates_operatingsystems (
 );
 
 
-ALTER TABLE config_templates_operatingsystems OWNER TO foreman;
-
 --
--- Name: domains; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: domains; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE domains (
@@ -546,10 +494,8 @@ CREATE TABLE domains (
 );
 
 
-ALTER TABLE domains OWNER TO foreman;
-
 --
--- Name: domains_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: domains_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE domains_id_seq
@@ -560,17 +506,15 @@ CREATE SEQUENCE domains_id_seq
     CACHE 1;
 
 
-ALTER TABLE domains_id_seq OWNER TO foreman;
-
 --
--- Name: domains_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: domains_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE domains_id_seq OWNED BY domains.id;
 
 
 --
--- Name: environment_classes; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: environment_classes; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE environment_classes (
@@ -581,10 +525,8 @@ CREATE TABLE environment_classes (
 );
 
 
-ALTER TABLE environment_classes OWNER TO foreman;
-
 --
--- Name: environment_classes_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: environment_classes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE environment_classes_id_seq
@@ -595,17 +537,15 @@ CREATE SEQUENCE environment_classes_id_seq
     CACHE 1;
 
 
-ALTER TABLE environment_classes_id_seq OWNER TO foreman;
-
 --
--- Name: environment_classes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: environment_classes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE environment_classes_id_seq OWNED BY environment_classes.id;
 
 
 --
--- Name: environments; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: environments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE environments (
@@ -618,10 +558,8 @@ CREATE TABLE environments (
 );
 
 
-ALTER TABLE environments OWNER TO foreman;
-
 --
--- Name: environments_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: environments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE environments_id_seq
@@ -632,17 +570,15 @@ CREATE SEQUENCE environments_id_seq
     CACHE 1;
 
 
-ALTER TABLE environments_id_seq OWNER TO foreman;
-
 --
--- Name: environments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: environments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE environments_id_seq OWNED BY environments.id;
 
 
 --
--- Name: external_usergroups; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: external_usergroups; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE external_usergroups (
@@ -653,10 +589,8 @@ CREATE TABLE external_usergroups (
 );
 
 
-ALTER TABLE external_usergroups OWNER TO foreman;
-
 --
--- Name: external_usergroups_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: external_usergroups_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE external_usergroups_id_seq
@@ -667,17 +601,15 @@ CREATE SEQUENCE external_usergroups_id_seq
     CACHE 1;
 
 
-ALTER TABLE external_usergroups_id_seq OWNER TO foreman;
-
 --
--- Name: external_usergroups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: external_usergroups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE external_usergroups_id_seq OWNED BY external_usergroups.id;
 
 
 --
--- Name: fact_names; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: fact_names; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE fact_names (
@@ -692,10 +624,8 @@ CREATE TABLE fact_names (
 );
 
 
-ALTER TABLE fact_names OWNER TO foreman;
-
 --
--- Name: fact_names_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: fact_names_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE fact_names_id_seq
@@ -706,17 +636,15 @@ CREATE SEQUENCE fact_names_id_seq
     CACHE 1;
 
 
-ALTER TABLE fact_names_id_seq OWNER TO foreman;
-
 --
--- Name: fact_names_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: fact_names_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE fact_names_id_seq OWNED BY fact_names.id;
 
 
 --
--- Name: fact_values; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: fact_values; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE fact_values (
@@ -729,10 +657,8 @@ CREATE TABLE fact_values (
 );
 
 
-ALTER TABLE fact_values OWNER TO foreman;
-
 --
--- Name: fact_values_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: fact_values_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE fact_values_id_seq
@@ -743,17 +669,15 @@ CREATE SEQUENCE fact_values_id_seq
     CACHE 1;
 
 
-ALTER TABLE fact_values_id_seq OWNER TO foreman;
-
 --
--- Name: fact_values_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: fact_values_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE fact_values_id_seq OWNED BY fact_values.id;
 
 
 --
--- Name: features; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: features; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE features (
@@ -764,10 +688,8 @@ CREATE TABLE features (
 );
 
 
-ALTER TABLE features OWNER TO foreman;
-
 --
--- Name: features_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: features_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE features_id_seq
@@ -778,17 +700,15 @@ CREATE SEQUENCE features_id_seq
     CACHE 1;
 
 
-ALTER TABLE features_id_seq OWNER TO foreman;
-
 --
--- Name: features_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: features_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE features_id_seq OWNED BY features.id;
 
 
 --
--- Name: features_smart_proxies; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: features_smart_proxies; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE features_smart_proxies (
@@ -797,10 +717,8 @@ CREATE TABLE features_smart_proxies (
 );
 
 
-ALTER TABLE features_smart_proxies OWNER TO foreman;
-
 --
--- Name: filterings; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: filterings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE filterings (
@@ -812,10 +730,8 @@ CREATE TABLE filterings (
 );
 
 
-ALTER TABLE filterings OWNER TO foreman;
-
 --
--- Name: filterings_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: filterings_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE filterings_id_seq
@@ -826,17 +742,15 @@ CREATE SEQUENCE filterings_id_seq
     CACHE 1;
 
 
-ALTER TABLE filterings_id_seq OWNER TO foreman;
-
 --
--- Name: filterings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: filterings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE filterings_id_seq OWNED BY filterings.id;
 
 
 --
--- Name: filters; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: filters; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE filters (
@@ -849,10 +763,8 @@ CREATE TABLE filters (
 );
 
 
-ALTER TABLE filters OWNER TO foreman;
-
 --
--- Name: filters_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: filters_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE filters_id_seq
@@ -863,17 +775,15 @@ CREATE SEQUENCE filters_id_seq
     CACHE 1;
 
 
-ALTER TABLE filters_id_seq OWNER TO foreman;
-
 --
--- Name: filters_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: filters_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE filters_id_seq OWNED BY filters.id;
 
 
 --
--- Name: host_classes; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: host_classes; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE host_classes (
@@ -883,10 +793,8 @@ CREATE TABLE host_classes (
 );
 
 
-ALTER TABLE host_classes OWNER TO foreman;
-
 --
--- Name: host_classes_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: host_classes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE host_classes_id_seq
@@ -897,17 +805,15 @@ CREATE SEQUENCE host_classes_id_seq
     CACHE 1;
 
 
-ALTER TABLE host_classes_id_seq OWNER TO foreman;
-
 --
--- Name: host_classes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: host_classes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE host_classes_id_seq OWNED BY host_classes.id;
 
 
 --
--- Name: host_config_groups; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: host_config_groups; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE host_config_groups (
@@ -920,10 +826,8 @@ CREATE TABLE host_config_groups (
 );
 
 
-ALTER TABLE host_config_groups OWNER TO foreman;
-
 --
--- Name: host_config_groups_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: host_config_groups_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE host_config_groups_id_seq
@@ -934,17 +838,15 @@ CREATE SEQUENCE host_config_groups_id_seq
     CACHE 1;
 
 
-ALTER TABLE host_config_groups_id_seq OWNER TO foreman;
-
 --
--- Name: host_config_groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: host_config_groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE host_config_groups_id_seq OWNED BY host_config_groups.id;
 
 
 --
--- Name: hostgroup_classes; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: hostgroup_classes; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE hostgroup_classes (
@@ -954,10 +856,8 @@ CREATE TABLE hostgroup_classes (
 );
 
 
-ALTER TABLE hostgroup_classes OWNER TO foreman;
-
 --
--- Name: hostgroup_classes_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: hostgroup_classes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE hostgroup_classes_id_seq
@@ -968,17 +868,15 @@ CREATE SEQUENCE hostgroup_classes_id_seq
     CACHE 1;
 
 
-ALTER TABLE hostgroup_classes_id_seq OWNER TO foreman;
-
 --
--- Name: hostgroup_classes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: hostgroup_classes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE hostgroup_classes_id_seq OWNED BY hostgroup_classes.id;
 
 
 --
--- Name: hostgroups; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: hostgroups; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE hostgroups (
@@ -1007,10 +905,8 @@ CREATE TABLE hostgroups (
 );
 
 
-ALTER TABLE hostgroups OWNER TO foreman;
-
 --
--- Name: hostgroups_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: hostgroups_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE hostgroups_id_seq
@@ -1021,17 +917,15 @@ CREATE SEQUENCE hostgroups_id_seq
     CACHE 1;
 
 
-ALTER TABLE hostgroups_id_seq OWNER TO foreman;
-
 --
--- Name: hostgroups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: hostgroups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE hostgroups_id_seq OWNED BY hostgroups.id;
 
 
 --
--- Name: hosts; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: hosts; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE hosts (
@@ -1080,10 +974,8 @@ CREATE TABLE hosts (
 );
 
 
-ALTER TABLE hosts OWNER TO foreman;
-
 --
--- Name: hosts_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: hosts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE hosts_id_seq
@@ -1094,17 +986,15 @@ CREATE SEQUENCE hosts_id_seq
     CACHE 1;
 
 
-ALTER TABLE hosts_id_seq OWNER TO foreman;
-
 --
--- Name: hosts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: hosts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE hosts_id_seq OWNED BY hosts.id;
 
 
 --
--- Name: images; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: images; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE images (
@@ -1123,10 +1013,8 @@ CREATE TABLE images (
 );
 
 
-ALTER TABLE images OWNER TO foreman;
-
 --
--- Name: images_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: images_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE images_id_seq
@@ -1137,17 +1025,15 @@ CREATE SEQUENCE images_id_seq
     CACHE 1;
 
 
-ALTER TABLE images_id_seq OWNER TO foreman;
-
 --
--- Name: images_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: images_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE images_id_seq OWNED BY images.id;
 
 
 --
--- Name: key_pairs; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: key_pairs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE key_pairs (
@@ -1161,10 +1047,8 @@ CREATE TABLE key_pairs (
 );
 
 
-ALTER TABLE key_pairs OWNER TO foreman;
-
 --
--- Name: key_pairs_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: key_pairs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE key_pairs_id_seq
@@ -1175,17 +1059,15 @@ CREATE SEQUENCE key_pairs_id_seq
     CACHE 1;
 
 
-ALTER TABLE key_pairs_id_seq OWNER TO foreman;
-
 --
--- Name: key_pairs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: key_pairs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE key_pairs_id_seq OWNED BY key_pairs.id;
 
 
 --
--- Name: locations_organizations; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: locations_organizations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE locations_organizations (
@@ -1194,10 +1076,8 @@ CREATE TABLE locations_organizations (
 );
 
 
-ALTER TABLE locations_organizations OWNER TO foreman;
-
 --
--- Name: logs; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: logs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE logs (
@@ -1211,10 +1091,8 @@ CREATE TABLE logs (
 );
 
 
-ALTER TABLE logs OWNER TO foreman;
-
 --
--- Name: logs_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: logs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE logs_id_seq
@@ -1225,17 +1103,15 @@ CREATE SEQUENCE logs_id_seq
     CACHE 1;
 
 
-ALTER TABLE logs_id_seq OWNER TO foreman;
-
 --
--- Name: logs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: logs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE logs_id_seq OWNED BY logs.id;
 
 
 --
--- Name: lookup_keys; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: lookup_keys; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE lookup_keys (
@@ -1260,10 +1136,8 @@ CREATE TABLE lookup_keys (
 );
 
 
-ALTER TABLE lookup_keys OWNER TO foreman;
-
 --
--- Name: lookup_keys_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: lookup_keys_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE lookup_keys_id_seq
@@ -1274,17 +1148,15 @@ CREATE SEQUENCE lookup_keys_id_seq
     CACHE 1;
 
 
-ALTER TABLE lookup_keys_id_seq OWNER TO foreman;
-
 --
--- Name: lookup_keys_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: lookup_keys_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE lookup_keys_id_seq OWNED BY lookup_keys.id;
 
 
 --
--- Name: lookup_values; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: lookup_values; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE lookup_values (
@@ -1298,10 +1170,8 @@ CREATE TABLE lookup_values (
 );
 
 
-ALTER TABLE lookup_values OWNER TO foreman;
-
 --
--- Name: lookup_values_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: lookup_values_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE lookup_values_id_seq
@@ -1312,17 +1182,15 @@ CREATE SEQUENCE lookup_values_id_seq
     CACHE 1;
 
 
-ALTER TABLE lookup_values_id_seq OWNER TO foreman;
-
 --
--- Name: lookup_values_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: lookup_values_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE lookup_values_id_seq OWNED BY lookup_values.id;
 
 
 --
--- Name: mail_notifications; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: mail_notifications; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE mail_notifications (
@@ -1339,10 +1207,8 @@ CREATE TABLE mail_notifications (
 );
 
 
-ALTER TABLE mail_notifications OWNER TO foreman;
-
 --
--- Name: mail_notifications_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: mail_notifications_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE mail_notifications_id_seq
@@ -1353,17 +1219,15 @@ CREATE SEQUENCE mail_notifications_id_seq
     CACHE 1;
 
 
-ALTER TABLE mail_notifications_id_seq OWNER TO foreman;
-
 --
--- Name: mail_notifications_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: mail_notifications_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE mail_notifications_id_seq OWNED BY mail_notifications.id;
 
 
 --
--- Name: media; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: media; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE media (
@@ -1379,10 +1243,8 @@ CREATE TABLE media (
 );
 
 
-ALTER TABLE media OWNER TO foreman;
-
 --
--- Name: media_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: media_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE media_id_seq
@@ -1393,17 +1255,15 @@ CREATE SEQUENCE media_id_seq
     CACHE 1;
 
 
-ALTER TABLE media_id_seq OWNER TO foreman;
-
 --
--- Name: media_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: media_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE media_id_seq OWNED BY media.id;
 
 
 --
--- Name: media_operatingsystems; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: media_operatingsystems; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE media_operatingsystems (
@@ -1412,10 +1272,8 @@ CREATE TABLE media_operatingsystems (
 );
 
 
-ALTER TABLE media_operatingsystems OWNER TO foreman;
-
 --
--- Name: messages; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: messages; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE messages (
@@ -1425,10 +1283,8 @@ CREATE TABLE messages (
 );
 
 
-ALTER TABLE messages OWNER TO foreman;
-
 --
--- Name: messages_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: messages_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE messages_id_seq
@@ -1439,17 +1295,15 @@ CREATE SEQUENCE messages_id_seq
     CACHE 1;
 
 
-ALTER TABLE messages_id_seq OWNER TO foreman;
-
 --
--- Name: messages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: messages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE messages_id_seq OWNED BY messages.id;
 
 
 --
--- Name: models; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: models; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE models (
@@ -1464,10 +1318,8 @@ CREATE TABLE models (
 );
 
 
-ALTER TABLE models OWNER TO foreman;
-
 --
--- Name: models_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: models_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE models_id_seq
@@ -1478,17 +1330,15 @@ CREATE SEQUENCE models_id_seq
     CACHE 1;
 
 
-ALTER TABLE models_id_seq OWNER TO foreman;
-
 --
--- Name: models_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: models_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE models_id_seq OWNED BY models.id;
 
 
 --
--- Name: nics; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: nics; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE nics (
@@ -1521,10 +1371,8 @@ CREATE TABLE nics (
 );
 
 
-ALTER TABLE nics OWNER TO foreman;
-
 --
--- Name: nics_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: nics_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE nics_id_seq
@@ -1535,17 +1383,15 @@ CREATE SEQUENCE nics_id_seq
     CACHE 1;
 
 
-ALTER TABLE nics_id_seq OWNER TO foreman;
-
 --
--- Name: nics_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: nics_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE nics_id_seq OWNED BY nics.id;
 
 
 --
--- Name: operatingsystems; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: operatingsystems; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE operatingsystems (
@@ -1566,10 +1412,8 @@ CREATE TABLE operatingsystems (
 );
 
 
-ALTER TABLE operatingsystems OWNER TO foreman;
-
 --
--- Name: operatingsystems_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: operatingsystems_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE operatingsystems_id_seq
@@ -1580,17 +1424,15 @@ CREATE SEQUENCE operatingsystems_id_seq
     CACHE 1;
 
 
-ALTER TABLE operatingsystems_id_seq OWNER TO foreman;
-
 --
--- Name: operatingsystems_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: operatingsystems_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE operatingsystems_id_seq OWNED BY operatingsystems.id;
 
 
 --
--- Name: operatingsystems_ptables; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: operatingsystems_ptables; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE operatingsystems_ptables (
@@ -1599,10 +1441,8 @@ CREATE TABLE operatingsystems_ptables (
 );
 
 
-ALTER TABLE operatingsystems_ptables OWNER TO foreman;
-
 --
--- Name: operatingsystems_puppetclasses; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: operatingsystems_puppetclasses; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE operatingsystems_puppetclasses (
@@ -1611,10 +1451,8 @@ CREATE TABLE operatingsystems_puppetclasses (
 );
 
 
-ALTER TABLE operatingsystems_puppetclasses OWNER TO foreman;
-
 --
--- Name: os_default_templates; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: os_default_templates; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE os_default_templates (
@@ -1627,10 +1465,8 @@ CREATE TABLE os_default_templates (
 );
 
 
-ALTER TABLE os_default_templates OWNER TO foreman;
-
 --
--- Name: os_default_templates_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: os_default_templates_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE os_default_templates_id_seq
@@ -1641,17 +1477,15 @@ CREATE SEQUENCE os_default_templates_id_seq
     CACHE 1;
 
 
-ALTER TABLE os_default_templates_id_seq OWNER TO foreman;
-
 --
--- Name: os_default_templates_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: os_default_templates_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE os_default_templates_id_seq OWNED BY os_default_templates.id;
 
 
 --
--- Name: parameters; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: parameters; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE parameters (
@@ -1667,10 +1501,8 @@ CREATE TABLE parameters (
 );
 
 
-ALTER TABLE parameters OWNER TO foreman;
-
 --
--- Name: parameters_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: parameters_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE parameters_id_seq
@@ -1681,17 +1513,15 @@ CREATE SEQUENCE parameters_id_seq
     CACHE 1;
 
 
-ALTER TABLE parameters_id_seq OWNER TO foreman;
-
 --
--- Name: parameters_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: parameters_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE parameters_id_seq OWNED BY parameters.id;
 
 
 --
--- Name: permissions; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: permissions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE permissions (
@@ -1703,10 +1533,8 @@ CREATE TABLE permissions (
 );
 
 
-ALTER TABLE permissions OWNER TO foreman;
-
 --
--- Name: permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE permissions_id_seq
@@ -1717,17 +1545,15 @@ CREATE SEQUENCE permissions_id_seq
     CACHE 1;
 
 
-ALTER TABLE permissions_id_seq OWNER TO foreman;
-
 --
--- Name: permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE permissions_id_seq OWNED BY permissions.id;
 
 
 --
--- Name: ptables; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: ptables; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE ptables (
@@ -1740,10 +1566,8 @@ CREATE TABLE ptables (
 );
 
 
-ALTER TABLE ptables OWNER TO foreman;
-
 --
--- Name: ptables_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: ptables_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE ptables_id_seq
@@ -1754,17 +1578,15 @@ CREATE SEQUENCE ptables_id_seq
     CACHE 1;
 
 
-ALTER TABLE ptables_id_seq OWNER TO foreman;
-
 --
--- Name: ptables_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: ptables_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE ptables_id_seq OWNED BY ptables.id;
 
 
 --
--- Name: puppetclasses; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: puppetclasses; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE puppetclasses (
@@ -1779,10 +1601,8 @@ CREATE TABLE puppetclasses (
 );
 
 
-ALTER TABLE puppetclasses OWNER TO foreman;
-
 --
--- Name: puppetclasses_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: puppetclasses_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE puppetclasses_id_seq
@@ -1793,17 +1613,15 @@ CREATE SEQUENCE puppetclasses_id_seq
     CACHE 1;
 
 
-ALTER TABLE puppetclasses_id_seq OWNER TO foreman;
-
 --
--- Name: puppetclasses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: puppetclasses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE puppetclasses_id_seq OWNED BY puppetclasses.id;
 
 
 --
--- Name: realms; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: realms; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE realms (
@@ -1818,10 +1636,8 @@ CREATE TABLE realms (
 );
 
 
-ALTER TABLE realms OWNER TO foreman;
-
 --
--- Name: realms_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: realms_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE realms_id_seq
@@ -1832,17 +1648,15 @@ CREATE SEQUENCE realms_id_seq
     CACHE 1;
 
 
-ALTER TABLE realms_id_seq OWNER TO foreman;
-
 --
--- Name: realms_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: realms_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE realms_id_seq OWNED BY realms.id;
 
 
 --
--- Name: reports; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: reports; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE reports (
@@ -1856,10 +1670,8 @@ CREATE TABLE reports (
 );
 
 
-ALTER TABLE reports OWNER TO foreman;
-
 --
--- Name: reports_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: reports_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE reports_id_seq
@@ -1870,17 +1682,15 @@ CREATE SEQUENCE reports_id_seq
     CACHE 1;
 
 
-ALTER TABLE reports_id_seq OWNER TO foreman;
-
 --
--- Name: reports_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: reports_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE reports_id_seq OWNED BY reports.id;
 
 
 --
--- Name: roles; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: roles; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE roles (
@@ -1891,10 +1701,8 @@ CREATE TABLE roles (
 );
 
 
-ALTER TABLE roles OWNER TO foreman;
-
 --
--- Name: roles_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: roles_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE roles_id_seq
@@ -1905,17 +1713,15 @@ CREATE SEQUENCE roles_id_seq
     CACHE 1;
 
 
-ALTER TABLE roles_id_seq OWNER TO foreman;
-
 --
--- Name: roles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: roles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE roles_id_seq OWNED BY roles.id;
 
 
 --
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE schema_migrations (
@@ -1923,10 +1729,8 @@ CREATE TABLE schema_migrations (
 );
 
 
-ALTER TABLE schema_migrations OWNER TO foreman;
-
 --
--- Name: sessions; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: sessions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE sessions (
@@ -1938,10 +1742,8 @@ CREATE TABLE sessions (
 );
 
 
-ALTER TABLE sessions OWNER TO foreman;
-
 --
--- Name: sessions_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: sessions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE sessions_id_seq
@@ -1952,17 +1754,15 @@ CREATE SEQUENCE sessions_id_seq
     CACHE 1;
 
 
-ALTER TABLE sessions_id_seq OWNER TO foreman;
-
 --
--- Name: sessions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: sessions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE sessions_id_seq OWNED BY sessions.id;
 
 
 --
--- Name: settings; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: settings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE settings (
@@ -1978,10 +1778,8 @@ CREATE TABLE settings (
 );
 
 
-ALTER TABLE settings OWNER TO foreman;
-
 --
--- Name: settings_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: settings_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE settings_id_seq
@@ -1992,17 +1790,15 @@ CREATE SEQUENCE settings_id_seq
     CACHE 1;
 
 
-ALTER TABLE settings_id_seq OWNER TO foreman;
-
 --
--- Name: settings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: settings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE settings_id_seq OWNED BY settings.id;
 
 
 --
--- Name: smart_proxies; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: smart_proxies; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE smart_proxies (
@@ -2014,10 +1810,8 @@ CREATE TABLE smart_proxies (
 );
 
 
-ALTER TABLE smart_proxies OWNER TO foreman;
-
 --
--- Name: smart_proxies_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: smart_proxies_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE smart_proxies_id_seq
@@ -2028,17 +1822,15 @@ CREATE SEQUENCE smart_proxies_id_seq
     CACHE 1;
 
 
-ALTER TABLE smart_proxies_id_seq OWNER TO foreman;
-
 --
--- Name: smart_proxies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: smart_proxies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE smart_proxies_id_seq OWNED BY smart_proxies.id;
 
 
 --
--- Name: sources; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: sources; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE sources (
@@ -2048,10 +1840,8 @@ CREATE TABLE sources (
 );
 
 
-ALTER TABLE sources OWNER TO foreman;
-
 --
--- Name: sources_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: sources_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE sources_id_seq
@@ -2062,17 +1852,15 @@ CREATE SEQUENCE sources_id_seq
     CACHE 1;
 
 
-ALTER TABLE sources_id_seq OWNER TO foreman;
-
 --
--- Name: sources_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: sources_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE sources_id_seq OWNED BY sources.id;
 
 
 --
--- Name: subnet_domains; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: subnet_domains; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE subnet_domains (
@@ -2084,10 +1872,8 @@ CREATE TABLE subnet_domains (
 );
 
 
-ALTER TABLE subnet_domains OWNER TO foreman;
-
 --
--- Name: subnet_domains_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: subnet_domains_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE subnet_domains_id_seq
@@ -2098,17 +1884,15 @@ CREATE SEQUENCE subnet_domains_id_seq
     CACHE 1;
 
 
-ALTER TABLE subnet_domains_id_seq OWNER TO foreman;
-
 --
--- Name: subnet_domains_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: subnet_domains_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE subnet_domains_id_seq OWNED BY subnet_domains.id;
 
 
 --
--- Name: subnets; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: subnets; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE subnets (
@@ -2133,10 +1917,8 @@ CREATE TABLE subnets (
 );
 
 
-ALTER TABLE subnets OWNER TO foreman;
-
 --
--- Name: subnets_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: subnets_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE subnets_id_seq
@@ -2147,17 +1929,15 @@ CREATE SEQUENCE subnets_id_seq
     CACHE 1;
 
 
-ALTER TABLE subnets_id_seq OWNER TO foreman;
-
 --
--- Name: subnets_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: subnets_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE subnets_id_seq OWNED BY subnets.id;
 
 
 --
--- Name: taxable_taxonomies; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: taxable_taxonomies; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE taxable_taxonomies (
@@ -2170,10 +1950,8 @@ CREATE TABLE taxable_taxonomies (
 );
 
 
-ALTER TABLE taxable_taxonomies OWNER TO foreman;
-
 --
--- Name: taxable_taxonomies_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: taxable_taxonomies_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE taxable_taxonomies_id_seq
@@ -2184,17 +1962,15 @@ CREATE SEQUENCE taxable_taxonomies_id_seq
     CACHE 1;
 
 
-ALTER TABLE taxable_taxonomies_id_seq OWNER TO foreman;
-
 --
--- Name: taxable_taxonomies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: taxable_taxonomies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE taxable_taxonomies_id_seq OWNED BY taxable_taxonomies.id;
 
 
 --
--- Name: taxonomies; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: taxonomies; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE taxonomies (
@@ -2210,10 +1986,8 @@ CREATE TABLE taxonomies (
 );
 
 
-ALTER TABLE taxonomies OWNER TO foreman;
-
 --
--- Name: taxonomies_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: taxonomies_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE taxonomies_id_seq
@@ -2224,17 +1998,15 @@ CREATE SEQUENCE taxonomies_id_seq
     CACHE 1;
 
 
-ALTER TABLE taxonomies_id_seq OWNER TO foreman;
-
 --
--- Name: taxonomies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: taxonomies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE taxonomies_id_seq OWNED BY taxonomies.id;
 
 
 --
--- Name: template_combinations; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: template_combinations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE template_combinations (
@@ -2247,10 +2019,8 @@ CREATE TABLE template_combinations (
 );
 
 
-ALTER TABLE template_combinations OWNER TO foreman;
-
 --
--- Name: template_combinations_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: template_combinations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE template_combinations_id_seq
@@ -2261,17 +2031,15 @@ CREATE SEQUENCE template_combinations_id_seq
     CACHE 1;
 
 
-ALTER TABLE template_combinations_id_seq OWNER TO foreman;
-
 --
--- Name: template_combinations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: template_combinations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE template_combinations_id_seq OWNED BY template_combinations.id;
 
 
 --
--- Name: template_kinds; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: template_kinds; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE template_kinds (
@@ -2282,10 +2050,8 @@ CREATE TABLE template_kinds (
 );
 
 
-ALTER TABLE template_kinds OWNER TO foreman;
-
 --
--- Name: template_kinds_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: template_kinds_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE template_kinds_id_seq
@@ -2296,17 +2062,15 @@ CREATE SEQUENCE template_kinds_id_seq
     CACHE 1;
 
 
-ALTER TABLE template_kinds_id_seq OWNER TO foreman;
-
 --
--- Name: template_kinds_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: template_kinds_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE template_kinds_id_seq OWNED BY template_kinds.id;
 
 
 --
--- Name: tokens; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: tokens; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE tokens (
@@ -2317,10 +2081,8 @@ CREATE TABLE tokens (
 );
 
 
-ALTER TABLE tokens OWNER TO foreman;
-
 --
--- Name: tokens_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: tokens_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE tokens_id_seq
@@ -2331,17 +2093,15 @@ CREATE SEQUENCE tokens_id_seq
     CACHE 1;
 
 
-ALTER TABLE tokens_id_seq OWNER TO foreman;
-
 --
--- Name: tokens_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: tokens_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE tokens_id_seq OWNED BY tokens.id;
 
 
 --
--- Name: trend_counters; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: trend_counters; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE trend_counters (
@@ -2353,10 +2113,8 @@ CREATE TABLE trend_counters (
 );
 
 
-ALTER TABLE trend_counters OWNER TO foreman;
-
 --
--- Name: trend_counters_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: trend_counters_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE trend_counters_id_seq
@@ -2367,17 +2125,15 @@ CREATE SEQUENCE trend_counters_id_seq
     CACHE 1;
 
 
-ALTER TABLE trend_counters_id_seq OWNER TO foreman;
-
 --
--- Name: trend_counters_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: trend_counters_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE trend_counters_id_seq OWNED BY trend_counters.id;
 
 
 --
--- Name: trends; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: trends; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE trends (
@@ -2393,10 +2149,8 @@ CREATE TABLE trends (
 );
 
 
-ALTER TABLE trends OWNER TO foreman;
-
 --
--- Name: trends_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: trends_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE trends_id_seq
@@ -2407,17 +2161,15 @@ CREATE SEQUENCE trends_id_seq
     CACHE 1;
 
 
-ALTER TABLE trends_id_seq OWNER TO foreman;
-
 --
--- Name: trends_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: trends_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE trends_id_seq OWNED BY trends.id;
 
 
 --
--- Name: user_mail_notifications; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: user_mail_notifications; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE user_mail_notifications (
@@ -2431,10 +2183,8 @@ CREATE TABLE user_mail_notifications (
 );
 
 
-ALTER TABLE user_mail_notifications OWNER TO foreman;
-
 --
--- Name: user_mail_notifications_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: user_mail_notifications_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE user_mail_notifications_id_seq
@@ -2445,17 +2195,15 @@ CREATE SEQUENCE user_mail_notifications_id_seq
     CACHE 1;
 
 
-ALTER TABLE user_mail_notifications_id_seq OWNER TO foreman;
-
 --
--- Name: user_mail_notifications_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: user_mail_notifications_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE user_mail_notifications_id_seq OWNED BY user_mail_notifications.id;
 
 
 --
--- Name: user_roles; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: user_roles; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE user_roles (
@@ -2466,10 +2214,8 @@ CREATE TABLE user_roles (
 );
 
 
-ALTER TABLE user_roles OWNER TO foreman;
-
 --
--- Name: user_roles_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: user_roles_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE user_roles_id_seq
@@ -2480,17 +2226,15 @@ CREATE SEQUENCE user_roles_id_seq
     CACHE 1;
 
 
-ALTER TABLE user_roles_id_seq OWNER TO foreman;
-
 --
--- Name: user_roles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: user_roles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE user_roles_id_seq OWNED BY user_roles.id;
 
 
 --
--- Name: usergroup_members; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: usergroup_members; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE usergroup_members (
@@ -2501,10 +2245,8 @@ CREATE TABLE usergroup_members (
 );
 
 
-ALTER TABLE usergroup_members OWNER TO foreman;
-
 --
--- Name: usergroup_members_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: usergroup_members_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE usergroup_members_id_seq
@@ -2515,17 +2257,15 @@ CREATE SEQUENCE usergroup_members_id_seq
     CACHE 1;
 
 
-ALTER TABLE usergroup_members_id_seq OWNER TO foreman;
-
 --
--- Name: usergroup_members_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: usergroup_members_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE usergroup_members_id_seq OWNED BY usergroup_members.id;
 
 
 --
--- Name: usergroups; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: usergroups; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE usergroups (
@@ -2537,10 +2277,8 @@ CREATE TABLE usergroups (
 );
 
 
-ALTER TABLE usergroups OWNER TO foreman;
-
 --
--- Name: usergroups_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: usergroups_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE usergroups_id_seq
@@ -2551,17 +2289,15 @@ CREATE SEQUENCE usergroups_id_seq
     CACHE 1;
 
 
-ALTER TABLE usergroups_id_seq OWNER TO foreman;
-
 --
--- Name: usergroups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: usergroups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE usergroups_id_seq OWNED BY usergroups.id;
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: foreman; Tablespace: 
+-- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE users (
@@ -2587,10 +2323,8 @@ CREATE TABLE users (
 );
 
 
-ALTER TABLE users OWNER TO foreman;
-
 --
--- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: foreman
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE users_id_seq
@@ -2601,458 +2335,456 @@ CREATE SEQUENCE users_id_seq
     CACHE 1;
 
 
-ALTER TABLE users_id_seq OWNER TO foreman;
-
 --
--- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: foreman
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE users_id_seq OWNED BY users.id;
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY architectures ALTER COLUMN id SET DEFAULT nextval('architectures_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY audits ALTER COLUMN id SET DEFAULT nextval('audits_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY auth_sources ALTER COLUMN id SET DEFAULT nextval('auth_sources_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY bookmarks ALTER COLUMN id SET DEFAULT nextval('bookmarks_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cached_user_roles ALTER COLUMN id SET DEFAULT nextval('cached_user_roles_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cached_usergroup_members ALTER COLUMN id SET DEFAULT nextval('cached_usergroup_members_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY compute_attributes ALTER COLUMN id SET DEFAULT nextval('compute_attributes_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY compute_profiles ALTER COLUMN id SET DEFAULT nextval('compute_profiles_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY compute_resources ALTER COLUMN id SET DEFAULT nextval('compute_resources_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY config_group_classes ALTER COLUMN id SET DEFAULT nextval('config_group_classes_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY config_groups ALTER COLUMN id SET DEFAULT nextval('config_groups_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY config_templates ALTER COLUMN id SET DEFAULT nextval('config_templates_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY domains ALTER COLUMN id SET DEFAULT nextval('domains_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY environment_classes ALTER COLUMN id SET DEFAULT nextval('environment_classes_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY environments ALTER COLUMN id SET DEFAULT nextval('environments_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY external_usergroups ALTER COLUMN id SET DEFAULT nextval('external_usergroups_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY fact_names ALTER COLUMN id SET DEFAULT nextval('fact_names_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY fact_values ALTER COLUMN id SET DEFAULT nextval('fact_values_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY features ALTER COLUMN id SET DEFAULT nextval('features_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY filterings ALTER COLUMN id SET DEFAULT nextval('filterings_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY filters ALTER COLUMN id SET DEFAULT nextval('filters_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY host_classes ALTER COLUMN id SET DEFAULT nextval('host_classes_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY host_config_groups ALTER COLUMN id SET DEFAULT nextval('host_config_groups_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hostgroup_classes ALTER COLUMN id SET DEFAULT nextval('hostgroup_classes_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hostgroups ALTER COLUMN id SET DEFAULT nextval('hostgroups_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hosts ALTER COLUMN id SET DEFAULT nextval('hosts_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY images ALTER COLUMN id SET DEFAULT nextval('images_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY key_pairs ALTER COLUMN id SET DEFAULT nextval('key_pairs_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY logs ALTER COLUMN id SET DEFAULT nextval('logs_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY lookup_keys ALTER COLUMN id SET DEFAULT nextval('lookup_keys_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY lookup_values ALTER COLUMN id SET DEFAULT nextval('lookup_values_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY mail_notifications ALTER COLUMN id SET DEFAULT nextval('mail_notifications_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY media ALTER COLUMN id SET DEFAULT nextval('media_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY messages ALTER COLUMN id SET DEFAULT nextval('messages_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY models ALTER COLUMN id SET DEFAULT nextval('models_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY nics ALTER COLUMN id SET DEFAULT nextval('nics_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY operatingsystems ALTER COLUMN id SET DEFAULT nextval('operatingsystems_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY os_default_templates ALTER COLUMN id SET DEFAULT nextval('os_default_templates_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY parameters ALTER COLUMN id SET DEFAULT nextval('parameters_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY permissions ALTER COLUMN id SET DEFAULT nextval('permissions_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY ptables ALTER COLUMN id SET DEFAULT nextval('ptables_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY puppetclasses ALTER COLUMN id SET DEFAULT nextval('puppetclasses_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY realms ALTER COLUMN id SET DEFAULT nextval('realms_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY reports ALTER COLUMN id SET DEFAULT nextval('reports_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY roles ALTER COLUMN id SET DEFAULT nextval('roles_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sessions ALTER COLUMN id SET DEFAULT nextval('sessions_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY settings ALTER COLUMN id SET DEFAULT nextval('settings_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY smart_proxies ALTER COLUMN id SET DEFAULT nextval('smart_proxies_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sources ALTER COLUMN id SET DEFAULT nextval('sources_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY subnet_domains ALTER COLUMN id SET DEFAULT nextval('subnet_domains_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY subnets ALTER COLUMN id SET DEFAULT nextval('subnets_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY taxable_taxonomies ALTER COLUMN id SET DEFAULT nextval('taxable_taxonomies_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY taxonomies ALTER COLUMN id SET DEFAULT nextval('taxonomies_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY template_combinations ALTER COLUMN id SET DEFAULT nextval('template_combinations_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY template_kinds ALTER COLUMN id SET DEFAULT nextval('template_kinds_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY tokens ALTER COLUMN id SET DEFAULT nextval('tokens_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY trend_counters ALTER COLUMN id SET DEFAULT nextval('trend_counters_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY trends ALTER COLUMN id SET DEFAULT nextval('trends_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY user_mail_notifications ALTER COLUMN id SET DEFAULT nextval('user_mail_notifications_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY user_roles ALTER COLUMN id SET DEFAULT nextval('user_roles_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY usergroup_members ALTER COLUMN id SET DEFAULT nextval('usergroup_members_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY usergroups ALTER COLUMN id SET DEFAULT nextval('usergroups_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: foreman
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
 --
--- Data for Name: architectures; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: architectures; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY architectures (id, name, created_at, updated_at, hosts_count, hostgroups_count) FROM stdin;
@@ -3062,14 +2794,14 @@ COPY architectures (id, name, created_at, updated_at, hosts_count, hostgroups_co
 
 
 --
--- Name: architectures_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: architectures_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('architectures_id_seq', 2, true);
 
 
 --
--- Data for Name: architectures_operatingsystems; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: architectures_operatingsystems; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY architectures_operatingsystems (architecture_id, operatingsystem_id) FROM stdin;
@@ -3079,7 +2811,7 @@ COPY architectures_operatingsystems (architecture_id, operatingsystem_id) FROM s
 
 
 --
--- Data for Name: audits; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: audits; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY audits (id, auditable_id, auditable_type, user_id, user_type, username, action, audited_changes, version, comment, associated_id, associated_type, created_at, remote_address, auditable_name, associated_name) FROM stdin;
@@ -3341,31 +3073,18 @@ COPY audits (id, auditable_id, auditable_type, user_id, user_type, username, act
 297	42	Setting	\N	\N	\N	update	---\nvalue:\n- ! '--- /var/lib/puppet/ssl/private_keys/server-101.example.com.pem\n\n  ...\n\n'\n- ! '--- /var/lib/puppet/ssl/private_keys/puppet.example.com.pem\n\n  ...\n\n'\n	4	\N	\N	\N	2016-11-24 03:03:05.052959	\N	websockets_ssl_key	\N
 298	43	Setting	\N	\N	\N	update	---\nvalue:\n- ! '--- /var/lib/puppet/ssl/certs/server-101.example.com.pem\n\n  ...\n\n'\n- ! '--- /var/lib/puppet/ssl/certs/puppet.example.com.pem\n\n  ...\n\n'\n	4	\N	\N	\N	2016-11-24 03:03:05.068835	\N	websockets_ssl_cert	\N
 299	11	Hostgroup	3	\N	Admin User	create	---\nname: Zabbix\nenvironment_id: \noperatingsystem_id: 1\narchitecture_id: 1\nmedium_id: \nptable_id: \nroot_pass: !binary |-\n  JDEkQ09EekJVTnIkUWxSb05jVlIyUVFmWGsyaEZVamtULg==\npuppet_ca_proxy_id: \nuse_image: \nimage_file: \nancestry: \nvm_defaults: \nsubnet_id: \ndomain_id: \npuppet_proxy_id: \nrealm_id: \ncompute_profile_id: \ngrub_pass: !binary |-\n  JDEkZ1RIcXZhV1AkTXNoUVZBWmdXYm1VWEVzQ0Q5UU9ELg==\n	1	\N	\N	\N	2016-11-24 03:14:46.113792	10.255.0.9	Zabbix	\N
-300	17	Setting	\N	\N	\N	update	---\nvalue:\n- ! '--- pwzyqumdngaYzgRpKcYt3XKQPUTvvy9B\n\n  ...\n\n'\n- ! '--- deVjVzdeqvH7ypJkTFWRUUrQYWXCaLdJ\n\n  ...\n\n'\n	6	\N	\N	\N	2017-02-01 09:18:22.595063	\N	oauth_consumer_key	\N
-301	18	Setting	\N	\N	\N	update	---\nvalue:\n- ! '--- pR7M2uXgZeFY3Q2Gr3VRZ4RbGYdkMmFb\n\n  ...\n\n'\n- ! '--- sh9ce97Atv7jD8RLang2YUAjzR6D6673\n\n  ...\n\n'\n	6	\N	\N	\N	2017-02-01 09:18:22.610945	\N	oauth_consumer_secret	\N
-302	9	Hostgroup	3	\N	Admin User	update	---\nenvironment_id:\n- \n- 2\ngrub_pass:\n- $1$r2MHWNWa$hU6gw1E3xfpJll3kpqXPg1\n- $1$ZMPVG3QR$qravQotMd0wuDSvttCCew1\n	3	\N	\N	\N	2017-02-01 09:39:00.276884	10.255.0.9	CephMon	\N
-303	4	Hostgroup	3	\N	Admin User	update	---\nenvironment_id:\n- \n- 2\ngrub_pass:\n- $1$8Nmdk9cm$H26EIGwTUAtvdr2kogVfr.\n- $1$bwrkoBAo$fzEAdYfnChdr6EckOOWdn/\n	3	\N	\N	\N	2017-02-01 09:39:06.642265	10.255.0.9	Compute	\N
-304	2	Hostgroup	3	\N	Admin User	update	---\nenvironment_id:\n- \n- 2\ngrub_pass:\n- $1$B1vaFy7d$l1Z6Qj6jDn8igL2mof5aF0\n- $1$9fmAnE3r$RcuivJbC20gxlKqEM8lx..\n	3	\N	\N	\N	2017-02-01 09:39:12.472223	10.255.0.9	Hypervisor	\N
-305	1	Hostgroup	3	\N	Admin User	update	---\nname:\n- LB\n- Loaderbalance\nenvironment_id:\n- \n- 2\ngrub_pass:\n- $1$dZADAZt0$rtB0LjgJqyFNd7wyXHvS00\n- $1$ePsF9DY+$/uOonaSgtIeRC/k7ZJlYf.\n	3	\N	\N	\N	2017-02-01 09:39:22.672117	10.255.0.9	LB	\N
-306	6	Hostgroup	3	\N	Admin User	update	---\nenvironment_id:\n- \n- 2\n	5	\N	\N	\N	2017-02-01 09:39:31.65779	10.255.0.9	MQ	\N
-307	7	Hostgroup	3	\N	Admin User	update	---\nname:\n- Memcached\n- Cache\nenvironment_id:\n- \n- 2\ngrub_pass:\n- $1$ui/sX1Xf$1g5Voh5Dms4NryrL2gSUM.\n- $1$ljLD4ZB9$5iD6qpBMIiAnOHpqujkOX1\n	3	\N	\N	\N	2017-02-01 09:39:44.043257	10.255.0.9	Memcached	\N
-308	8	Hostgroup	3	\N	Admin User	update	---\nenvironment_id:\n- \n- 2\n	4	\N	\N	\N	2017-02-01 09:39:51.511326	10.255.0.9	Mysql	\N
-309	3	Hostgroup	3	\N	Admin User	update	---\nenvironment_id:\n- \n- 2\n	4	\N	\N	\N	2017-02-01 09:39:57.527848	10.255.0.9	Network	\N
-310	10	Hostgroup	3	\N	Admin User	update	---\nenvironment_id:\n- 1\n- 2\n	2	\N	\N	\N	2017-02-01 09:40:03.45557	10.255.0.9	Storage	\N
-311	5	Hostgroup	3	\N	Admin User	update	---\nname:\n- Web\n- Controll\nenvironment_id:\n- \n- 2\n	4	\N	\N	\N	2017-02-01 09:40:16.763953	10.255.0.9	Web	\N
-312	11	Hostgroup	3	\N	Admin User	update	---\nenvironment_id:\n- \n- 2\ngrub_pass:\n- $1$gTHqvaWP$MshQVAZgWbmUXEsCD9QOD.\n- $1$CODzBUNr$QlRoNcVR2QQfXk2hFUjkT.\n	2	\N	\N	\N	2017-02-01 09:40:22.5935	10.255.0.9	Zabbix	\N
 \.
 
 
 --
--- Name: audits_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: audits_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('audits_id_seq', 312, true);
+SELECT pg_catalog.setval('audits_id_seq', 299, true);
 
 
 --
--- Data for Name: auth_sources; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: auth_sources; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY auth_sources (id, type, name, host, port, account, account_password, base_dn, attr_login, attr_firstname, attr_lastname, attr_mail, onthefly_register, tls, created_at, updated_at, ldap_filter, attr_photo, server_type, groups_base, usergroup_sync) FROM stdin;
@@ -3375,14 +3094,14 @@ COPY auth_sources (id, type, name, host, port, account, account_password, base_d
 
 
 --
--- Name: auth_sources_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: auth_sources_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('auth_sources_id_seq', 2, true);
 
 
 --
--- Data for Name: bookmarks; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: bookmarks; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY bookmarks (id, name, query, controller, public, owner_id, owner_type) FROM stdin;
@@ -3396,14 +3115,14 @@ COPY bookmarks (id, name, query, controller, public, owner_id, owner_type) FROM 
 
 
 --
--- Name: bookmarks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: bookmarks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('bookmarks_id_seq', 6, true);
 
 
 --
--- Data for Name: cached_user_roles; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: cached_user_roles; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY cached_user_roles (id, user_id, role_id, user_role_id, created_at, updated_at) FROM stdin;
@@ -3415,14 +3134,14 @@ COPY cached_user_roles (id, user_id, role_id, user_role_id, created_at, updated_
 
 
 --
--- Name: cached_user_roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: cached_user_roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('cached_user_roles_id_seq', 7, true);
 
 
 --
--- Data for Name: cached_usergroup_members; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: cached_usergroup_members; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY cached_usergroup_members (id, user_id, usergroup_id, created_at, updated_at) FROM stdin;
@@ -3430,14 +3149,14 @@ COPY cached_usergroup_members (id, user_id, usergroup_id, created_at, updated_at
 
 
 --
--- Name: cached_usergroup_members_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: cached_usergroup_members_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('cached_usergroup_members_id_seq', 1, false);
 
 
 --
--- Data for Name: compute_attributes; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: compute_attributes; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY compute_attributes (id, compute_profile_id, compute_resource_id, name, vm_attrs, created_at, updated_at) FROM stdin;
@@ -3445,14 +3164,14 @@ COPY compute_attributes (id, compute_profile_id, compute_resource_id, name, vm_a
 
 
 --
--- Name: compute_attributes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: compute_attributes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('compute_attributes_id_seq', 1, false);
 
 
 --
--- Data for Name: compute_profiles; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: compute_profiles; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY compute_profiles (id, name, created_at, updated_at) FROM stdin;
@@ -3463,14 +3182,14 @@ COPY compute_profiles (id, name, created_at, updated_at) FROM stdin;
 
 
 --
--- Name: compute_profiles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: compute_profiles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('compute_profiles_id_seq', 3, true);
 
 
 --
--- Data for Name: compute_resources; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: compute_resources; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY compute_resources (id, name, description, url, "user", password, uuid, type, created_at, updated_at, attrs) FROM stdin;
@@ -3478,14 +3197,14 @@ COPY compute_resources (id, name, description, url, "user", password, uuid, type
 
 
 --
--- Name: compute_resources_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: compute_resources_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('compute_resources_id_seq', 3, true);
 
 
 --
--- Data for Name: config_group_classes; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: config_group_classes; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY config_group_classes (id, puppetclass_id, config_group_id, created_at, updated_at) FROM stdin;
@@ -3493,14 +3212,14 @@ COPY config_group_classes (id, puppetclass_id, config_group_id, created_at, upda
 
 
 --
--- Name: config_group_classes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: config_group_classes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('config_group_classes_id_seq', 1, false);
 
 
 --
--- Data for Name: config_groups; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: config_groups; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY config_groups (id, name, created_at, updated_at, hosts_count, hostgroups_count, config_group_classes_count) FROM stdin;
@@ -3508,14 +3227,14 @@ COPY config_groups (id, name, created_at, updated_at, hosts_count, hostgroups_co
 
 
 --
--- Name: config_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: config_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('config_groups_id_seq', 1, false);
 
 
 --
--- Data for Name: config_templates; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: config_templates; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY config_templates (id, name, template, snippet, template_kind_id, created_at, updated_at, locked, "default", vendor) FROM stdin;
@@ -3570,14 +3289,14 @@ COPY config_templates (id, name, template, snippet, template_kind_id, created_at
 
 
 --
--- Name: config_templates_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: config_templates_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('config_templates_id_seq', 47, true);
 
 
 --
--- Data for Name: config_templates_operatingsystems; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: config_templates_operatingsystems; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY config_templates_operatingsystems (config_template_id, operatingsystem_id) FROM stdin;
@@ -3587,7 +3306,7 @@ COPY config_templates_operatingsystems (config_template_id, operatingsystem_id) 
 
 
 --
--- Data for Name: domains; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: domains; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY domains (id, name, fullname, created_at, updated_at, dns_id, hosts_count, hostgroups_count) FROM stdin;
@@ -3595,14 +3314,14 @@ COPY domains (id, name, fullname, created_at, updated_at, dns_id, hosts_count, h
 
 
 --
--- Name: domains_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: domains_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('domains_id_seq', 7, true);
 
 
 --
--- Data for Name: environment_classes; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: environment_classes; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY environment_classes (puppetclass_id, environment_id, id, lookup_key_id) FROM stdin;
@@ -3610,31 +3329,31 @@ COPY environment_classes (puppetclass_id, environment_id, id, lookup_key_id) FRO
 
 
 --
--- Name: environment_classes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: environment_classes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('environment_classes_id_seq', 1, false);
 
 
 --
--- Data for Name: environments; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: environments; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY environments (id, name, created_at, updated_at, hosts_count, hostgroups_count) FROM stdin;
-1	products	2016-04-14 10:46:08.340729	2016-04-14 10:46:08.340729	0	0
-2	newton	2016-05-13 14:45:07.522988	2017-02-01 09:38:47.413646	0	11
+1	products	2016-04-14 10:46:08.340729	2016-04-14 10:46:08.340729	0	1
+2	liberty	2016-05-13 14:45:07.522988	2016-05-13 14:45:07.522988	0	0
 \.
 
 
 --
--- Name: environments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: environments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('environments_id_seq', 2, true);
 
 
 --
--- Data for Name: external_usergroups; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: external_usergroups; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY external_usergroups (id, name, auth_source_id, usergroup_id) FROM stdin;
@@ -3642,14 +3361,14 @@ COPY external_usergroups (id, name, auth_source_id, usergroup_id) FROM stdin;
 
 
 --
--- Name: external_usergroups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: external_usergroups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('external_usergroups_id_seq', 1, false);
 
 
 --
--- Data for Name: fact_names; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: fact_names; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY fact_names (id, name, updated_at, created_at, compose, short_name, type, ancestry) FROM stdin;
@@ -3657,14 +3376,14 @@ COPY fact_names (id, name, updated_at, created_at, compose, short_name, type, an
 
 
 --
--- Name: fact_names_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: fact_names_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('fact_names_id_seq', 1, false);
 
 
 --
--- Data for Name: fact_values; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: fact_values; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY fact_values (id, value, fact_name_id, host_id, updated_at, created_at) FROM stdin;
@@ -3672,14 +3391,14 @@ COPY fact_values (id, value, fact_name_id, host_id, updated_at, created_at) FROM
 
 
 --
--- Name: fact_values_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: fact_values_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('fact_values_id_seq', 1, false);
 
 
 --
--- Data for Name: features; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: features; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY features (id, name, created_at, updated_at) FROM stdin;
@@ -3697,14 +3416,14 @@ COPY features (id, name, created_at, updated_at) FROM stdin;
 
 
 --
--- Name: features_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: features_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('features_id_seq', 10, true);
 
 
 --
--- Data for Name: features_smart_proxies; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: features_smart_proxies; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY features_smart_proxies (smart_proxy_id, feature_id) FROM stdin;
@@ -3712,7 +3431,7 @@ COPY features_smart_proxies (smart_proxy_id, feature_id) FROM stdin;
 
 
 --
--- Data for Name: filterings; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: filterings; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY filterings (id, filter_id, permission_id, created_at, updated_at) FROM stdin;
@@ -3983,14 +3702,14 @@ COPY filterings (id, filter_id, permission_id, created_at, updated_at) FROM stdi
 
 
 --
--- Name: filterings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: filterings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('filterings_id_seq', 263, true);
 
 
 --
--- Data for Name: filters; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: filters; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY filters (id, search, role_id, created_at, updated_at, taxonomy_search) FROM stdin;
@@ -4114,14 +3833,14 @@ COPY filters (id, search, role_id, created_at, updated_at, taxonomy_search) FROM
 
 
 --
--- Name: filters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: filters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('filters_id_seq', 116, true);
 
 
 --
--- Data for Name: host_classes; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: host_classes; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY host_classes (puppetclass_id, host_id, id) FROM stdin;
@@ -4129,14 +3848,14 @@ COPY host_classes (puppetclass_id, host_id, id) FROM stdin;
 
 
 --
--- Name: host_classes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: host_classes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('host_classes_id_seq', 1, false);
 
 
 --
--- Data for Name: host_config_groups; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: host_config_groups; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY host_config_groups (id, config_group_id, host_id, host_type, created_at, updated_at) FROM stdin;
@@ -4144,14 +3863,14 @@ COPY host_config_groups (id, config_group_id, host_id, host_type, created_at, up
 
 
 --
--- Name: host_config_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: host_config_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('host_config_groups_id_seq', 1, false);
 
 
 --
--- Data for Name: hostgroup_classes; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: hostgroup_classes; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY hostgroup_classes (hostgroup_id, puppetclass_id, id) FROM stdin;
@@ -4159,40 +3878,40 @@ COPY hostgroup_classes (hostgroup_id, puppetclass_id, id) FROM stdin;
 
 
 --
--- Name: hostgroup_classes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: hostgroup_classes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('hostgroup_classes_id_seq', 1, false);
 
 
 --
--- Data for Name: hostgroups; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: hostgroups; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY hostgroups (id, name, created_at, updated_at, environment_id, operatingsystem_id, architecture_id, medium_id, ptable_id, root_pass, puppet_ca_proxy_id, use_image, image_file, ancestry, vm_defaults, subnet_id, domain_id, puppet_proxy_id, title, realm_id, compute_profile_id, grub_pass) FROM stdin;
-9	CephMon	2016-04-14 10:43:41.443089	2017-02-01 09:39:00.281118	2	\N	1	\N	\N	$1$ZMPVG3QR$qravQotMd0wuDSvttCCew1	\N	\N	\N	\N	\N	\N	\N	\N	CephMon	\N	\N	$1$ZMPVG3QR$qravQotMd0wuDSvttCCew1
-4	Compute	2016-04-14 10:42:52.681531	2017-02-01 09:39:06.645337	2	\N	1	\N	\N	$1$bwrkoBAo$fzEAdYfnChdr6EckOOWdn/	\N	\N	\N	\N	\N	\N	\N	\N	Compute	\N	\N	$1$bwrkoBAo$fzEAdYfnChdr6EckOOWdn/
-2	Hypervisor	2016-04-14 10:42:35.964214	2017-02-01 09:39:12.594191	2	\N	1	\N	\N	$1$9fmAnE3r$RcuivJbC20gxlKqEM8lx..	\N	\N	\N	\N	\N	\N	\N	\N	Hypervisor	\N	\N	$1$9fmAnE3r$RcuivJbC20gxlKqEM8lx..
-1	Loaderbalance	2016-04-14 10:15:47.12547	2017-02-01 09:39:22.676039	2	\N	1	\N	\N	$1$ePsF9DY+$/uOonaSgtIeRC/k7ZJlYf.	\N	\N	\N	\N	\N	\N	\N	\N	Loaderbalance	\N	\N	$1$ePsF9DY+$/uOonaSgtIeRC/k7ZJlYf.
-6	MQ	2016-04-14 10:43:10.647301	2017-02-01 09:39:31.659637	2	\N	1	\N	\N	$1$gH5dYc0/$vVrrWXgzGknocivizSMjU/	\N	\N	\N	\N	\N	\N	\N	\N	MQ	\N	\N	$1$gH5dYc0/$vVrrWXgzGknocivizSMjU/
-7	Cache	2016-04-14 10:43:23.177554	2017-02-01 09:39:44.04834	2	\N	1	\N	\N	$1$ljLD4ZB9$5iD6qpBMIiAnOHpqujkOX1	\N	\N	\N	\N	\N	\N	\N	\N	Cache	\N	\N	$1$ljLD4ZB9$5iD6qpBMIiAnOHpqujkOX1
-8	Mysql	2016-04-14 10:43:31.601283	2017-02-01 09:39:51.513145	2	\N	1	\N	\N	$1$Ag6abnYM$ZLB6/REEq1tNq3mfen1s90	\N	\N	\N	\N	\N	\N	\N	\N	Mysql	\N	\N	$1$Ag6abnYM$ZLB6/REEq1tNq3mfen1s90
-3	Network	2016-04-14 10:42:45.240657	2017-02-01 09:39:57.529897	2	\N	1	\N	\N	$1$kCwW+SCk$n/31Ip3ddqMpmj7wTvrxG/	\N	\N	\N	\N	\N	\N	\N	\N	Network	\N	\N	$1$kCwW+SCk$n/31Ip3ddqMpmj7wTvrxG/
-10	Storage	2016-05-04 03:58:43.248717	2017-02-01 09:40:03.457274	2	1	1	\N	8		\N	\N	\N	\N	\N	\N	\N	\N	Storage	\N	\N	
-5	Controll	2016-04-14 10:43:02.079271	2017-02-01 09:40:16.766274	2	\N	1	\N	\N	$1$51P5CU9g$YxPm3.edOcJ1GuR9hVxJF1	\N	\N	\N	\N	\N	\N	\N	\N	Controll	\N	\N	$1$51P5CU9g$YxPm3.edOcJ1GuR9hVxJF1
-11	Zabbix	2016-11-24 03:14:45.960888	2017-02-01 09:40:22.596424	2	1	1	\N	\N	$1$CODzBUNr$QlRoNcVR2QQfXk2hFUjkT.	\N	\N	\N	\N	\N	\N	\N	\N	Zabbix	\N	\N	$1$CODzBUNr$QlRoNcVR2QQfXk2hFUjkT.
+9	CephMon	2016-04-14 10:43:41.443089	2016-04-14 10:53:45.244978	\N	\N	1	\N	\N	$1$ZMPVG3QR$qravQotMd0wuDSvttCCew1	\N	\N	\N	\N	\N	\N	\N	\N	CephMon	\N	\N	$1$r2MHWNWa$hU6gw1E3xfpJll3kpqXPg1
+4	Compute	2016-04-14 10:42:52.681531	2016-04-14 10:53:59.61729	\N	\N	1	\N	\N	$1$bwrkoBAo$fzEAdYfnChdr6EckOOWdn/	\N	\N	\N	\N	\N	\N	\N	\N	Compute	\N	\N	$1$8Nmdk9cm$H26EIGwTUAtvdr2kogVfr.
+2	Hypervisor	2016-04-14 10:42:35.964214	2016-04-14 10:55:17.562646	\N	\N	1	\N	\N	$1$9fmAnE3r$RcuivJbC20gxlKqEM8lx..	\N	\N	\N	\N	\N	\N	\N	\N	Hypervisor	\N	\N	$1$B1vaFy7d$l1Z6Qj6jDn8igL2mof5aF0
+1	LB	2016-04-14 10:15:47.12547	2016-04-14 10:55:28.796191	\N	\N	1	\N	\N	$1$ePsF9DY+$/uOonaSgtIeRC/k7ZJlYf.	\N	\N	\N	\N	\N	\N	\N	\N	LB	\N	\N	$1$dZADAZt0$rtB0LjgJqyFNd7wyXHvS00
+7	Memcached	2016-04-14 10:43:23.177554	2016-04-14 10:55:40.453043	\N	\N	1	\N	\N	$1$ljLD4ZB9$5iD6qpBMIiAnOHpqujkOX1	\N	\N	\N	\N	\N	\N	\N	\N	Memcached	\N	\N	$1$ui/sX1Xf$1g5Voh5Dms4NryrL2gSUM.
+3	Network	2016-04-14 10:42:45.240657	2016-04-14 10:56:57.82998	\N	\N	1	\N	\N	$1$kCwW+SCk$n/31Ip3ddqMpmj7wTvrxG/	\N	\N	\N	\N	\N	\N	\N	\N	Network	\N	\N	$1$kCwW+SCk$n/31Ip3ddqMpmj7wTvrxG/
+5	Web	2016-04-14 10:43:02.079271	2016-04-15 02:57:44.207737	\N	\N	1	\N	\N	$1$51P5CU9g$YxPm3.edOcJ1GuR9hVxJF1	\N	\N	\N	\N	\N	\N	\N	\N	Web	\N	\N	$1$51P5CU9g$YxPm3.edOcJ1GuR9hVxJF1
+8	Mysql	2016-04-14 10:43:31.601283	2016-04-15 02:57:52.934391	\N	\N	1	\N	\N	$1$Ag6abnYM$ZLB6/REEq1tNq3mfen1s90	\N	\N	\N	\N	\N	\N	\N	\N	Mysql	\N	\N	$1$Ag6abnYM$ZLB6/REEq1tNq3mfen1s90
+6	MQ	2016-04-14 10:43:10.647301	2016-04-15 02:58:02.050452	\N	\N	1	\N	\N	$1$gH5dYc0/$vVrrWXgzGknocivizSMjU/	\N	\N	\N	\N	\N	\N	\N	\N	MQ	\N	\N	$1$gH5dYc0/$vVrrWXgzGknocivizSMjU/
+10	Storage	2016-05-04 03:58:43.248717	2016-05-04 03:58:43.248717	1	1	1	\N	8		\N	\N	\N	\N	\N	\N	\N	\N	Storage	\N	\N	
+11	Zabbix	2016-11-24 03:14:45.960888	2016-11-24 03:14:45.960888	\N	1	1	\N	\N	$1$CODzBUNr$QlRoNcVR2QQfXk2hFUjkT.	\N	\N	\N	\N	\N	\N	\N	\N	Zabbix	\N	\N	$1$gTHqvaWP$MshQVAZgWbmUXEsCD9QOD.
 \.
 
 
 --
--- Name: hostgroups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: hostgroups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('hostgroups_id_seq', 11, true);
 
 
 --
--- Data for Name: hosts; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: hosts; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY hosts (id, name, last_compile, last_freshcheck, last_report, updated_at, source_file_id, created_at, root_pass, serial, puppet_status, architecture_id, operatingsystem_id, environment_id, ptable_id, medium_id, build, comment, disk, installed_at, model_id, hostgroup_id, owner_id, owner_type, enabled, puppet_ca_proxy_id, managed, use_image, image_file, uuid, compute_resource_id, puppet_proxy_id, certname, image_id, organization_id, location_id, type, otp, realm_id, compute_profile_id, provision_method, grub_pass) FROM stdin;
@@ -4200,14 +3919,14 @@ COPY hosts (id, name, last_compile, last_freshcheck, last_report, updated_at, so
 
 
 --
--- Name: hosts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: hosts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('hosts_id_seq', 30, true);
 
 
 --
--- Data for Name: images; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: images; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY images (id, operatingsystem_id, compute_resource_id, architecture_id, uuid, username, name, created_at, updated_at, iam_role, user_data, password) FROM stdin;
@@ -4215,14 +3934,14 @@ COPY images (id, operatingsystem_id, compute_resource_id, architecture_id, uuid,
 
 
 --
--- Name: images_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: images_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('images_id_seq', 1, false);
 
 
 --
--- Data for Name: key_pairs; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: key_pairs; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY key_pairs (id, secret, compute_resource_id, name, created_at, updated_at, public) FROM stdin;
@@ -4230,14 +3949,14 @@ COPY key_pairs (id, secret, compute_resource_id, name, created_at, updated_at, p
 
 
 --
--- Name: key_pairs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: key_pairs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('key_pairs_id_seq', 1, false);
 
 
 --
--- Data for Name: locations_organizations; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: locations_organizations; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY locations_organizations (location_id, organization_id) FROM stdin;
@@ -4245,7 +3964,7 @@ COPY locations_organizations (location_id, organization_id) FROM stdin;
 
 
 --
--- Data for Name: logs; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: logs; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY logs (id, source_id, message_id, report_id, level_id, created_at, updated_at) FROM stdin;
@@ -4253,14 +3972,14 @@ COPY logs (id, source_id, message_id, report_id, level_id, created_at, updated_a
 
 
 --
--- Name: logs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: logs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('logs_id_seq', 1, false);
 
 
 --
--- Data for Name: lookup_keys; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: lookup_keys; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY lookup_keys (id, key, created_at, updated_at, puppetclass_id, default_value, path, description, validator_type, validator_rule, is_param, key_type, override, required, lookup_values_count, merge_overrides, avoid_duplicates, use_puppet_default) FROM stdin;
@@ -4268,14 +3987,14 @@ COPY lookup_keys (id, key, created_at, updated_at, puppetclass_id, default_value
 
 
 --
--- Name: lookup_keys_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: lookup_keys_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('lookup_keys_id_seq', 1, false);
 
 
 --
--- Data for Name: lookup_values; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: lookup_values; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY lookup_values (id, match, value, lookup_key_id, created_at, updated_at, use_puppet_default) FROM stdin;
@@ -4283,14 +4002,14 @@ COPY lookup_values (id, match, value, lookup_key_id, created_at, updated_at, use
 
 
 --
--- Name: lookup_values_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: lookup_values_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('lookup_values_id_seq', 1, false);
 
 
 --
--- Data for Name: mail_notifications; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: mail_notifications; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY mail_notifications (id, name, description, mailer, method, subscriptable, default_interval, created_at, updated_at, subscription_type) FROM stdin;
@@ -4301,14 +4020,14 @@ COPY mail_notifications (id, name, description, mailer, method, subscriptable, d
 
 
 --
--- Name: mail_notifications_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: mail_notifications_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('mail_notifications_id_seq', 3, true);
 
 
 --
--- Data for Name: media; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: media; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY media (id, name, path, created_at, updated_at, media_path, config_path, image_path, os_family) FROM stdin;
@@ -4323,14 +4042,14 @@ COPY media (id, name, path, created_at, updated_at, media_path, config_path, ima
 
 
 --
--- Name: media_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: media_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('media_id_seq', 9, true);
 
 
 --
--- Data for Name: media_operatingsystems; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: media_operatingsystems; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY media_operatingsystems (medium_id, operatingsystem_id) FROM stdin;
@@ -4338,7 +4057,7 @@ COPY media_operatingsystems (medium_id, operatingsystem_id) FROM stdin;
 
 
 --
--- Data for Name: messages; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: messages; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY messages (id, value, digest) FROM stdin;
@@ -4346,14 +4065,14 @@ COPY messages (id, value, digest) FROM stdin;
 
 
 --
--- Name: messages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: messages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('messages_id_seq', 1, false);
 
 
 --
--- Data for Name: models; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: models; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY models (id, name, info, created_at, updated_at, vendor_class, hardware_model, hosts_count) FROM stdin;
@@ -4361,14 +4080,14 @@ COPY models (id, name, info, created_at, updated_at, vendor_class, hardware_mode
 
 
 --
--- Name: models_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: models_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('models_id_seq', 1, false);
 
 
 --
--- Data for Name: nics; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: nics; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY nics (id, mac, ip, type, name, host_id, subnet_id, domain_id, attrs, created_at, updated_at, provider, username, password, virtual, link, identifier, tag, attached_to, managed, mode, attached_devices, bond_options, "primary", provision, compute_attributes) FROM stdin;
@@ -4376,14 +4095,14 @@ COPY nics (id, mac, ip, type, name, host_id, subnet_id, domain_id, attrs, create
 
 
 --
--- Name: nics_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: nics_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('nics_id_seq', 29, true);
 
 
 --
--- Data for Name: operatingsystems; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: operatingsystems; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY operatingsystems (id, major, name, minor, nameindicator, created_at, updated_at, release_name, type, description, hosts_count, hostgroups_count, password_hash, title) FROM stdin;
@@ -4393,14 +4112,14 @@ COPY operatingsystems (id, major, name, minor, nameindicator, created_at, update
 
 
 --
--- Name: operatingsystems_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: operatingsystems_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('operatingsystems_id_seq', 2, true);
 
 
 --
--- Data for Name: operatingsystems_ptables; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: operatingsystems_ptables; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY operatingsystems_ptables (ptable_id, operatingsystem_id) FROM stdin;
@@ -4409,7 +4128,7 @@ COPY operatingsystems_ptables (ptable_id, operatingsystem_id) FROM stdin;
 
 
 --
--- Data for Name: operatingsystems_puppetclasses; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: operatingsystems_puppetclasses; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY operatingsystems_puppetclasses (puppetclass_id, operatingsystem_id) FROM stdin;
@@ -4417,7 +4136,7 @@ COPY operatingsystems_puppetclasses (puppetclass_id, operatingsystem_id) FROM st
 
 
 --
--- Data for Name: os_default_templates; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: os_default_templates; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY os_default_templates (id, config_template_id, template_kind_id, operatingsystem_id, created_at, updated_at) FROM stdin;
@@ -4427,14 +4146,14 @@ COPY os_default_templates (id, config_template_id, template_kind_id, operatingsy
 
 
 --
--- Name: os_default_templates_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: os_default_templates_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('os_default_templates_id_seq', 2, true);
 
 
 --
--- Data for Name: parameters; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: parameters; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY parameters (id, name, value, reference_id, created_at, updated_at, type, priority, hidden_value) FROM stdin;
@@ -4447,14 +4166,14 @@ COPY parameters (id, name, value, reference_id, created_at, updated_at, type, pr
 
 
 --
--- Name: parameters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: parameters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('parameters_id_seq', 5, true);
 
 
 --
--- Data for Name: permissions; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: permissions; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY permissions (id, name, resource_type, created_at, updated_at) FROM stdin;
@@ -4623,14 +4342,14 @@ COPY permissions (id, name, resource_type, created_at, updated_at) FROM stdin;
 
 
 --
--- Name: permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('permissions_id_seq', 161, true);
 
 
 --
--- Data for Name: ptables; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: ptables; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY ptables (id, name, layout, created_at, updated_at, os_family) FROM stdin;
@@ -4649,14 +4368,14 @@ COPY ptables (id, name, layout, created_at, updated_at, os_family) FROM stdin;
 
 
 --
--- Name: ptables_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: ptables_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('ptables_id_seq', 11, true);
 
 
 --
--- Data for Name: puppetclasses; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: puppetclasses; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY puppetclasses (id, name, created_at, updated_at, total_hosts, hostgroups_count, global_class_params_count, lookup_keys_count) FROM stdin;
@@ -4664,14 +4383,14 @@ COPY puppetclasses (id, name, created_at, updated_at, total_hosts, hostgroups_co
 
 
 --
--- Name: puppetclasses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: puppetclasses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('puppetclasses_id_seq', 1, false);
 
 
 --
--- Data for Name: realms; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: realms; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY realms (id, name, realm_type, realm_proxy_id, hosts_count, hostgroups_count, created_at, updated_at) FROM stdin;
@@ -4679,14 +4398,14 @@ COPY realms (id, name, realm_type, realm_proxy_id, hosts_count, hostgroups_count
 
 
 --
--- Name: realms_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: realms_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('realms_id_seq', 1, false);
 
 
 --
--- Data for Name: reports; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: reports; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY reports (id, host_id, reported_at, created_at, updated_at, status, metrics) FROM stdin;
@@ -4694,14 +4413,14 @@ COPY reports (id, host_id, reported_at, created_at, updated_at, status, metrics)
 
 
 --
--- Name: reports_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: reports_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('reports_id_seq', 1, false);
 
 
 --
--- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY roles (id, name, builtin, permissions) FROM stdin;
@@ -4717,14 +4436,14 @@ COPY roles (id, name, builtin, permissions) FROM stdin;
 
 
 --
--- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('roles_id_seq', 8, true);
 
 
 --
--- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY schema_migrations (version) FROM stdin;
@@ -4989,26 +4708,23 @@ COPY schema_migrations (version) FROM stdin;
 
 
 --
--- Data for Name: sessions; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: sessions; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY sessions (id, session_id, data, created_at, updated_at) FROM stdin;
 506	e436f7291edf63109ffcfab8cd483f03	BAh7CUkiCXVzZXIGOgZFRmkISSIPZXhwaXJlc19hdAY7AEZsKwdEaTZYSSIL\nbG9jYWxlBjsARkkiB2VuBjsAVEkiEF9jc3JmX3Rva2VuBjsARkkiMXJHNFBE\nNW5SNkIwTlhYS0VOSDZHbzgrT0NlVDQ1YWptUkNqZGU0Wld5Qms9BjsARg==\n	2016-11-24 03:13:39.257989	2016-11-24 03:15:01.37559
-508	3b71b4d8d015f4d626724134134b0a68	BAh7BkkiC2xvY2FsZQY6BkVGSSIHZW4GOwBG\n	2017-02-01 09:37:27.842027	2017-02-01 09:37:27.842027
-509	c51f0e915ac8b6d5e20e3c28fb2cb0c0	BAh7BkkiC2xvY2FsZQY6BkVGSSIHZW4GOwBG\n	2017-02-01 09:37:28.212776	2017-02-01 09:37:28.212776
-511	c880dc1d9716e4a301284247bd0dba89	BAh7CUkiCXVzZXIGOgZFRmkISSIPZXhwaXJlc19hdAY7AEZsKwcwu5FYSSIL\nbG9jYWxlBjsARkkiB2VuBjsAVEkiEF9jc3JmX3Rva2VuBjsARkkiMVJOK05n\nalBOWlBDTlBXaElreFQza1cvYmRyODN6OFVmUGJqRWNocTc4LzA9BjsARg==\n	2017-02-01 09:38:31.251716	2017-02-01 09:40:48.545799
 \.
 
 
 --
--- Name: sessions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: sessions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('sessions_id_seq', 511, true);
+SELECT pg_catalog.setval('sessions_id_seq', 506, true);
 
 
 --
--- Data for Name: settings; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: settings; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY settings (id, name, value, description, category, settings_type, "default", created_at, updated_at) FROM stdin;
@@ -5069,25 +4785,25 @@ COPY settings (id, name, value, description, category, settings_type, "default",
 2	administrator	--- root@foreman.ustack.com\n...\n	The default administrator email address	Setting::General	string	--- root@example.com\n...\n	2016-04-14 10:08:49.38084	2016-06-12 02:05:51.656042
 4	email_reply_address	--- Foreman-noreply@foreman.example.com\n...\n	Email reply address for emails that Foreman is sending	Setting::General	string	--- Foreman-noreply@example.com\n...\n	2016-04-14 10:08:49.390713	2016-06-12 02:05:51.665486
 3	foreman_url	--- http://foreman.ustack.com:3000\n...\n	URL where your Foreman instance is reachable (see also Provisioning > unattended_url)	Setting::General	string	--- http://puppet.example.com\n...\n	2016-04-14 10:08:49.386994	2016-11-24 03:03:04.363764
+17	oauth_consumer_key	--- pwzyqumdngaYzgRpKcYt3XKQPUTvvy9B\n...\n	OAuth consumer key	Setting::Auth	string	--- ''\n	2016-04-14 10:08:49.456782	2016-11-24 03:03:04.822193
+18	oauth_consumer_secret	--- pR7M2uXgZeFY3Q2Gr3VRZ4RbGYdkMmFb\n...\n	OAuth consumer secret	Setting::Auth	string	--- ''\n	2016-04-14 10:08:49.460028	2016-11-24 03:03:04.840295
 28	unattended_url	--- http://foreman.ustack.com:3000\n...\n	URL hosts will retrieve templates from during build (normally http as many installers don't support https)	Setting::Provisioning	string	--- http://puppet.example.com\n...\n	2016-04-14 10:08:49.502157	2016-11-24 03:03:04.954805
 30	ssl_certificate	\N	SSL Certificate path that Foreman would use to communicate with its proxies	Setting::Provisioning	string	--- /var/lib/puppet/ssl/certs/puppet.example.com.pem\n...\n	2016-04-14 10:08:49.509837	2016-11-24 03:03:04.969568
 32	ssl_priv_key	\N	SSL Private Key file that Foreman will use to communicate with its proxies	Setting::Provisioning	string	--- /var/lib/puppet/ssl/private_keys/puppet.example.com.pem\n...\n	2016-04-14 10:08:49.557276	2016-11-24 03:03:04.985475
-17	oauth_consumer_key	--- deVjVzdeqvH7ypJkTFWRUUrQYWXCaLdJ\n...\n	OAuth consumer key	Setting::Auth	string	--- ''\n	2016-04-14 10:08:49.456782	2017-02-01 09:18:22.600366
-18	oauth_consumer_secret	--- sh9ce97Atv7jD8RLang2YUAjzR6D6673\n...\n	OAuth consumer secret	Setting::Auth	string	--- ''\n	2016-04-14 10:08:49.460028	2017-02-01 09:18:22.613417
-43	websockets_ssl_cert	--- /var/lib/puppet/ssl/certs/puppet.example.com.pem\n...\n	Certificate that Foreman will use to encrypt websockets	Setting::Provisioning	\N	--- \n...\n	2016-04-14 10:08:49.599956	2017-02-01 09:38:22.828624
-42	websockets_ssl_key	--- /var/lib/puppet/ssl/private_keys/puppet.example.com.pem\n...\n	Private key that Foreman will use to encrypt websockets	Setting::Provisioning	\N	--- \n...\n	2016-04-14 10:08:49.596236	2017-02-01 09:38:22.820897
+42	websockets_ssl_key	--- /var/lib/puppet/ssl/private_keys/puppet.example.com.pem\n...\n	Private key that Foreman will use to encrypt websockets	Setting::Provisioning	\N	--- \n...\n	2016-04-14 10:08:49.596236	2016-11-24 03:04:03.569982
+43	websockets_ssl_cert	--- /var/lib/puppet/ssl/certs/puppet.example.com.pem\n...\n	Certificate that Foreman will use to encrypt websockets	Setting::Provisioning	\N	--- \n...\n	2016-04-14 10:08:49.599956	2016-11-24 03:04:03.612643
 \.
 
 
 --
--- Name: settings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: settings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('settings_id_seq', 64, true);
 
 
 --
--- Data for Name: smart_proxies; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: smart_proxies; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY smart_proxies (id, name, url, created_at, updated_at) FROM stdin;
@@ -5095,14 +4811,14 @@ COPY smart_proxies (id, name, url, created_at, updated_at) FROM stdin;
 
 
 --
--- Name: smart_proxies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: smart_proxies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('smart_proxies_id_seq', 2, true);
 
 
 --
--- Data for Name: sources; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: sources; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY sources (id, value, digest) FROM stdin;
@@ -5110,14 +4826,14 @@ COPY sources (id, value, digest) FROM stdin;
 
 
 --
--- Name: sources_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: sources_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('sources_id_seq', 1, false);
 
 
 --
--- Data for Name: subnet_domains; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: subnet_domains; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY subnet_domains (id, domain_id, subnet_id, created_at, updated_at) FROM stdin;
@@ -5125,14 +4841,14 @@ COPY subnet_domains (id, domain_id, subnet_id, created_at, updated_at) FROM stdi
 
 
 --
--- Name: subnet_domains_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: subnet_domains_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('subnet_domains_id_seq', 2, true);
 
 
 --
--- Data for Name: subnets; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: subnets; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY subnets (id, network, mask, priority, name, vlanid, created_at, updated_at, dhcp_id, tftp_id, gateway, dns_primary, dns_secondary, "from", "to", dns_id, boot_mode, ipam) FROM stdin;
@@ -5140,14 +4856,14 @@ COPY subnets (id, network, mask, priority, name, vlanid, created_at, updated_at,
 
 
 --
--- Name: subnets_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: subnets_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('subnets_id_seq', 2, true);
 
 
 --
--- Data for Name: taxable_taxonomies; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: taxable_taxonomies; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY taxable_taxonomies (id, taxonomy_id, taxable_id, taxable_type, created_at, updated_at) FROM stdin;
@@ -5155,14 +4871,14 @@ COPY taxable_taxonomies (id, taxonomy_id, taxable_id, taxable_type, created_at, 
 
 
 --
--- Name: taxable_taxonomies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: taxable_taxonomies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('taxable_taxonomies_id_seq', 1, false);
 
 
 --
--- Data for Name: taxonomies; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: taxonomies; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY taxonomies (id, name, type, created_at, updated_at, ignore_types, ancestry, title, description) FROM stdin;
@@ -5170,14 +4886,14 @@ COPY taxonomies (id, name, type, created_at, updated_at, ignore_types, ancestry,
 
 
 --
--- Name: taxonomies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: taxonomies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('taxonomies_id_seq', 1, false);
 
 
 --
--- Data for Name: template_combinations; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: template_combinations; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY template_combinations (id, config_template_id, hostgroup_id, environment_id, created_at, updated_at) FROM stdin;
@@ -5185,14 +4901,14 @@ COPY template_combinations (id, config_template_id, hostgroup_id, environment_id
 
 
 --
--- Name: template_combinations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: template_combinations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('template_combinations_id_seq', 1, false);
 
 
 --
--- Data for Name: template_kinds; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: template_kinds; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY template_kinds (id, name, created_at, updated_at) FROM stdin;
@@ -5208,14 +4924,14 @@ COPY template_kinds (id, name, created_at, updated_at) FROM stdin;
 
 
 --
--- Name: template_kinds_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: template_kinds_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('template_kinds_id_seq', 8, true);
 
 
 --
--- Data for Name: tokens; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: tokens; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY tokens (id, value, expires, host_id) FROM stdin;
@@ -5223,14 +4939,14 @@ COPY tokens (id, value, expires, host_id) FROM stdin;
 
 
 --
--- Name: tokens_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: tokens_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('tokens_id_seq', 49, true);
 
 
 --
--- Data for Name: trend_counters; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: trend_counters; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY trend_counters (id, trend_id, count, created_at, updated_at) FROM stdin;
@@ -5238,14 +4954,14 @@ COPY trend_counters (id, trend_id, count, created_at, updated_at) FROM stdin;
 
 
 --
--- Name: trend_counters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: trend_counters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('trend_counters_id_seq', 1, false);
 
 
 --
--- Data for Name: trends; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: trends; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY trends (id, trendable_type, trendable_id, name, type, fact_value, fact_name, created_at, updated_at) FROM stdin;
@@ -5253,14 +4969,14 @@ COPY trends (id, trendable_type, trendable_id, name, type, fact_value, fact_name
 
 
 --
--- Name: trends_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: trends_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('trends_id_seq', 1, false);
 
 
 --
--- Data for Name: user_mail_notifications; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: user_mail_notifications; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY user_mail_notifications (id, user_id, mail_notification_id, last_sent, "interval", created_at, updated_at) FROM stdin;
@@ -5268,14 +4984,14 @@ COPY user_mail_notifications (id, user_id, mail_notification_id, last_sent, "int
 
 
 --
--- Name: user_mail_notifications_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: user_mail_notifications_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('user_mail_notifications_id_seq', 1, false);
 
 
 --
--- Data for Name: user_roles; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: user_roles; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY user_roles (id, owner_id, role_id, owner_type) FROM stdin;
@@ -5287,14 +5003,14 @@ COPY user_roles (id, owner_id, role_id, owner_type) FROM stdin;
 
 
 --
--- Name: user_roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: user_roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('user_roles_id_seq', 4, true);
 
 
 --
--- Data for Name: usergroup_members; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: usergroup_members; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY usergroup_members (id, member_id, member_type, usergroup_id) FROM stdin;
@@ -5302,14 +5018,14 @@ COPY usergroup_members (id, member_id, member_type, usergroup_id) FROM stdin;
 
 
 --
--- Name: usergroup_members_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: usergroup_members_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('usergroup_members_id_seq', 1, false);
 
 
 --
--- Data for Name: usergroups; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: usergroups; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY usergroups (id, name, created_at, updated_at, admin) FROM stdin;
@@ -5317,33 +5033,33 @@ COPY usergroups (id, name, created_at, updated_at, admin) FROM stdin;
 
 
 --
--- Name: usergroups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: usergroups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('usergroups_id_seq', 1, false);
 
 
 --
--- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: foreman
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY users (id, login, firstname, lastname, mail, admin, last_login_on, auth_source_id, created_at, updated_at, password_hash, password_salt, locale, avatar_hash, default_organization_id, default_location_id, lower_login, mail_enabled, timezone) FROM stdin;
 1	foreman_admin	Anonymous	Admin	\N	t	\N	2	2016-04-14 10:08:54.228839	2016-04-14 10:08:54.228839	\N	\N	\N	\N	\N	\N	foreman_admin	t	\N
 2	foreman_api_admin	API	Admin	\N	t	\N	2	2016-04-14 10:08:54.261471	2016-04-14 10:08:54.261471	\N	\N	\N	\N	\N	\N	foreman_api_admin	t	\N
-4	api_post_user				t	2017-02-01 09:37:28.161957	1	2016-04-14 10:47:50.427068	2017-02-01 09:37:28.163087	4e084f457b6009c1ce5640137d689da1964c33bb	108150e9eb7478811d397b1e0b86910d5dbff51f	\N	\N	\N	\N	api_post_user	t	
-3	admin	Admin	User	root@0.saic.ustack.in	t	2017-02-01 09:38:31.227582	1	2016-04-14 10:08:54.284759	2017-02-01 09:38:31.22875	3ce556f629bc574de09db6aadeb762cd98a98d3d	daa4fcdda3e0deb9d7e3916fd313c944d996348d	en	\N	\N	\N	admin	t	
+4	api_post_user				t	2016-05-10 12:30:51.033746	1	2016-04-14 10:47:50.427068	2016-05-10 12:30:51.03455	4e084f457b6009c1ce5640137d689da1964c33bb	108150e9eb7478811d397b1e0b86910d5dbff51f	\N	\N	\N	\N	api_post_user	t	
+3	admin	Admin	User	root@0.saic.ustack.in	t	2016-11-24 03:13:39.235432	1	2016-04-14 10:08:54.284759	2016-11-24 03:13:39.236503	ebbc9253a53ea72340ab7a53d4a96502125c58b0	04543ffcf5f0430f8e2c6a8cde647f497b0ec855	en	\N	\N	\N	admin	t	
 \.
 
 
 --
--- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: foreman
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('users_id_seq', 4, true);
 
 
 --
--- Name: architectures_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: architectures_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY architectures
@@ -5351,7 +5067,7 @@ ALTER TABLE ONLY architectures
 
 
 --
--- Name: audits_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: audits_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY audits
@@ -5359,7 +5075,7 @@ ALTER TABLE ONLY audits
 
 
 --
--- Name: auth_sources_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: auth_sources_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY auth_sources
@@ -5367,7 +5083,7 @@ ALTER TABLE ONLY auth_sources
 
 
 --
--- Name: bookmarks_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: bookmarks_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY bookmarks
@@ -5375,7 +5091,7 @@ ALTER TABLE ONLY bookmarks
 
 
 --
--- Name: cached_user_roles_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: cached_user_roles_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY cached_user_roles
@@ -5383,7 +5099,7 @@ ALTER TABLE ONLY cached_user_roles
 
 
 --
--- Name: cached_usergroup_members_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: cached_usergroup_members_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY cached_usergroup_members
@@ -5391,7 +5107,7 @@ ALTER TABLE ONLY cached_usergroup_members
 
 
 --
--- Name: compute_attributes_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: compute_attributes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY compute_attributes
@@ -5399,7 +5115,7 @@ ALTER TABLE ONLY compute_attributes
 
 
 --
--- Name: compute_profiles_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: compute_profiles_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY compute_profiles
@@ -5407,7 +5123,7 @@ ALTER TABLE ONLY compute_profiles
 
 
 --
--- Name: compute_resources_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: compute_resources_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY compute_resources
@@ -5415,7 +5131,7 @@ ALTER TABLE ONLY compute_resources
 
 
 --
--- Name: config_group_classes_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: config_group_classes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY config_group_classes
@@ -5423,7 +5139,7 @@ ALTER TABLE ONLY config_group_classes
 
 
 --
--- Name: config_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: config_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY config_groups
@@ -5431,7 +5147,7 @@ ALTER TABLE ONLY config_groups
 
 
 --
--- Name: config_templates_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: config_templates_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY config_templates
@@ -5439,7 +5155,7 @@ ALTER TABLE ONLY config_templates
 
 
 --
--- Name: domains_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: domains_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY domains
@@ -5447,7 +5163,7 @@ ALTER TABLE ONLY domains
 
 
 --
--- Name: environment_classes_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: environment_classes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY environment_classes
@@ -5455,7 +5171,7 @@ ALTER TABLE ONLY environment_classes
 
 
 --
--- Name: environments_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: environments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY environments
@@ -5463,7 +5179,7 @@ ALTER TABLE ONLY environments
 
 
 --
--- Name: external_usergroups_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: external_usergroups_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY external_usergroups
@@ -5471,7 +5187,7 @@ ALTER TABLE ONLY external_usergroups
 
 
 --
--- Name: fact_names_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: fact_names_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY fact_names
@@ -5479,7 +5195,7 @@ ALTER TABLE ONLY fact_names
 
 
 --
--- Name: fact_values_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: fact_values_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY fact_values
@@ -5487,7 +5203,7 @@ ALTER TABLE ONLY fact_values
 
 
 --
--- Name: features_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: features_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY features
@@ -5495,7 +5211,7 @@ ALTER TABLE ONLY features
 
 
 --
--- Name: filterings_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: filterings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY filterings
@@ -5503,7 +5219,7 @@ ALTER TABLE ONLY filterings
 
 
 --
--- Name: filters_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: filters_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY filters
@@ -5511,7 +5227,7 @@ ALTER TABLE ONLY filters
 
 
 --
--- Name: host_classes_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: host_classes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY host_classes
@@ -5519,7 +5235,7 @@ ALTER TABLE ONLY host_classes
 
 
 --
--- Name: host_config_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: host_config_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY host_config_groups
@@ -5527,7 +5243,7 @@ ALTER TABLE ONLY host_config_groups
 
 
 --
--- Name: hostgroup_classes_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: hostgroup_classes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY hostgroup_classes
@@ -5535,7 +5251,7 @@ ALTER TABLE ONLY hostgroup_classes
 
 
 --
--- Name: hostgroups_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: hostgroups_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY hostgroups
@@ -5543,7 +5259,7 @@ ALTER TABLE ONLY hostgroups
 
 
 --
--- Name: hosts_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: hosts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY hosts
@@ -5551,7 +5267,7 @@ ALTER TABLE ONLY hosts
 
 
 --
--- Name: images_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: images_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY images
@@ -5559,7 +5275,7 @@ ALTER TABLE ONLY images
 
 
 --
--- Name: key_pairs_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: key_pairs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY key_pairs
@@ -5567,7 +5283,7 @@ ALTER TABLE ONLY key_pairs
 
 
 --
--- Name: logs_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: logs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY logs
@@ -5575,7 +5291,7 @@ ALTER TABLE ONLY logs
 
 
 --
--- Name: lookup_keys_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: lookup_keys_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY lookup_keys
@@ -5583,7 +5299,7 @@ ALTER TABLE ONLY lookup_keys
 
 
 --
--- Name: lookup_values_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: lookup_values_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY lookup_values
@@ -5591,7 +5307,7 @@ ALTER TABLE ONLY lookup_values
 
 
 --
--- Name: mail_notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: mail_notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY mail_notifications
@@ -5599,7 +5315,7 @@ ALTER TABLE ONLY mail_notifications
 
 
 --
--- Name: media_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: media_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY media
@@ -5607,7 +5323,7 @@ ALTER TABLE ONLY media
 
 
 --
--- Name: messages_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: messages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY messages
@@ -5615,7 +5331,7 @@ ALTER TABLE ONLY messages
 
 
 --
--- Name: models_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: models_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY models
@@ -5623,7 +5339,7 @@ ALTER TABLE ONLY models
 
 
 --
--- Name: nics_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: nics_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY nics
@@ -5631,7 +5347,7 @@ ALTER TABLE ONLY nics
 
 
 --
--- Name: operatingsystems_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: operatingsystems_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY operatingsystems
@@ -5639,7 +5355,7 @@ ALTER TABLE ONLY operatingsystems
 
 
 --
--- Name: os_default_templates_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: os_default_templates_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY os_default_templates
@@ -5647,7 +5363,7 @@ ALTER TABLE ONLY os_default_templates
 
 
 --
--- Name: parameters_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: parameters_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY parameters
@@ -5655,7 +5371,7 @@ ALTER TABLE ONLY parameters
 
 
 --
--- Name: permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY permissions
@@ -5663,7 +5379,7 @@ ALTER TABLE ONLY permissions
 
 
 --
--- Name: ptables_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: ptables_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY ptables
@@ -5671,7 +5387,7 @@ ALTER TABLE ONLY ptables
 
 
 --
--- Name: puppetclasses_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: puppetclasses_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY puppetclasses
@@ -5679,7 +5395,7 @@ ALTER TABLE ONLY puppetclasses
 
 
 --
--- Name: realms_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: realms_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY realms
@@ -5687,7 +5403,7 @@ ALTER TABLE ONLY realms
 
 
 --
--- Name: reports_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: reports_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY reports
@@ -5695,7 +5411,7 @@ ALTER TABLE ONLY reports
 
 
 --
--- Name: roles_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: roles_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY roles
@@ -5703,7 +5419,7 @@ ALTER TABLE ONLY roles
 
 
 --
--- Name: sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY sessions
@@ -5711,7 +5427,7 @@ ALTER TABLE ONLY sessions
 
 
 --
--- Name: settings_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: settings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY settings
@@ -5719,7 +5435,7 @@ ALTER TABLE ONLY settings
 
 
 --
--- Name: smart_proxies_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: smart_proxies_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY smart_proxies
@@ -5727,7 +5443,7 @@ ALTER TABLE ONLY smart_proxies
 
 
 --
--- Name: sources_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: sources_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY sources
@@ -5735,7 +5451,7 @@ ALTER TABLE ONLY sources
 
 
 --
--- Name: subnet_domains_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: subnet_domains_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY subnet_domains
@@ -5743,7 +5459,7 @@ ALTER TABLE ONLY subnet_domains
 
 
 --
--- Name: subnets_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: subnets_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY subnets
@@ -5751,7 +5467,7 @@ ALTER TABLE ONLY subnets
 
 
 --
--- Name: taxable_taxonomies_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: taxable_taxonomies_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY taxable_taxonomies
@@ -5759,7 +5475,7 @@ ALTER TABLE ONLY taxable_taxonomies
 
 
 --
--- Name: taxonomies_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: taxonomies_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY taxonomies
@@ -5767,7 +5483,7 @@ ALTER TABLE ONLY taxonomies
 
 
 --
--- Name: template_combinations_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: template_combinations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY template_combinations
@@ -5775,7 +5491,7 @@ ALTER TABLE ONLY template_combinations
 
 
 --
--- Name: template_kinds_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: template_kinds_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY template_kinds
@@ -5783,7 +5499,7 @@ ALTER TABLE ONLY template_kinds
 
 
 --
--- Name: tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY tokens
@@ -5791,7 +5507,7 @@ ALTER TABLE ONLY tokens
 
 
 --
--- Name: trend_counters_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: trend_counters_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY trend_counters
@@ -5799,7 +5515,7 @@ ALTER TABLE ONLY trend_counters
 
 
 --
--- Name: trends_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: trends_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY trends
@@ -5807,7 +5523,7 @@ ALTER TABLE ONLY trends
 
 
 --
--- Name: user_mail_notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: user_mail_notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY user_mail_notifications
@@ -5815,7 +5531,7 @@ ALTER TABLE ONLY user_mail_notifications
 
 
 --
--- Name: user_roles_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: user_roles_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY user_roles
@@ -5823,7 +5539,7 @@ ALTER TABLE ONLY user_roles
 
 
 --
--- Name: usergroup_members_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: usergroup_members_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY usergroup_members
@@ -5831,7 +5547,7 @@ ALTER TABLE ONLY usergroup_members
 
 
 --
--- Name: usergroups_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: usergroups_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY usergroups
@@ -5839,7 +5555,7 @@ ALTER TABLE ONLY usergroups
 
 
 --
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: foreman; Tablespace: 
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY users
@@ -5847,616 +5563,616 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: associated_index; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: associated_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX associated_index ON audits USING btree (associated_id, associated_type);
 
 
 --
--- Name: auditable_index; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: auditable_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX auditable_index ON audits USING btree (auditable_id, auditable_type);
 
 
 --
--- Name: auditable_parent_index; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: auditable_parent_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX auditable_parent_index ON audits USING btree (associated_id, associated_type);
 
 
 --
--- Name: host_arch_id_ix; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: host_arch_id_ix; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX host_arch_id_ix ON hosts USING btree (architecture_id);
 
 
 --
--- Name: host_env_id_ix; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: host_env_id_ix; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX host_env_id_ix ON hosts USING btree (environment_id);
 
 
 --
--- Name: host_group_id_ix; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: host_group_id_ix; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX host_group_id_ix ON hosts USING btree (hostgroup_id);
 
 
 --
--- Name: host_medium_id_ix; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: host_medium_id_ix; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX host_medium_id_ix ON hosts USING btree (medium_id);
 
 
 --
--- Name: host_os_id_ix; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: host_os_id_ix; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX host_os_id_ix ON hosts USING btree (operatingsystem_id);
 
 
 --
--- Name: index_audits_on_created_at; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_audits_on_created_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_audits_on_created_at ON audits USING btree (created_at);
 
 
 --
--- Name: index_audits_on_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_audits_on_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_audits_on_id ON audits USING btree (id);
 
 
 --
--- Name: index_bookmarks_on_controller; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_bookmarks_on_controller; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_bookmarks_on_controller ON bookmarks USING btree (controller);
 
 
 --
--- Name: index_bookmarks_on_name; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_bookmarks_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_bookmarks_on_name ON bookmarks USING btree (name);
 
 
 --
--- Name: index_bookmarks_on_owner_id_and_owner_type; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_bookmarks_on_owner_id_and_owner_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_bookmarks_on_owner_id_and_owner_type ON bookmarks USING btree (owner_id, owner_type);
 
 
 --
--- Name: index_by_host; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_by_host; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_by_host ON nics USING btree (host_id);
 
 
 --
--- Name: index_by_type; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_by_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_by_type ON nics USING btree (type);
 
 
 --
--- Name: index_by_type_and_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_by_type_and_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_by_type_and_id ON nics USING btree (type, id);
 
 
 --
--- Name: index_cached_user_roles_on_role_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_cached_user_roles_on_role_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_cached_user_roles_on_role_id ON cached_user_roles USING btree (role_id);
 
 
 --
--- Name: index_cached_user_roles_on_user_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_cached_user_roles_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_cached_user_roles_on_user_id ON cached_user_roles USING btree (user_id);
 
 
 --
--- Name: index_cached_user_roles_on_user_role_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_cached_user_roles_on_user_role_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_cached_user_roles_on_user_role_id ON cached_user_roles USING btree (user_role_id);
 
 
 --
--- Name: index_cached_usergroup_members_on_user_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_cached_usergroup_members_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_cached_usergroup_members_on_user_id ON cached_usergroup_members USING btree (user_id);
 
 
 --
--- Name: index_cached_usergroup_members_on_usergroup_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_cached_usergroup_members_on_usergroup_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_cached_usergroup_members_on_usergroup_id ON cached_usergroup_members USING btree (usergroup_id);
 
 
 --
--- Name: index_compute_attributes_on_compute_profile_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_compute_attributes_on_compute_profile_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_compute_attributes_on_compute_profile_id ON compute_attributes USING btree (compute_profile_id);
 
 
 --
--- Name: index_compute_attributes_on_compute_resource_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_compute_attributes_on_compute_resource_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_compute_attributes_on_compute_resource_id ON compute_attributes USING btree (compute_resource_id);
 
 
 --
--- Name: index_environments_puppetclasses_on_environment_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_environments_puppetclasses_on_environment_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_environments_puppetclasses_on_environment_id ON environment_classes USING btree (environment_id);
 
 
 --
--- Name: index_environments_puppetclasses_on_puppetclass_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_environments_puppetclasses_on_puppetclass_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_environments_puppetclasses_on_puppetclass_id ON environment_classes USING btree (puppetclass_id);
 
 
 --
--- Name: index_external_usergroups_on_usergroup_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_external_usergroups_on_usergroup_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_external_usergroups_on_usergroup_id ON external_usergroups USING btree (usergroup_id);
 
 
 --
--- Name: index_fact_names_on_ancestry; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_fact_names_on_ancestry; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_fact_names_on_ancestry ON fact_names USING btree (ancestry);
 
 
 --
--- Name: index_fact_names_on_name_and_type; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_fact_names_on_name_and_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_fact_names_on_name_and_type ON fact_names USING btree (name, type);
 
 
 --
--- Name: index_fact_values_on_fact_name_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_fact_values_on_fact_name_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_fact_values_on_fact_name_id ON fact_values USING btree (fact_name_id);
 
 
 --
--- Name: index_fact_values_on_fact_name_id_and_host_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_fact_values_on_fact_name_id_and_host_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_fact_values_on_fact_name_id_and_host_id ON fact_values USING btree (fact_name_id, host_id);
 
 
 --
--- Name: index_fact_values_on_host_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_fact_values_on_host_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_fact_values_on_host_id ON fact_values USING btree (host_id);
 
 
 --
--- Name: index_filterings_on_filter_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_filterings_on_filter_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_filterings_on_filter_id ON filterings USING btree (filter_id);
 
 
 --
--- Name: index_filterings_on_permission_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_filterings_on_permission_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_filterings_on_permission_id ON filterings USING btree (permission_id);
 
 
 --
--- Name: index_hostgroups_on_ancestry; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_hostgroups_on_ancestry; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_hostgroups_on_ancestry ON hostgroups USING btree (ancestry);
 
 
 --
--- Name: index_hostgroups_on_compute_profile_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_hostgroups_on_compute_profile_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_hostgroups_on_compute_profile_id ON hostgroups USING btree (compute_profile_id);
 
 
 --
--- Name: index_hostgroups_puppetclasses_on_hostgroup_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_hostgroups_puppetclasses_on_hostgroup_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_hostgroups_puppetclasses_on_hostgroup_id ON hostgroup_classes USING btree (hostgroup_id);
 
 
 --
--- Name: index_hostgroups_puppetclasses_on_puppetclass_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_hostgroups_puppetclasses_on_puppetclass_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_hostgroups_puppetclasses_on_puppetclass_id ON hostgroup_classes USING btree (puppetclass_id);
 
 
 --
--- Name: index_hosts_on_certname; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_hosts_on_certname; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_hosts_on_certname ON hosts USING btree (certname);
 
 
 --
--- Name: index_hosts_on_compute_profile_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_hosts_on_compute_profile_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_hosts_on_compute_profile_id ON hosts USING btree (compute_profile_id);
 
 
 --
--- Name: index_hosts_on_installed_at; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_hosts_on_installed_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_hosts_on_installed_at ON hosts USING btree (installed_at);
 
 
 --
--- Name: index_hosts_on_last_report; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_hosts_on_last_report; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_hosts_on_last_report ON hosts USING btree (last_report);
 
 
 --
--- Name: index_hosts_on_name; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_hosts_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_hosts_on_name ON hosts USING btree (name);
 
 
 --
--- Name: index_hosts_on_puppet_status; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_hosts_on_puppet_status; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_hosts_on_puppet_status ON hosts USING btree (puppet_status);
 
 
 --
--- Name: index_hosts_on_source_file_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_hosts_on_source_file_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_hosts_on_source_file_id ON hosts USING btree (source_file_id);
 
 
 --
--- Name: index_hosts_on_type; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_hosts_on_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_hosts_on_type ON hosts USING btree (type);
 
 
 --
--- Name: index_logs_on_level_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_logs_on_level_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_logs_on_level_id ON logs USING btree (level_id);
 
 
 --
--- Name: index_logs_on_message_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_logs_on_message_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_logs_on_message_id ON logs USING btree (message_id);
 
 
 --
--- Name: index_logs_on_report_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_logs_on_report_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_logs_on_report_id ON logs USING btree (report_id);
 
 
 --
--- Name: index_logs_on_source_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_logs_on_source_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_logs_on_source_id ON logs USING btree (source_id);
 
 
 --
--- Name: index_lookup_keys_on_key; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_lookup_keys_on_key; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_lookup_keys_on_key ON lookup_keys USING btree (key);
 
 
 --
--- Name: index_lookup_keys_on_path; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_lookup_keys_on_path; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_lookup_keys_on_path ON lookup_keys USING btree (path);
 
 
 --
--- Name: index_lookup_keys_on_puppetclass_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_lookup_keys_on_puppetclass_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_lookup_keys_on_puppetclass_id ON lookup_keys USING btree (puppetclass_id);
 
 
 --
--- Name: index_lookup_values_on_match; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_lookup_values_on_match; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_lookup_values_on_match ON lookup_values USING btree (match);
 
 
 --
--- Name: index_lookup_values_on_priority; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_lookup_values_on_priority; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_lookup_values_on_priority ON lookup_values USING btree (match);
 
 
 --
--- Name: index_messages_on_digest; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_messages_on_digest; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_messages_on_digest ON messages USING btree (digest);
 
 
 --
--- Name: index_operatingsystems_on_type; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_operatingsystems_on_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_operatingsystems_on_type ON operatingsystems USING btree (type);
 
 
 --
--- Name: index_parameters_on_host_id_and_type; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_parameters_on_host_id_and_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_parameters_on_host_id_and_type ON parameters USING btree (reference_id, type);
 
 
 --
--- Name: index_parameters_on_type; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_parameters_on_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_parameters_on_type ON parameters USING btree (type);
 
 
 --
--- Name: index_parameters_on_type_and_reference_id_and_name; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_parameters_on_type_and_reference_id_and_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_parameters_on_type_and_reference_id_and_name ON parameters USING btree (type, reference_id, name);
 
 
 --
--- Name: index_permissions_on_name_and_resource_type; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_permissions_on_name_and_resource_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_permissions_on_name_and_resource_type ON permissions USING btree (name, resource_type);
 
 
 --
--- Name: index_puppetclasses_on_name; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_puppetclasses_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_puppetclasses_on_name ON puppetclasses USING btree (name);
 
 
 --
--- Name: index_realms_on_name; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_realms_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_realms_on_name ON realms USING btree (name);
 
 
 --
--- Name: index_reports_on_host_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_reports_on_host_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_reports_on_host_id ON reports USING btree (host_id);
 
 
 --
--- Name: index_reports_on_reported_at; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_reports_on_reported_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_reports_on_reported_at ON reports USING btree (reported_at);
 
 
 --
--- Name: index_reports_on_reported_at_and_host_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_reports_on_reported_at_and_host_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_reports_on_reported_at_and_host_id ON reports USING btree (reported_at, host_id);
 
 
 --
--- Name: index_reports_on_status; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_reports_on_status; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_reports_on_status ON reports USING btree (status);
 
 
 --
--- Name: index_sessions_on_session_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_sessions_on_session_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_sessions_on_session_id ON sessions USING btree (session_id);
 
 
 --
--- Name: index_sessions_on_updated_at; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_sessions_on_updated_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_sessions_on_updated_at ON sessions USING btree (updated_at);
 
 
 --
--- Name: index_settings_on_category; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_settings_on_category; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_settings_on_category ON settings USING btree (category);
 
 
 --
--- Name: index_settings_on_name; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_settings_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_settings_on_name ON settings USING btree (name);
 
 
 --
--- Name: index_sources_on_digest; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_sources_on_digest; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_sources_on_digest ON sources USING btree (digest);
 
 
 --
--- Name: index_taxable_taxonomies_on_taxable_id_and_taxable_type; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_taxable_taxonomies_on_taxable_id_and_taxable_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_taxable_taxonomies_on_taxable_id_and_taxable_type ON taxable_taxonomies USING btree (taxable_id, taxable_type);
 
 
 --
--- Name: index_taxable_taxonomies_on_taxonomy_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_taxable_taxonomies_on_taxonomy_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_taxable_taxonomies_on_taxonomy_id ON taxable_taxonomies USING btree (taxonomy_id);
 
 
 --
--- Name: index_taxonomies_on_ancestry; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_taxonomies_on_ancestry; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_taxonomies_on_ancestry ON taxonomies USING btree (ancestry);
 
 
 --
--- Name: index_tokens_on_host_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_tokens_on_host_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_tokens_on_host_id ON tokens USING btree (host_id);
 
 
 --
--- Name: index_tokens_on_value; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_tokens_on_value; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_tokens_on_value ON tokens USING btree (value);
 
 
 --
--- Name: index_trend_counters_on_trend_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_trend_counters_on_trend_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_trend_counters_on_trend_id ON trend_counters USING btree (trend_id);
 
 
 --
--- Name: index_trends_on_fact_value; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_trends_on_fact_value; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_trends_on_fact_value ON trends USING btree (fact_value);
 
 
 --
--- Name: index_trends_on_trendable_type_and_trendable_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_trends_on_trendable_type_and_trendable_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_trends_on_trendable_type_and_trendable_id ON trends USING btree (trendable_type, trendable_id);
 
 
 --
--- Name: index_trends_on_type; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_trends_on_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_trends_on_type ON trends USING btree (type);
 
 
 --
--- Name: index_user_roles_on_owner_id; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_user_roles_on_owner_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_user_roles_on_owner_id ON user_roles USING btree (owner_id);
 
 
 --
--- Name: index_user_roles_on_owner_id_and_owner_type; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_user_roles_on_owner_id_and_owner_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_user_roles_on_owner_id_and_owner_type ON user_roles USING btree (owner_id, owner_type);
 
 
 --
--- Name: index_user_roles_on_owner_type; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_user_roles_on_owner_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_user_roles_on_owner_type ON user_roles USING btree (owner_type);
 
 
 --
--- Name: index_users_on_lower_login; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: index_users_on_lower_login; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_users_on_lower_login ON users USING btree (lower_login);
 
 
 --
--- Name: taxable_index; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: taxable_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX taxable_index ON taxable_taxonomies USING btree (taxable_id, taxable_type, taxonomy_id);
 
 
 --
--- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
 
 
 --
--- Name: user_index; Type: INDEX; Schema: public; Owner: foreman; Tablespace: 
+-- Name: user_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX user_index ON audits USING btree (user_id, user_type);
 
 
 --
--- Name: architectures_operatingsystems_architecture_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: architectures_operatingsystems_architecture_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY architectures_operatingsystems
@@ -6464,7 +6180,7 @@ ALTER TABLE ONLY architectures_operatingsystems
 
 
 --
--- Name: architectures_operatingsystems_operatingsystem_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: architectures_operatingsystems_operatingsystem_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY architectures_operatingsystems
@@ -6472,7 +6188,7 @@ ALTER TABLE ONLY architectures_operatingsystems
 
 
 --
--- Name: compute_attributes_compute_profile_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: compute_attributes_compute_profile_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY compute_attributes
@@ -6480,7 +6196,7 @@ ALTER TABLE ONLY compute_attributes
 
 
 --
--- Name: compute_attributes_compute_resource_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: compute_attributes_compute_resource_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY compute_attributes
@@ -6488,7 +6204,7 @@ ALTER TABLE ONLY compute_attributes
 
 
 --
--- Name: config_templates_operatingsystems_config_template_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: config_templates_operatingsystems_config_template_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY config_templates_operatingsystems
@@ -6496,7 +6212,7 @@ ALTER TABLE ONLY config_templates_operatingsystems
 
 
 --
--- Name: config_templates_operatingsystems_operatingsystem_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: config_templates_operatingsystems_operatingsystem_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY config_templates_operatingsystems
@@ -6504,7 +6220,7 @@ ALTER TABLE ONLY config_templates_operatingsystems
 
 
 --
--- Name: config_templates_template_kind_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: config_templates_template_kind_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY config_templates
@@ -6512,7 +6228,7 @@ ALTER TABLE ONLY config_templates
 
 
 --
--- Name: domains_dns_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: domains_dns_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY domains
@@ -6520,7 +6236,7 @@ ALTER TABLE ONLY domains
 
 
 --
--- Name: environment_classes_environment_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: environment_classes_environment_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY environment_classes
@@ -6528,7 +6244,7 @@ ALTER TABLE ONLY environment_classes
 
 
 --
--- Name: environment_classes_lookup_key_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: environment_classes_lookup_key_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY environment_classes
@@ -6536,7 +6252,7 @@ ALTER TABLE ONLY environment_classes
 
 
 --
--- Name: environment_classes_puppetclass_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: environment_classes_puppetclass_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY environment_classes
@@ -6544,7 +6260,7 @@ ALTER TABLE ONLY environment_classes
 
 
 --
--- Name: external_usergroups_auth_source_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: external_usergroups_auth_source_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY external_usergroups
@@ -6552,7 +6268,7 @@ ALTER TABLE ONLY external_usergroups
 
 
 --
--- Name: external_usergroups_usergroup_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: external_usergroups_usergroup_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY external_usergroups
@@ -6560,7 +6276,7 @@ ALTER TABLE ONLY external_usergroups
 
 
 --
--- Name: fact_values_fact_name_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: fact_values_fact_name_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY fact_values
@@ -6568,7 +6284,7 @@ ALTER TABLE ONLY fact_values
 
 
 --
--- Name: fact_values_host_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: fact_values_host_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY fact_values
@@ -6576,7 +6292,7 @@ ALTER TABLE ONLY fact_values
 
 
 --
--- Name: features_smart_proxies_feature_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: features_smart_proxies_feature_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY features_smart_proxies
@@ -6584,7 +6300,7 @@ ALTER TABLE ONLY features_smart_proxies
 
 
 --
--- Name: features_smart_proxies_smart_proxy_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: features_smart_proxies_smart_proxy_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY features_smart_proxies
@@ -6592,7 +6308,7 @@ ALTER TABLE ONLY features_smart_proxies
 
 
 --
--- Name: filterings_filters_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: filterings_filters_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY filterings
@@ -6600,7 +6316,7 @@ ALTER TABLE ONLY filterings
 
 
 --
--- Name: filterings_permissions_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: filterings_permissions_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY filterings
@@ -6608,7 +6324,7 @@ ALTER TABLE ONLY filterings
 
 
 --
--- Name: filters_roles_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: filters_roles_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY filters
@@ -6616,7 +6332,7 @@ ALTER TABLE ONLY filters
 
 
 --
--- Name: host_classes_host_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: host_classes_host_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY host_classes
@@ -6624,7 +6340,7 @@ ALTER TABLE ONLY host_classes
 
 
 --
--- Name: host_classes_puppetclass_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: host_classes_puppetclass_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY host_classes
@@ -6632,7 +6348,7 @@ ALTER TABLE ONLY host_classes
 
 
 --
--- Name: hostgroup_classes_hostgroup_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hostgroup_classes_hostgroup_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hostgroup_classes
@@ -6640,7 +6356,7 @@ ALTER TABLE ONLY hostgroup_classes
 
 
 --
--- Name: hostgroup_classes_puppetclass_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hostgroup_classes_puppetclass_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hostgroup_classes
@@ -6648,7 +6364,7 @@ ALTER TABLE ONLY hostgroup_classes
 
 
 --
--- Name: hostgroups_architecture_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hostgroups_architecture_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hostgroups
@@ -6656,7 +6372,7 @@ ALTER TABLE ONLY hostgroups
 
 
 --
--- Name: hostgroups_compute_profile_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hostgroups_compute_profile_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hostgroups
@@ -6664,7 +6380,7 @@ ALTER TABLE ONLY hostgroups
 
 
 --
--- Name: hostgroups_domain_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hostgroups_domain_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hostgroups
@@ -6672,7 +6388,7 @@ ALTER TABLE ONLY hostgroups
 
 
 --
--- Name: hostgroups_environment_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hostgroups_environment_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hostgroups
@@ -6680,7 +6396,7 @@ ALTER TABLE ONLY hostgroups
 
 
 --
--- Name: hostgroups_medium_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hostgroups_medium_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hostgroups
@@ -6688,7 +6404,7 @@ ALTER TABLE ONLY hostgroups
 
 
 --
--- Name: hostgroups_operatingsystem_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hostgroups_operatingsystem_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hostgroups
@@ -6696,7 +6412,7 @@ ALTER TABLE ONLY hostgroups
 
 
 --
--- Name: hostgroups_ptable_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hostgroups_ptable_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hostgroups
@@ -6704,7 +6420,7 @@ ALTER TABLE ONLY hostgroups
 
 
 --
--- Name: hostgroups_puppet_ca_proxy_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hostgroups_puppet_ca_proxy_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hostgroups
@@ -6712,7 +6428,7 @@ ALTER TABLE ONLY hostgroups
 
 
 --
--- Name: hostgroups_puppet_proxy_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hostgroups_puppet_proxy_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hostgroups
@@ -6720,7 +6436,7 @@ ALTER TABLE ONLY hostgroups
 
 
 --
--- Name: hostgroups_realms_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hostgroups_realms_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hostgroups
@@ -6728,7 +6444,7 @@ ALTER TABLE ONLY hostgroups
 
 
 --
--- Name: hostgroups_subnet_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hostgroups_subnet_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hostgroups
@@ -6736,7 +6452,7 @@ ALTER TABLE ONLY hostgroups
 
 
 --
--- Name: hosts_architecture_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hosts_architecture_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hosts
@@ -6744,7 +6460,7 @@ ALTER TABLE ONLY hosts
 
 
 --
--- Name: hosts_compute_profile_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hosts_compute_profile_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hosts
@@ -6752,7 +6468,7 @@ ALTER TABLE ONLY hosts
 
 
 --
--- Name: hosts_compute_resource_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hosts_compute_resource_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hosts
@@ -6760,7 +6476,7 @@ ALTER TABLE ONLY hosts
 
 
 --
--- Name: hosts_environment_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hosts_environment_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hosts
@@ -6768,7 +6484,7 @@ ALTER TABLE ONLY hosts
 
 
 --
--- Name: hosts_hostgroup_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hosts_hostgroup_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hosts
@@ -6776,7 +6492,7 @@ ALTER TABLE ONLY hosts
 
 
 --
--- Name: hosts_image_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hosts_image_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hosts
@@ -6784,7 +6500,7 @@ ALTER TABLE ONLY hosts
 
 
 --
--- Name: hosts_location_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hosts_location_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hosts
@@ -6792,7 +6508,7 @@ ALTER TABLE ONLY hosts
 
 
 --
--- Name: hosts_medium_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hosts_medium_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hosts
@@ -6800,7 +6516,7 @@ ALTER TABLE ONLY hosts
 
 
 --
--- Name: hosts_model_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hosts_model_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hosts
@@ -6808,7 +6524,7 @@ ALTER TABLE ONLY hosts
 
 
 --
--- Name: hosts_operatingsystem_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hosts_operatingsystem_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hosts
@@ -6816,7 +6532,7 @@ ALTER TABLE ONLY hosts
 
 
 --
--- Name: hosts_organization_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hosts_organization_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hosts
@@ -6824,7 +6540,7 @@ ALTER TABLE ONLY hosts
 
 
 --
--- Name: hosts_ptable_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hosts_ptable_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hosts
@@ -6832,7 +6548,7 @@ ALTER TABLE ONLY hosts
 
 
 --
--- Name: hosts_puppet_ca_proxy_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hosts_puppet_ca_proxy_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hosts
@@ -6840,7 +6556,7 @@ ALTER TABLE ONLY hosts
 
 
 --
--- Name: hosts_puppet_proxy_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hosts_puppet_proxy_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hosts
@@ -6848,7 +6564,7 @@ ALTER TABLE ONLY hosts
 
 
 --
--- Name: hosts_realms_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: hosts_realms_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY hosts
@@ -6856,7 +6572,7 @@ ALTER TABLE ONLY hosts
 
 
 --
--- Name: images_architecture_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: images_architecture_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY images
@@ -6864,7 +6580,7 @@ ALTER TABLE ONLY images
 
 
 --
--- Name: images_compute_resource_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: images_compute_resource_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY images
@@ -6872,7 +6588,7 @@ ALTER TABLE ONLY images
 
 
 --
--- Name: images_operatingsystem_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: images_operatingsystem_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY images
@@ -6880,7 +6596,7 @@ ALTER TABLE ONLY images
 
 
 --
--- Name: key_pairs_compute_resource_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: key_pairs_compute_resource_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY key_pairs
@@ -6888,7 +6604,7 @@ ALTER TABLE ONLY key_pairs
 
 
 --
--- Name: lookup_keys_puppetclass_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: lookup_keys_puppetclass_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY lookup_keys
@@ -6896,7 +6612,7 @@ ALTER TABLE ONLY lookup_keys
 
 
 --
--- Name: lookup_values_lookup_key_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: lookup_values_lookup_key_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY lookup_values
@@ -6904,7 +6620,7 @@ ALTER TABLE ONLY lookup_values
 
 
 --
--- Name: media_operatingsystems_medium_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: media_operatingsystems_medium_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY media_operatingsystems
@@ -6912,7 +6628,7 @@ ALTER TABLE ONLY media_operatingsystems
 
 
 --
--- Name: media_operatingsystems_operatingsystem_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: media_operatingsystems_operatingsystem_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY media_operatingsystems
@@ -6920,7 +6636,7 @@ ALTER TABLE ONLY media_operatingsystems
 
 
 --
--- Name: nics_domain_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: nics_domain_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY nics
@@ -6928,7 +6644,7 @@ ALTER TABLE ONLY nics
 
 
 --
--- Name: nics_host_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: nics_host_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY nics
@@ -6936,7 +6652,7 @@ ALTER TABLE ONLY nics
 
 
 --
--- Name: nics_subnet_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: nics_subnet_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY nics
@@ -6944,7 +6660,7 @@ ALTER TABLE ONLY nics
 
 
 --
--- Name: operatingsystems_ptables_operatingsystem_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: operatingsystems_ptables_operatingsystem_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY operatingsystems_ptables
@@ -6952,7 +6668,7 @@ ALTER TABLE ONLY operatingsystems_ptables
 
 
 --
--- Name: operatingsystems_ptables_ptable_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: operatingsystems_ptables_ptable_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY operatingsystems_ptables
@@ -6960,7 +6676,7 @@ ALTER TABLE ONLY operatingsystems_ptables
 
 
 --
--- Name: operatingsystems_puppetclasses_operatingsystem_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: operatingsystems_puppetclasses_operatingsystem_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY operatingsystems_puppetclasses
@@ -6968,7 +6684,7 @@ ALTER TABLE ONLY operatingsystems_puppetclasses
 
 
 --
--- Name: operatingsystems_puppetclasses_puppetclass_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: operatingsystems_puppetclasses_puppetclass_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY operatingsystems_puppetclasses
@@ -6976,7 +6692,7 @@ ALTER TABLE ONLY operatingsystems_puppetclasses
 
 
 --
--- Name: os_default_templates_config_template_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: os_default_templates_config_template_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY os_default_templates
@@ -6984,7 +6700,7 @@ ALTER TABLE ONLY os_default_templates
 
 
 --
--- Name: os_default_templates_operatingsystem_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: os_default_templates_operatingsystem_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY os_default_templates
@@ -6992,7 +6708,7 @@ ALTER TABLE ONLY os_default_templates
 
 
 --
--- Name: os_default_templates_template_kind_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: os_default_templates_template_kind_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY os_default_templates
@@ -7000,7 +6716,7 @@ ALTER TABLE ONLY os_default_templates
 
 
 --
--- Name: realms_realm_proxy_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: realms_realm_proxy_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY realms
@@ -7008,7 +6724,7 @@ ALTER TABLE ONLY realms
 
 
 --
--- Name: reports_host_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: reports_host_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY reports
@@ -7016,7 +6732,7 @@ ALTER TABLE ONLY reports
 
 
 --
--- Name: subnet_domains_domain_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: subnet_domains_domain_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY subnet_domains
@@ -7024,7 +6740,7 @@ ALTER TABLE ONLY subnet_domains
 
 
 --
--- Name: subnet_domains_subnet_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: subnet_domains_subnet_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY subnet_domains
@@ -7032,7 +6748,7 @@ ALTER TABLE ONLY subnet_domains
 
 
 --
--- Name: subnets_dhcp_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: subnets_dhcp_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY subnets
@@ -7040,7 +6756,7 @@ ALTER TABLE ONLY subnets
 
 
 --
--- Name: subnets_dns_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: subnets_dns_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY subnets
@@ -7048,7 +6764,7 @@ ALTER TABLE ONLY subnets
 
 
 --
--- Name: subnets_tftp_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: subnets_tftp_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY subnets
@@ -7056,7 +6772,7 @@ ALTER TABLE ONLY subnets
 
 
 --
--- Name: taxable_taxonomies_taxonomy_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: taxable_taxonomies_taxonomy_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY taxable_taxonomies
@@ -7064,7 +6780,7 @@ ALTER TABLE ONLY taxable_taxonomies
 
 
 --
--- Name: template_combinations_config_template_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: template_combinations_config_template_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY template_combinations
@@ -7072,7 +6788,7 @@ ALTER TABLE ONLY template_combinations
 
 
 --
--- Name: template_combinations_environment_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: template_combinations_environment_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY template_combinations
@@ -7080,7 +6796,7 @@ ALTER TABLE ONLY template_combinations
 
 
 --
--- Name: template_combinations_hostgroup_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: template_combinations_hostgroup_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY template_combinations
@@ -7088,7 +6804,7 @@ ALTER TABLE ONLY template_combinations
 
 
 --
--- Name: tokens_host_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: tokens_host_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY tokens
@@ -7096,7 +6812,7 @@ ALTER TABLE ONLY tokens
 
 
 --
--- Name: trend_counters_trend_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: trend_counters_trend_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY trend_counters
@@ -7104,7 +6820,7 @@ ALTER TABLE ONLY trend_counters
 
 
 --
--- Name: user_mail_notifications_mail_notification_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: user_mail_notifications_mail_notification_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY user_mail_notifications
@@ -7112,7 +6828,7 @@ ALTER TABLE ONLY user_mail_notifications
 
 
 --
--- Name: user_mail_notifications_user_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: user_mail_notifications_user_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY user_mail_notifications
@@ -7120,7 +6836,7 @@ ALTER TABLE ONLY user_mail_notifications
 
 
 --
--- Name: user_roles_role_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: user_roles_role_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY user_roles
@@ -7128,7 +6844,7 @@ ALTER TABLE ONLY user_roles
 
 
 --
--- Name: usergroup_members_usergroup_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: usergroup_members_usergroup_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY usergroup_members
@@ -7136,7 +6852,7 @@ ALTER TABLE ONLY usergroup_members
 
 
 --
--- Name: users_auth_source_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: foreman
+-- Name: users_auth_source_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY users
@@ -7144,7 +6860,7 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: public; Type: ACL; Schema: -; Owner: postgres
+-- Name: public; Type: ACL; Schema: -; Owner: -
 --
 
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
